@@ -1,5 +1,5 @@
 public class ShoppingCart {
-    private String cartID;
+    private int cartID;
     private int prodQuantity;
     private float totalCost;
 

@@ -1,5 +1,5 @@
 public class PackageInformation {
-    private String packageID;
+    private int packageID;
     private float weight;
 
     public PackageInformation() {

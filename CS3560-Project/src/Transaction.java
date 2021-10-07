@@ -1,5 +1,5 @@
 public class Transaction {
-    private String transID;
+    private int transID;
     private int transDate; //MMDDYYYY
     private String transType;
     private float transAmount;
