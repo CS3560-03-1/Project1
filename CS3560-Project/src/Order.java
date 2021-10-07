@@ -1,5 +1,5 @@
 public class Order {
-    private String orderID;
+    private int orderID;
     private boolean confirmation;
     private String delMethod;
 

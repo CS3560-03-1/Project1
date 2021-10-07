@@ -1,5 +1,5 @@
 public class Customer {
-    private String custID;
+    private int custID;
     private String address;
     private String billAddress;
     private int phoneNum;
