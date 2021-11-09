@@ -9,7 +9,7 @@ public class Customer {
         //Customer constructor
     }
 
-    public String getCustID() {
+    public int getCustID() {
         return custID;
     }
 

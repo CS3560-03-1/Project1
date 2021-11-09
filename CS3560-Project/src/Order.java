@@ -7,7 +7,7 @@ public class Order {
         //Order constructor
     }
 
-    public String getOrderID() {
+    public int getOrderID() {
         return orderID;
     }
 

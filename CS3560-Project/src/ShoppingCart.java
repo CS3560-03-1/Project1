@@ -13,7 +13,7 @@ public class ShoppingCart {
         return false; //return if adding product to cart is successful or not
     }
 
-    public String getCartID() {
+    public int getCartID() {
         return cartID;
     }
 

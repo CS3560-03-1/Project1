@@ -6,7 +6,7 @@ public class PackageInformation {
         //packageInformation object
     }
 
-    public String getPackageID() {
+    public int getPackageID() {
         return packageID;
     }
 
