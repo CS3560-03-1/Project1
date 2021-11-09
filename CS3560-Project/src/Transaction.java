@@ -14,7 +14,7 @@ public class Transaction {
         //shipping taken from external shipping database
     }
 
-    public String getTransID() {
+    public int getTransID() {
         return transID;
     }
 
