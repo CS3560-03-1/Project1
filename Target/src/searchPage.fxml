@@ -21,7 +21,7 @@
          <children>
             <ImageView fitHeight="314.0" fitWidth="258.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../targetlogo.png" />
+                  <Image url="@images/targetlogo.png" />
                </image>
             </ImageView>
             <VBox prefHeight="200.0" prefWidth="100.0">
@@ -80,7 +80,7 @@
                      <children>
                         <ImageView fitHeight="83.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../placeholder.png" />
+                              <Image url="@images/placeholder.png" />
                            </image>
                         </ImageView>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sports Shoe" />
@@ -91,7 +91,7 @@
                      <children>
                         <ImageView fitHeight="87.0" fitWidth="106.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../placeholder.png" />
+                              <Image url="@images/placeholder.png" />
                            </image>
                         </ImageView>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tennis Shoes" />
@@ -102,7 +102,7 @@
                      <children>
                         <ImageView fitHeight="94.0" fitWidth="136.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../placeholder.png" />
+                              <Image url="@images/placeholder.png" />
                            </image>
                         </ImageView>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Slacks" />
@@ -113,7 +113,7 @@
                      <children>
                         <ImageView fitHeight="81.0" fitWidth="109.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../placeholder.png" />
+                              <Image url="@images/placeholder.png" />
                            </image>
                         </ImageView>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sports Shoe" />
@@ -124,7 +124,7 @@
                      <children>
                         <ImageView fitHeight="121.0" fitWidth="113.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../placeholder.png" />
+                              <Image url="@images/placeholder.png" />
                            </image>
                         </ImageView>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tennis Shoe" />
@@ -135,7 +135,7 @@
                      <children>
                         <ImageView fitHeight="126.0" fitWidth="133.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../placeholder.png" />
+                              <Image url="@images/placeholder.png" />
                            </image>
                         </ImageView>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Slacks" />
@@ -146,7 +146,7 @@
                      <children>
                         <ImageView fitHeight="77.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../placeholder.png" />
+                              <Image url="@images/placeholder.png" />
                            </image>
                         </ImageView>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sports Shoe" />
@@ -157,7 +157,7 @@
                      <children>
                         <ImageView fitHeight="114.0" fitWidth="123.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../placeholder.png" />
+                              <Image url="@images/placeholder.png" />
                            </image>
                         </ImageView>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tennis Shoe" />
@@ -168,7 +168,7 @@
                      <children>
                         <ImageView fitHeight="133.0" fitWidth="123.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../placeholder.png" />
+                              <Image url="@images/placeholder.png" />
                            </image>
                         </ImageView>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Slacks" />
