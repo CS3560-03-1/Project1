@@ -6,12 +6,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import javax.swing.*;
-import java.io.FileInputStream;
 
 public class UserInterface extends Application
 {
@@ -39,9 +38,9 @@ public class UserInterface extends Application
         cartImageViewPP.setImage(cartImage);
         cartPP.setGraphic(cartImageViewPP);
 
-        HBox topBar = new HBox(targetLogoPP, searchBarPP, cartPP);
+        HBox topBarPP = new HBox(targetLogoPP, searchBarPP, cartPP);
 
-        /* Main Body */
+        /* main body */
         Image productImg = new Image("images/placeholder.png");
         //  additional images
         ImageView addImage1 = new ImageView();
@@ -98,7 +97,7 @@ public class UserInterface extends Application
         VBox productInfo = new VBox(productName, productPrice, rating, productSize, quantity, color, description); //container
         HBox mainBody = new HBox(productImages, productInfo);
 
-        VBox productPage = new VBox(topBar, mainBody);
+        VBox productPage = new VBox(topBarPP, mainBody);
 
         Scene productPageScene = new Scene(productPage, 1280, 720); //set search page scene
 
@@ -153,7 +152,7 @@ public class UserInterface extends Application
         cartImageViewSP.setImage(cartImage);
         cartSP.setGraphic(cartImageViewSP);
 
-        HBox topbar = new HBox(searchBarSP, cartSP);
+        HBox topbarSP = new HBox(searchBarSP, cartSP);
 
         /* items */
         Image placeholderImg = new Image("images/placeholder.png");
@@ -246,7 +245,7 @@ public class UserInterface extends Application
         Button rightArrow = new Button(">");
         HBox pagination = new HBox(leftArrow, pageNumbers, rightArrow);
 
-        VBox rightSide = new VBox(topbar, items, pagination);
+        VBox rightSide = new VBox(topbarSP, items, pagination);
 
         /* border pane */
         searchPage.setLeft(sidebar);
@@ -256,7 +255,49 @@ public class UserInterface extends Application
 
         ///////////////////
 
-        primaryStage.setScene(searchPageScene); //switch to show which scene displays
+        /*** HOME PAGE */
+        /* top bar */
+        TextField searchBarH = new TextField();
+        Text temp = new Text();
+        searchBarH.setOnKeyReleased(e -> {
+            if (e.getCode() == KeyCode.ENTER) {
+                temp.setText(searchBarH.getText()); //gets search query
+                primaryStage.setScene(searchPageScene); //switches to search results page
+            }
+        });
+        System.out.println(temp.getText());
+        // Target Logo
+        ImageView targetLogoH = new ImageView();
+        targetLogoH.setImage(logo);
+        //  cart button
+        Button cartH = new Button("Cart");
+        ImageView cartImageViewH = new ImageView();
+        cartImageViewH.setFitHeight(25);
+        cartImageViewH.setFitWidth(25);
+        cartImageViewH.setImage(cartImage);
+        cartH.setGraphic(cartImageViewH);
+
+        HBox topBarH = new HBox(targetLogoH, searchBarH, cartH);
+
+        /* welcome */
+        Text welcome = new Text("Welcome back, customer!");
+
+        /* carousel */
+        Image placeholderH = new Image("images/placeholder.png");
+        ImageView icon1 = new ImageView(placeholderH);
+        ImageView icon2 = new ImageView(placeholderH);
+        ImageView icon3 = new ImageView(placeholderH);
+        icon1.setFitWidth(300); icon1.setFitHeight(300);
+        icon2.setFitWidth(300); icon2.setFitHeight(300);
+        icon3.setFitWidth(300); icon3.setFitHeight(300);
+        HBox carousel = new HBox(icon1, icon2, icon3);
+
+        VBox homePage = new VBox(topBarH, welcome, carousel);
+        Scene homePageScene = new Scene(homePage, 1280, 720);
+
+        ///////////////////
+
+        primaryStage.setScene(homePageScene); //switch to show which scene displays
 
         primaryStage.show(); //display
     }
