@@ -30,10 +30,31 @@ public class UserInterface extends Application
         //home page
         VBox homePage = new VBox();
         Scene homePageScene = new Scene(homePage, 1280, 720);
+        //cart
+        BorderPane cart = new BorderPane();
+        Scene cartScene = new Scene(cart, 1280, 720);
+        //checkout options
+        BorderPane checkoutOption = new BorderPane();
+        Scene checkoutOptionScene = new Scene(checkoutOption, 1280, 720);
+        //create account
+        BorderPane custAccount = new BorderPane();
+        Scene custAccountScene = new Scene(custAccount, 1280, 720);
+        //pick up options
+        BorderPane pickUp = new BorderPane();
+        Scene pickUpScene = new Scene(pickUp, 1280, 720);
+        //add new card
+        BorderPane newCard = new BorderPane();
+        Scene newCardScene = new Scene(newCard, 1280, 720);
+        //billing information
+        BorderPane billingInfo = new BorderPane();
+        Scene billingInfoScene = new Scene(billingInfo, 1280, 720);
+        //final checkout
+        BorderPane finalCheckout = new BorderPane();
+        Scene finalCheckoutScene = new Scene(finalCheckout, 1280, 720);
 
         /*** PRODUCT PAGE */
         /* top bar */
-        TextField searchBarPP = new TextField();
+        TextField searchBarPP = new TextField("Search");
         searchBarPP.setOnKeyReleased(e -> {
             if (e.getCode() == KeyCode.ENTER) {
                 primaryStage.setScene(searchPageScene); //switches to search results page
@@ -46,6 +67,7 @@ public class UserInterface extends Application
         targetLogoPP.setFitHeight(51);
         //  cart button
         Button cartPP = new Button("Cart");
+        cartPP.setOnAction(e -> primaryStage.setScene(cartScene));
         ImageView cartImageViewPP = new ImageView();
         cartImageViewPP.setFitHeight(25);
         cartImageViewPP.setFitWidth(25);
@@ -116,7 +138,6 @@ public class UserInterface extends Application
         ///////////////////
 
         /*** SEARCH PAGE */
-
         /* sidebar */
         // Target Logo
         ImageView targetLogoSP = new ImageView();
@@ -157,6 +178,7 @@ public class UserInterface extends Application
         TextField searchBarSP = new TextField("Search");
         //  cart button
         Button cartSP = new Button("Cart");
+        cartSP.setOnAction(e -> primaryStage.setScene(cartScene));
         ImageView cartImageViewSP = new ImageView();
         cartImageViewSP.setFitHeight(25);
         cartImageViewSP.setFitWidth(25);
@@ -266,7 +288,7 @@ public class UserInterface extends Application
 
         /*** HOME PAGE */
         /* top bar */
-        TextField searchBarH = new TextField();
+        TextField searchBarH = new TextField("Search");
         Text temp = new Text();
         searchBarH.setOnKeyReleased(e -> {
             if (e.getCode() == KeyCode.ENTER) {
@@ -280,6 +302,7 @@ public class UserInterface extends Application
         targetLogoH.setImage(logo);
         //  cart button
         Button cartH = new Button("Cart");
+        cartH.setOnAction(e -> primaryStage.setScene(cartScene));
         ImageView cartImageViewH = new ImageView();
         cartImageViewH.setFitHeight(25);
         cartImageViewH.setFitWidth(25);
@@ -290,6 +313,7 @@ public class UserInterface extends Application
 
         /* welcome */
         Text welcome = new Text("Welcome back, customer!");
+        Text just4You = new Text("Just For You:");
 
         /* carousel */
         Image placeholderH = new Image("images/placeholder.png");
@@ -301,12 +325,88 @@ public class UserInterface extends Application
         icon3.setFitWidth(300); icon3.setFitHeight(300);
         HBox carousel = new HBox(icon1, icon2, icon3);
 
-        homePage.getChildren().addAll(topBarH, welcome, carousel);
+        homePage.getChildren().addAll(topBarH, welcome, just4You, carousel);
+
+        ///////////////////
+
+        /*** CART */
+        /* top bar */
+        TextField searchBarC = new TextField("Search");
+        searchBarC.setOnKeyReleased(e -> {
+            if (e.getCode() == KeyCode.ENTER) {
+                primaryStage.setScene(searchPageScene); //switches to search results page
+            }
+        });
+        // Target Logo
+        ImageView targetLogoC = new ImageView();
+        targetLogoC.setImage(logo);
+        targetLogoC.setFitWidth(234);
+        targetLogoC.setFitHeight(51);
+        //  cart button
+        Button cartC = new Button("Cart");
+        cartC.setOnAction(e -> primaryStage.setScene(cartScene));
+        ImageView cartImageViewC = new ImageView();
+        cartImageViewC.setFitHeight(25);
+        cartImageViewC.setFitWidth(25);
+        cartImageViewC.setImage(cartImage);
+        cartC.setGraphic(cartImageViewC);
+
+        HBox topBarC = new HBox(targetLogoC, searchBarC, cartC);
+
+        /* cart items */
+        //  values
+        double subTotal = 0;
+        int totalQuan = 0;
+        double estTax = 0;
+        double priceTotal = 0;
+
+        Image placeholderCart1 = new Image("/images/placeholder.png");
+        ImageView cartImage1 = new ImageView(placeholderCart1);
+        cartImage1.setFitWidth(200); cartImage1.setFitHeight(200);
+        Text cartText1 = new Text("Sports Shoe");
+        Text cartPrice1 = new Text("$24.00");
+        Text cartQuantity1 = new Text("1");
+        VBox cartItemInfo = new VBox(cartText1, cartPrice1, cartQuantity1);
+        HBox cartItem1 = new HBox(cartImage1, cartItemInfo);
+
+        Image placeholderCart2 = new Image("/images/placeholder.png");
+        ImageView cartImage2 = new ImageView(placeholderCart2);
+        cartImage2.setFitWidth(200); cartImage2.setFitHeight(200);
+        Text cartText2 = new Text("Towels");
+        Text cartPrice2 = new Text("$15.00");
+        Text cartQuantity2 = new Text("1");
+        VBox cartItemInfo2 = new VBox(cartText2, cartPrice2, cartQuantity2);
+        HBox cartItem2 = new HBox(cartImage2, cartItemInfo2);
+
+        VBox cartItems = new VBox(cartItem1, cartItem2);
+
+        /* cart totals */
+        //  total items
+        Text quanText = new Text("Total Items");
+        Text quanTotalValue = new Text(totalQuan + ""); //CALCULATE VALUE HERE
+        HBox totalItems = new HBox(quanText, quanTotalValue);
+        //  subtotal
+        Text subText = new Text("Subtotal");
+        Text subValue = new Text("$" + String.format("%.2f", subTotal));
+        HBox subtotal = new HBox(subText, subValue);
+        //  est. tax
+        estTax = subTotal * 0.6;
+        Text taxText = new Text("Est. Tax");
+        Text taxValue = new Text("$" + String.format("%.2f", estTax));
+        HBox estimatedTax = new HBox(taxText, taxValue);
+        //  checkout button
+        Button proceedCheckout = new Button("Proceed to Checkout");
+        proceedCheckout.setOnAction(e -> primaryStage.setScene(checkoutOptionScene));
+
+        VBox cartTotals = new VBox(totalItems, subtotal, estimatedTax, proceedCheckout);
+
+        cart.setTop(topBarC);
+        cart.setCenter(cartItems);
+        cart.setRight(cartTotals);
 
         ///////////////////
 
         primaryStage.setScene(homePageScene); //switch to show which scene displays
-
         primaryStage.show(); //display
     }
 
