@@ -365,7 +365,7 @@ public class UserInterface extends Application
         cartImage1.setFitWidth(200); cartImage1.setFitHeight(200);
         Text cartText1 = new Text("Sports Shoe");
         Text cartPrice1 = new Text("$24.00");
-        Text cartQuantity1 = new Text("1");
+        Text cartQuantity1 = new Text("Quantity" + "1");
         VBox cartItemInfo = new VBox(cartText1, cartPrice1, cartQuantity1);
         HBox cartItem1 = new HBox(cartImage1, cartItemInfo);
 
@@ -374,7 +374,7 @@ public class UserInterface extends Application
         cartImage2.setFitWidth(200); cartImage2.setFitHeight(200);
         Text cartText2 = new Text("Towels");
         Text cartPrice2 = new Text("$15.00");
-        Text cartQuantity2 = new Text("1");
+        Text cartQuantity2 = new Text("Quantity" + "1");
         VBox cartItemInfo2 = new VBox(cartText2, cartPrice2, cartQuantity2);
         HBox cartItem2 = new HBox(cartImage2, cartItemInfo2);
 
@@ -403,6 +403,27 @@ public class UserInterface extends Application
         cart.setTop(topBarC);
         cart.setCenter(cartItems);
         cart.setRight(cartTotals);
+
+        ///////////////////
+
+        /*** CHECKOUT OPTIONS */
+        /* Target Logo */
+        ImageView targetLogoCO = new ImageView();
+        targetLogoCO.setImage(logo);
+        targetLogoCO.setFitWidth(234);
+        targetLogoCO.setFitHeight(51);
+        /* buttons */
+        Button signIn = new Button("Sign In");
+        Button guest = new Button("Purchase as Guest");
+        HBox checkoutChoices = new HBox(signIn, guest);
+
+        checkoutOption.setTop(targetLogoCO);
+        checkoutOption.setCenter(checkoutChoices);
+
+        ///////////////////
+
+        Text createAccText = new Text("Create Account");
+        
 
         ///////////////////
 
