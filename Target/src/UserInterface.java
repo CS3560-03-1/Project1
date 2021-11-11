@@ -21,10 +21,24 @@ public class UserInterface extends Application
         primaryStage.setTitle("Target.com");
         Image logo = new Image("images/targetlogo.png"); //TARGET LOGO
         Image cartImage = new Image("images/shoppingcart.png"); //CART IMAGE
+        //product page
+        VBox productPage = new VBox();
+        Scene productPageScene = new Scene(productPage, 1280, 720); //set search page scene
+        //search page
+        BorderPane searchPage = new BorderPane();
+        Scene searchPageScene = new Scene(searchPage, 1280, 720); //set search page scene
+        //home page
+        VBox homePage = new VBox();
+        Scene homePageScene = new Scene(homePage, 1280, 720);
 
         /*** PRODUCT PAGE */
         /* top bar */
         TextField searchBarPP = new TextField();
+        searchBarPP.setOnKeyReleased(e -> {
+            if (e.getCode() == KeyCode.ENTER) {
+                primaryStage.setScene(searchPageScene); //switches to search results page
+            }
+        });
         // Target Logo
         ImageView targetLogoPP = new ImageView();
         targetLogoPP.setImage(logo);
@@ -97,14 +111,11 @@ public class UserInterface extends Application
         VBox productInfo = new VBox(productName, productPrice, rating, productSize, quantity, color, description); //container
         HBox mainBody = new HBox(productImages, productInfo);
 
-        VBox productPage = new VBox(topBarPP, mainBody);
-
-        Scene productPageScene = new Scene(productPage, 1280, 720); //set search page scene
+        productPage.getChildren().addAll(topBarPP, mainBody);
 
         ///////////////////
 
         /*** SEARCH PAGE */
-        BorderPane searchPage = new BorderPane();
 
         /* sidebar */
         // Target Logo
@@ -251,8 +262,6 @@ public class UserInterface extends Application
         searchPage.setLeft(sidebar);
         searchPage.setCenter(rightSide);
 
-        Scene searchPageScene = new Scene(searchPage, 1280, 720); //set search page scene
-
         ///////////////////
 
         /*** HOME PAGE */
@@ -292,8 +301,7 @@ public class UserInterface extends Application
         icon3.setFitWidth(300); icon3.setFitHeight(300);
         HBox carousel = new HBox(icon1, icon2, icon3);
 
-        VBox homePage = new VBox(topBarH, welcome, carousel);
-        Scene homePageScene = new Scene(homePage, 1280, 720);
+        homePage.getChildren().addAll(topBarH, welcome, carousel);
 
         ///////////////////
 
