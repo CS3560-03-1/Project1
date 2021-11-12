@@ -9,6 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 public class UserInterface extends Application {
@@ -24,7 +25,7 @@ public class UserInterface extends Application {
     {
         primaryStage.setTitle("Target.com");
         Image logo = new Image("images/targetlogo.png"); //TARGET LOGO
-        Image cartImage = new Image("images/shoppingcart.png"); //CART IMAGE
+        Image cartImage = new Image("images/whitecart.png"); //CART IMAGE
 
         // product page
         VBox productPage = new VBox();
@@ -84,6 +85,8 @@ public class UserInterface extends Application {
         /*** PRODUCT PAGE */
         /* top bar */
         TextField searchBarPP = new TextField("Search");
+        //      CSS
+        searchBarPP.getStyleClass().add("searchBar");
         searchBarPP.setOnKeyReleased(e -> {
             if (e.getCode() == KeyCode.ENTER) {
                 primaryStage.setScene(searchPageScene); //switches to search results page
@@ -97,6 +100,9 @@ public class UserInterface extends Application {
         targetLogoPP.setFitHeight(51);
         targetLogoButtonPP.setGraphic(targetLogoPP);
         targetLogoButtonPP.setOnAction(e -> primaryStage.setScene(homePageScene));
+        //      CSS
+        targetLogoButtonPP.getStyleClass().add("targetLogo");
+
         //  cart button
         Button cartPP = new Button("Cart");
         cartPP.setOnAction(e -> primaryStage.setScene(cartScene));
@@ -105,6 +111,9 @@ public class UserInterface extends Application {
         cartImageViewPP.setFitWidth(25);
         cartImageViewPP.setImage(cartImage);
         cartPP.setGraphic(cartImageViewPP);
+        //      CSS styling
+        cartPP.getStyleClass().add("cartButton");
+
 
         HBox topBarPP = new HBox(targetLogoButtonPP, searchBarPP, cartPP);
 
@@ -181,6 +190,8 @@ public class UserInterface extends Application {
         targetLogoSP.setFitHeight(51);
         targetLogoButtonSP.setGraphic(targetLogoSP);
         targetLogoButtonSP.setOnAction(e -> primaryStage.setScene(homePageScene));
+        //      CSS
+        targetLogoButtonSP.getStyleClass().add("targetLogo");
 
         // Filters
         //  Sort By:
@@ -213,6 +224,8 @@ public class UserInterface extends Application {
         /* topbar */
         //  search bar
         TextField searchBarSP = new TextField("Search");
+        //      CSS
+        searchBarSP.getStyleClass().add("searchBar");
         //  cart button
         Button cartSP = new Button("Cart");
         cartSP.setOnAction(e -> primaryStage.setScene(cartScene));
@@ -221,6 +234,9 @@ public class UserInterface extends Application {
         cartImageViewSP.setFitWidth(25);
         cartImageViewSP.setImage(cartImage);
         cartSP.setGraphic(cartImageViewSP);
+        //      CSS styling
+        cartSP.getStyleClass().add("cartButton");
+
 
         HBox topbarSP = new HBox(searchBarSP, cartSP);
 
@@ -326,6 +342,8 @@ public class UserInterface extends Application {
         /*** HOME PAGE */
         /* top bar */
         TextField searchBarH = new TextField("Search");
+        //      CSS
+        searchBarH.getStyleClass().add("searchBar");
         Text temp = new Text();
         searchBarH.setOnKeyReleased(e -> {
             if (e.getCode() == KeyCode.ENTER) {
@@ -333,12 +351,16 @@ public class UserInterface extends Application {
                 primaryStage.setScene(searchPageScene); //switches to search results page
             }
         });
+
         // Target Logo
         Button targetLogoButtonH = new Button();
         ImageView targetLogoH = new ImageView();
         targetLogoH.setImage(logo);
         targetLogoButtonH.setGraphic(targetLogoH);
         targetLogoButtonH.setOnAction(e -> primaryStage.setScene(homePageScene));
+        //      CSS
+        targetLogoButtonH.getStyleClass().add("targetLogo");
+
         //  cart button
         Button cartH = new Button("Cart");
         cartH.setOnAction(e -> primaryStage.setScene(cartScene));
@@ -347,6 +369,8 @@ public class UserInterface extends Application {
         cartImageViewH.setFitWidth(25);
         cartImageViewH.setImage(cartImage);
         cartH.setGraphic(cartImageViewH);
+        //      CSS styling
+        cartH.getStyleClass().add("cartButton");
 
         HBox topBarH = new HBox(targetLogoButtonH, searchBarH, cartH);
 
@@ -355,14 +379,22 @@ public class UserInterface extends Application {
         Text just4You = new Text("Just For You:");
 
         /* carousel */
-        Image placeholderH = new Image("images/placeholder.png");
-        ImageView icon1 = new ImageView(placeholderH);
-        ImageView icon2 = new ImageView(placeholderH);
-        ImageView icon3 = new ImageView(placeholderH);
+        Image redCardImg = new Image("images/redcard.png");
+        Image shoppingCatImg = new Image("images/shoppingcategories.png");
+        Image yourAccImg = new Image("images/youraccount.png");
+
+        ImageView icon1 = new ImageView(redCardImg);
+        ImageView icon2 = new ImageView(shoppingCatImg);
+        ImageView icon3 = new ImageView(yourAccImg);
         icon1.setFitWidth(300); icon1.setFitHeight(300);
         icon2.setFitWidth(300); icon2.setFitHeight(300);
-        icon3.setFitWidth(300); icon3.setFitHeight(300);
-        HBox carousel = new HBox(icon1, icon2, icon3);
+        icon3.setFitWidth(330); icon3.setFitHeight(330);
+
+        VBox redCard = new VBox(icon1, new Text("Rewards, Coupons, and Discounts"));
+        VBox shopCart = new VBox(icon2, new Text("Shopping Categories"));
+        VBox yourAccount = new VBox(icon3, new Text("Your Account"));
+
+        HBox carousel = new HBox(redCard, shopCart,yourAccount);
 
         homePage.getChildren().addAll(topBarH, welcome, just4You, carousel);
 
@@ -371,6 +403,8 @@ public class UserInterface extends Application {
         /*** CART */
         /* top bar */
         TextField searchBarC = new TextField("Search");
+        //      CSS
+        searchBarC.getStyleClass().add("searchBar");
         searchBarC.setOnKeyReleased(e -> {
             if (e.getCode() == KeyCode.ENTER) {
                 primaryStage.setScene(searchPageScene); //switches to search results page
@@ -384,6 +418,9 @@ public class UserInterface extends Application {
         targetLogoC.setFitHeight(51);
         targetLogoButtonC.setGraphic(targetLogoC);
         targetLogoButtonC.setOnAction(e -> primaryStage.setScene(homePageScene));
+        //      CSS
+        targetLogoButtonC.getStyleClass().add("targetLogo");
+
         //  cart button
         Button cartC = new Button("Cart");
         cartC.setOnAction(e -> primaryStage.setScene(cartScene));
@@ -392,6 +429,9 @@ public class UserInterface extends Application {
         cartImageViewC.setFitWidth(25);
         cartImageViewC.setImage(cartImage);
         cartC.setGraphic(cartImageViewC);
+        //      CSS styling
+        cartC.getStyleClass().add("cartButton");
+
 
         HBox topBarC = new HBox(targetLogoButtonC, searchBarC, cartC);
 
@@ -458,6 +498,9 @@ public class UserInterface extends Application {
         targetLogoCO.setFitHeight(51);
         targetLogoButtonCO.setGraphic(targetLogoCO);
         targetLogoButtonCO.setOnAction(e -> primaryStage.setScene(homePageScene));
+        //      CSS
+        targetLogoButtonCO.getStyleClass().add("targetLogo");
+
         /* buttons */
         Button signIn = new Button("Sign In");
         //signIn.setOnAction(e -> primaryStage.setScene(signInScene));
@@ -479,6 +522,8 @@ public class UserInterface extends Application {
         targetLogoGA.setFitHeight(51);
         targetLogoButtonGA.setGraphic(targetLogoGA);
         targetLogoButtonGA.setOnAction(e -> primaryStage.setScene(homePageScene));
+        //      CSS
+        targetLogoButtonGA.getStyleClass().add("targetLogo");
 
         /* Account Information */
         //  header
@@ -526,6 +571,8 @@ public class UserInterface extends Application {
         targetLogoEA.setFitHeight(51);
         targetLogoButtonEA.setGraphic(targetLogoEA);
         targetLogoButtonEA.setOnAction(e -> primaryStage.setScene(homePageScene));
+        //      CSS
+        targetLogoButtonEA.getStyleClass().add("targetLogo");
 
         /* address */
         Text addrText = new Text("Address");
@@ -573,6 +620,8 @@ public class UserInterface extends Application {
         targetLogoCC.setFitHeight(51);
         targetLogoButtonCC.setGraphic(targetLogoCC);
         targetLogoButtonCC.setOnAction(e -> primaryStage.setScene(homePageScene));
+        //      CSS
+        targetLogoButtonCC.getStyleClass().add("targetLogo");
 
         /* credit card info */
         Text creditCartInfo = new Text("Enter Credit Card Information");
@@ -612,6 +661,8 @@ public class UserInterface extends Application {
         targetLogoPU.setFitHeight(51);
         targetLogoButtonPU.setGraphic(targetLogoPU);
         targetLogoButtonPU.setOnAction(e -> primaryStage.setScene(homePageScene));
+        //      CSS
+        targetLogoButtonPU.getStyleClass().add("targetLogo");
 
         /* Selection Button */
         //  in store
@@ -642,6 +693,8 @@ public class UserInterface extends Application {
         targetLogoFC.setFitHeight(51);
         targetLogoButtonFC.setGraphic(targetLogoFC);
         targetLogoButtonFC.setOnAction(e -> primaryStage.setScene(homePageScene));
+        //      CSS
+        targetLogoButtonFC.getStyleClass().add("targetLogo");
 
         /* cart items */
         Image placeholderFCart1 = new Image("/images/placeholder.png");
@@ -726,6 +779,8 @@ public class UserInterface extends Application {
         targetLogoTY.setFitHeight(51);
         targetLogoButtonTY.setGraphic(targetLogoTY);
         targetLogoButtonTY.setOnAction(e -> primaryStage.setScene(homePageScene));
+        //      CSS
+        targetLogoButtonTY.getStyleClass().add("targetLogo");
 
         /* message */
         Text thankYouText = new Text(
