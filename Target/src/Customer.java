@@ -3,9 +3,10 @@ public class Customer {
     private String address;
     private String billAddress;
     private int phoneNum;
-    private String creditCard;
+    private int creditCard;
 
-    public Customer() {
+    public Customer()
+    {
         //Customer constructor
     }
 
@@ -25,7 +26,7 @@ public class Customer {
         return phoneNum;
     }
 
-    public String getCreditCard() {
+    public int getCreditCard() {
         return creditCard;
     }
 
@@ -41,7 +42,7 @@ public class Customer {
         this.phoneNum = phoneNum;
     }
 
-    public void setCreditCard(String creditCard) {
+    public void setCreditCard(int creditCard) {
         this.creditCard = creditCard;
     }
 }
