@@ -42,6 +42,9 @@ public class UserInterface extends Application
         //pick up options
         BorderPane pickUp = new BorderPane();
         Scene pickUpScene = new Scene(pickUp, 1280, 720);
+        //enter address
+        BorderPane enterAddress = new BorderPane();
+        Scene enterAddressScene = new Scene(enterAddress, 1280, 720);
         //add new card
         BorderPane newCard = new BorderPane();
         Scene newCardScene = new Scene(newCard, 1280, 720);
@@ -454,7 +457,7 @@ public class UserInterface extends Application
         VBox accInfo = new VBox(guestName, emailAddress, phoneNumber);
         //  confirm button
         Button confirmGuest = new Button("Confirm");
-        confirmGuest.setOnAction(e -> primaryStage.setScene(newCardScene));
+        confirmGuest.setOnAction(e -> primaryStage.setScene(enterAddressScene));
         VBox createAccContainer = new VBox(createAccText, accInfo, confirmGuest);
 
         guestAccount.setTop(targetLogoGA);
@@ -463,6 +466,7 @@ public class UserInterface extends Application
         ///////////////////
 
         /*** CREDIT CARD INFORMATION */
+
 
         ///////////////////
 
