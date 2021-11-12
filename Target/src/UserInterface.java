@@ -29,36 +29,57 @@ public class UserInterface extends Application {
         // product page
         VBox productPage = new VBox();
         Scene productPageScene = new Scene(productPage, 1280, 720); //set search page scene
+        productPageScene.getStylesheets().add("css/main.css");
+
         // search page
         BorderPane searchPage = new BorderPane();
         Scene searchPageScene = new Scene(searchPage, 1280, 720); //set search page scene
+        searchPageScene.getStylesheets().add("css/main.css");
+
         // home page
         VBox homePage = new VBox();
         Scene homePageScene = new Scene(homePage, 1280, 720);
+        homePageScene.getStylesheets().add("css/main.css");
+
         // cart
         BorderPane cart = new BorderPane();
         Scene cartScene = new Scene(cart, 1280, 720);
+        cartScene.getStylesheets().add("css/main.css");
+
         // checkout options
         BorderPane checkoutOption = new BorderPane();
         Scene checkoutOptionScene = new Scene(checkoutOption, 1280, 720);
+        checkoutOptionScene.getStylesheets().add("css/main.css");
+
         // create account
         BorderPane guestAccount = new BorderPane();
         Scene guestAccountScene = new Scene(guestAccount, 1280, 720);
+        guestAccountScene.getStylesheets().add("css/main.css");
+
         // pick up options
         BorderPane pickUp = new BorderPane();
         Scene pickUpScene = new Scene(pickUp, 1280, 720);
+        pickUpScene.getStylesheets().add("css/main.css");
+
         // enter address
         BorderPane enterAddress = new BorderPane();
         Scene enterAddressScene = new Scene(enterAddress, 1280, 720);
+        enterAddressScene.getStylesheets().add("css/main.css");
+
         // add new card
         BorderPane newCard = new BorderPane();
         Scene newCardScene = new Scene(newCard, 1280, 720);
+        newCardScene.getStylesheets().add("css/main.css");
+
         // final checkout
         BorderPane finalCheckout = new BorderPane();
         Scene finalCheckoutScene = new Scene(finalCheckout, 1280, 720);
+        finalCheckoutScene.getStylesheets().add("css/main.css");
+
         // thank you screen
         BorderPane thankYou = new BorderPane();
         Scene thankYouScene = new Scene(thankYou, 1280, 720);
+        thankYouScene.getStylesheets().add("css/main.css");
 
         /*** PRODUCT PAGE */
         /* top bar */
