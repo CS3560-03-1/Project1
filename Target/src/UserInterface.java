@@ -49,9 +49,6 @@ public class UserInterface extends Application
         //add new card
         BorderPane newCard = new BorderPane();
         Scene newCardScene = new Scene(newCard, 1280, 720);
-        //billing information
-        BorderPane billingInfo = new BorderPane();
-        Scene billingInfoScene = new Scene(billingInfo, 1280, 720);
         //final checkout
         BorderPane finalCheckout = new BorderPane();
         Scene finalCheckoutScene = new Scene(finalCheckout, 1280, 720);
@@ -565,7 +562,7 @@ public class UserInterface extends Application
 
         //  confirm button
         Button confirmCC = new Button("Confirm");
-        confirmCC.setOnAction(e -> primaryStage.setScene(newCardScene));
+        confirmCC.setOnAction(e -> primaryStage.setScene(pickUpScene));
 
         VBox creditCard = new VBox(creditCartInfo, ccNumContainer, expDateContainer, ccvContainer, confirmCC);
 
@@ -575,6 +572,24 @@ public class UserInterface extends Application
         ///////////////////
 
         /*** PICK UP OPTION */
+        /* Target Logo */
+        Button targetLogoButtonPU = new Button();
+        ImageView targetLogoPU = new ImageView();
+        targetLogoPU.setImage(logo);
+        targetLogoPU.setFitWidth(234);
+        targetLogoPU.setFitHeight(51);
+        targetLogoButtonPU.setGraphic(targetLogoPU);
+        targetLogoButtonPU.setOnAction(e -> primaryStage.setScene(homePageScene));
+
+        /* Selection Button */
+        Button inStore = new Button("In-Store Pick Up");
+        Button delivery = new Button("Delivery");
+        Button driveUp = new Button("Drive-Up Pick Up");
+
+        HBox pickUpOptions = new HBox(inStore, delivery, driveUp);
+
+        pickUp.setTop(targetLogoButtonPU);
+        pickUp.setCenter(pickUpOptions);
 
         ///////////////////
 
