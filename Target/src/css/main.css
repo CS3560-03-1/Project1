@@ -2,6 +2,10 @@
     -fx-background-color: #252525;
 }
 
+button {
+    -fx-cursor: pointer, auto;
+}
+
 .cartButton {
     -fx-background-color: #E80018;
     -fx-text-fill: #ffffff;
@@ -10,15 +14,40 @@
     -fx-border: none;
 }
 
-.target {
+.targetLogo {
     -fx-background-color: transparent;
     -fx-border: none;
-    -fx-padding: 10px;
 }
 
 .searchBar {
     -fx-background-color: #302D2D;
+    -fx-text-fill: #ffffff;
     -fx-border-radius: 5px;
     -fx-border-color: #404040;
-    -fx-border-size: 1px;
+    -fx-border-width: 1px;
+    -fx-width: 80%;
+}
+
+/*** HOME PAGE */
+
+#welcome {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 30pt;
+    -fx-border-color: transparent transparent #E80018 transparent;
+    -fx-border-width: 5px;
+}
+
+#welcomeSubtitle {
+    -fx-background-color: #E80018;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 20pt;
+    -fx-border-radius: 5px;
+    -fx-padding: 5px 10px;
+}
+
+.homePagePanel {
+    -fx-padding: 20px;
+    -fx-border-radius: 10px;
+    -fx-border-color: #E80018;
+    -fx-border-width: 10px;
 }

@@ -1,6 +1,7 @@
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -87,6 +88,8 @@ public class UserInterface extends Application {
         TextField searchBarPP = new TextField("Search");
         //      CSS
         searchBarPP.getStyleClass().add("searchBar");
+        searchBarPP.setPrefWidth(750);
+        //      controls
         searchBarPP.setOnKeyReleased(e -> {
             if (e.getCode() == KeyCode.ENTER) {
                 primaryStage.setScene(searchPageScene); //switches to search results page
@@ -226,6 +229,8 @@ public class UserInterface extends Application {
         TextField searchBarSP = new TextField("Search");
         //      CSS
         searchBarSP.getStyleClass().add("searchBar");
+        searchBarSP.setPrefWidth(750);
+        //      controls
         //  cart button
         Button cartSP = new Button("Cart");
         cartSP.setOnAction(e -> primaryStage.setScene(cartScene));
@@ -341,9 +346,12 @@ public class UserInterface extends Application {
 
         /*** HOME PAGE */
         /* top bar */
+        //  search bar
         TextField searchBarH = new TextField("Search");
         //      CSS
         searchBarH.getStyleClass().add("searchBar");
+        searchBarH.setPrefWidth(650);
+        //      controls
         Text temp = new Text();
         searchBarH.setOnKeyReleased(e -> {
             if (e.getCode() == KeyCode.ENTER) {
@@ -356,6 +364,7 @@ public class UserInterface extends Application {
         Button targetLogoButtonH = new Button();
         ImageView targetLogoH = new ImageView();
         targetLogoH.setImage(logo);
+        targetLogoH.setFitWidth(447); targetLogoH.setFitHeight(95);
         targetLogoButtonH.setGraphic(targetLogoH);
         targetLogoButtonH.setOnAction(e -> primaryStage.setScene(homePageScene));
         //      CSS
@@ -365,18 +374,22 @@ public class UserInterface extends Application {
         Button cartH = new Button("Cart");
         cartH.setOnAction(e -> primaryStage.setScene(cartScene));
         ImageView cartImageViewH = new ImageView();
-        cartImageViewH.setFitHeight(25);
-        cartImageViewH.setFitWidth(25);
+        cartImageViewH.setFitHeight(25); cartImageViewH.setFitWidth(25);
         cartImageViewH.setImage(cartImage);
         cartH.setGraphic(cartImageViewH);
         //      CSS styling
         cartH.getStyleClass().add("cartButton");
 
-        HBox topBarH = new HBox(targetLogoButtonH, searchBarH, cartH);
+        HBox topBarH = new HBox(20, targetLogoButtonH, searchBarH, cartH);
+        //      Styling
+        topBarH.setPadding(new Insets(30));
 
         /* welcome */
-        Text welcome = new Text("Welcome back, customer!");
-        Text just4You = new Text("Just For You:");
+        Label welcome = new Label("Welcome back, customer!");
+        Label just4You = new Label("Just For You:");
+        //      CSS
+        welcome.setId("welcome");
+        just4You.setId("welcomeSubtitle");
 
         /* carousel */
         Image redCardImg = new Image("images/redcard.png");
@@ -394,7 +407,12 @@ public class UserInterface extends Application {
         VBox shopCart = new VBox(icon2, new Text("Shopping Categories"));
         VBox yourAccount = new VBox(icon3, new Text("Your Account"));
 
-        HBox carousel = new HBox(redCard, shopCart,yourAccount);
+        //      CSS
+        redCard.getStyleClass().add("homePagePanel");
+        shopCart.getStyleClass().add("homePagePanel");
+        yourAccount.getStyleClass().add("homePagePanel");
+
+        HBox carousel = new HBox(20, redCard, shopCart,yourAccount);
 
         homePage.getChildren().addAll(topBarH, welcome, just4You, carousel);
 
@@ -405,6 +423,8 @@ public class UserInterface extends Application {
         TextField searchBarC = new TextField("Search");
         //      CSS
         searchBarC.getStyleClass().add("searchBar");
+        searchBarC.setPrefWidth(750);
+        //      controls
         searchBarC.setOnKeyReleased(e -> {
             if (e.getCode() == KeyCode.ENTER) {
                 primaryStage.setScene(searchPageScene); //switches to search results page
