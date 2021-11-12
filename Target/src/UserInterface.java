@@ -37,8 +37,8 @@ public class UserInterface extends Application
         BorderPane checkoutOption = new BorderPane();
         Scene checkoutOptionScene = new Scene(checkoutOption, 1280, 720);
         //create account
-        BorderPane custAccount = new BorderPane();
-        Scene custAccountScene = new Scene(custAccount, 1280, 720);
+        BorderPane guestAccount = new BorderPane();
+        Scene guestAccountScene = new Scene(guestAccount, 1280, 720);
         //pick up options
         BorderPane pickUp = new BorderPane();
         Scene pickUpScene = new Scene(pickUp, 1280, 720);
@@ -414,7 +414,9 @@ public class UserInterface extends Application
         targetLogoCO.setFitHeight(51);
         /* buttons */
         Button signIn = new Button("Sign In");
+        //signIn.setOnAction(e -> primaryStage.setScene(signInScene));
         Button guest = new Button("Purchase as Guest");
+        guest.setOnAction(e -> primaryStage.setScene(guestAccountScene));
         HBox checkoutChoices = new HBox(signIn, guest);
 
         checkoutOption.setTop(targetLogoCO);
@@ -422,8 +424,45 @@ public class UserInterface extends Application
 
         ///////////////////
 
-        Text createAccText = new Text("Create Account");
-        
+        /*** GUEST ACCOUNT */
+        /* Target Logo */
+        ImageView targetLogoGA = new ImageView();
+        targetLogoGA.setImage(logo);
+        targetLogoGA.setFitWidth(234);
+        targetLogoGA.setFitHeight(51);
+
+        /* Account Information */
+        //  header
+        Text createAccText = new Text("Enter Guest Information"); //text for create account screen
+        //  first & last name
+        Text fNameText = new Text("First Name");
+        TextField fName = new TextField();
+        VBox firstName = new VBox(fNameText, fName);
+        Text lNameText = new Text("Last Name");
+        TextField lName = new TextField();
+        VBox lastName = new VBox(lNameText, lName);
+        HBox guestName = new HBox(firstName, lastName);
+        //  email address
+        Text emailAddText = new Text("Email Address");
+        TextField emailAdd = new TextField();
+        VBox emailAddress = new VBox(emailAddText, emailAdd);
+        //  phone number
+        Text phoneNumText = new Text("Phone Number");
+        TextField phoneNum = new TextField();
+        VBox phoneNumber = new VBox(phoneNumText, phoneNum);
+        //  container
+        VBox accInfo = new VBox(guestName, emailAddress, phoneNumber);
+        //  confirm button
+        Button confirmGuest = new Button("Confirm");
+        confirmGuest.setOnAction(e -> primaryStage.setScene(newCardScene));
+        VBox createAccContainer = new VBox(createAccText, accInfo, confirmGuest);
+
+        guestAccount.setTop(targetLogoGA);
+        guestAccount.setCenter(createAccContainer);
+
+        ///////////////////
+
+        /*** CREDIT CARD INFORMATION */
 
         ///////////////////
 
