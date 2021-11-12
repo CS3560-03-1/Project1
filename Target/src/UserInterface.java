@@ -11,9 +11,13 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+public class UserInterface extends Application {
 
-public class UserInterface extends Application
-{
+    // values
+    double subTotal = 0;
+    int totalQuan = 0;
+    double estTax = 0;
+    double priceTotal = 0;
 
     @Override
     public void start(Stage primaryStage) throws Exception
@@ -22,36 +26,39 @@ public class UserInterface extends Application
         Image logo = new Image("images/targetlogo.png"); //TARGET LOGO
         Image cartImage = new Image("images/shoppingcart.png"); //CART IMAGE
 
-        //product page
+        // product page
         VBox productPage = new VBox();
         Scene productPageScene = new Scene(productPage, 1280, 720); //set search page scene
-        //search page
+        // search page
         BorderPane searchPage = new BorderPane();
         Scene searchPageScene = new Scene(searchPage, 1280, 720); //set search page scene
-        //home page
+        // home page
         VBox homePage = new VBox();
         Scene homePageScene = new Scene(homePage, 1280, 720);
-        //cart
+        // cart
         BorderPane cart = new BorderPane();
         Scene cartScene = new Scene(cart, 1280, 720);
-        //checkout options
+        // checkout options
         BorderPane checkoutOption = new BorderPane();
         Scene checkoutOptionScene = new Scene(checkoutOption, 1280, 720);
-        //create account
+        // create account
         BorderPane guestAccount = new BorderPane();
         Scene guestAccountScene = new Scene(guestAccount, 1280, 720);
-        //pick up options
+        // pick up options
         BorderPane pickUp = new BorderPane();
         Scene pickUpScene = new Scene(pickUp, 1280, 720);
-        //enter address
+        // enter address
         BorderPane enterAddress = new BorderPane();
         Scene enterAddressScene = new Scene(enterAddress, 1280, 720);
-        //add new card
+        // add new card
         BorderPane newCard = new BorderPane();
         Scene newCardScene = new Scene(newCard, 1280, 720);
-        //final checkout
+        // final checkout
         BorderPane finalCheckout = new BorderPane();
         Scene finalCheckoutScene = new Scene(finalCheckout, 1280, 720);
+        // thank you screen
+        BorderPane thankYou = new BorderPane()
+        Scene thankYouScene = new Scene(thankYou, 1280, 720);
 
         /*** PRODUCT PAGE */
         /* top bar */
@@ -368,12 +375,6 @@ public class UserInterface extends Application
         HBox topBarC = new HBox(targetLogoButtonC, searchBarC, cartC);
 
         /* cart items */
-        //  values
-        double subTotal = 0;
-        int totalQuan = 0;
-        double estTax = 0;
-        double priceTotal = 0;
-
         Image placeholderCart1 = new Image("/images/placeholder.png");
         ImageView cartImage1 = new ImageView(placeholderCart1);
         cartImage1.setFitWidth(200); cartImage1.setFitHeight(200);
@@ -399,15 +400,22 @@ public class UserInterface extends Application
         Text quanText = new Text("Total Items");
         Text quanTotalValue = new Text(totalQuan + ""); //CALCULATE VALUE HERE
         HBox totalItems = new HBox(quanText, quanTotalValue);
+
         //  subtotal
         Text subText = new Text("Subtotal");
         Text subValue = new Text("$" + String.format("%.2f", subTotal));
         HBox subtotal = new HBox(subText, subValue);
+
         //  est. tax
         estTax = subTotal * 0.6;
         Text taxText = new Text("Est. Tax");
         Text taxValue = new Text("$" + String.format("%.2f", estTax));
         HBox estimatedTax = new HBox(taxText, taxValue);
+
+        // total
+        Text totalText = new Text("Total");
+        Text totalValue = new Text("$" + String.format("%.2f", priceTotal));
+
         //  checkout button
         Button proceedCheckout = new Button("Proceed to Checkout");
         proceedCheckout.setOnAction(e -> primaryStage.setScene(checkoutOptionScene));
@@ -520,12 +528,15 @@ public class UserInterface extends Application
         TextField zip = new TextField();
         HBox zipContainer = new HBox(zipText, zip);
 
+        //  billing address
+        CheckBox billingAddr = new CheckBox("Billing address is the same");
+
         //  confirm button
         Button confirmAddr = new Button("Confirm");
         confirmAddr.setOnAction(e -> primaryStage.setScene(newCardScene));
 
         HBox cityState = new HBox(cityContainer, stateContainer);
-        VBox address = new VBox(addrText, streetContainer, cityState, zipContainer, confirmAddr);
+        VBox address = new VBox(addrText, streetContainer, cityState, zipContainer, billingAddr, confirmAddr);
 
         enterAddress.setTop(targetLogoButtonEA);
         enterAddress.setCenter(address);
@@ -582,14 +593,106 @@ public class UserInterface extends Application
         targetLogoButtonPU.setOnAction(e -> primaryStage.setScene(homePageScene));
 
         /* Selection Button */
+        //  in store
         Button inStore = new Button("In-Store Pick Up");
+        inStore.setOnAction(e -> primaryStage.setScene(finalCheckoutScene));
+
+        //  delivery
         Button delivery = new Button("Delivery");
+        delivery.setOnAction(e -> primaryStage.setScene(finalCheckoutScene));
+
+        //  drive-up pick-up
         Button driveUp = new Button("Drive-Up Pick Up");
+        driveUp.setOnAction(e -> primaryStage.setScene(finalCheckoutScene));
 
         HBox pickUpOptions = new HBox(inStore, delivery, driveUp);
 
         pickUp.setTop(targetLogoButtonPU);
         pickUp.setCenter(pickUpOptions);
+
+        ///////////////////
+
+        /*** FINAL CHECKOUT */
+        /* Target logo */
+        Button targetLogoButtonFC = new Button();
+        ImageView targetLogoFC = new ImageView();
+        targetLogoFC.setImage(logo);
+        targetLogoFC.setFitWidth(234);
+        targetLogoFC.setFitHeight(51);
+        targetLogoButtonFC.setGraphic(targetLogoFC);
+        targetLogoButtonFC.setOnAction(e -> primaryStage.setScene(homePageScene));
+
+        /* cart items */
+        Image placeholderFCart1 = new Image("/images/placeholder.png");
+        ImageView fCartImage1 = new ImageView(placeholderFCart1);
+        fCartImage1.setFitWidth(200); fCartImage1.setFitHeight(200);
+        Text fCartText1 = new Text("Sports Shoe");
+        Text fCartPrice1 = new Text("$24.00");
+        Text fCartQuantity1 = new Text("Quantity" + "1");
+        VBox fCartItemInfo = new VBox(fCartText1, fCartPrice1, fCartQuantity1);
+        HBox fCartItem1 = new HBox(fCartImage1, fCartItemInfo);
+
+        Image placeholderFCart2 = new Image("/images/placeholder.png");
+        ImageView fCartImage2 = new ImageView(placeholderFCart2);
+        fCartImage2.setFitWidth(200); fCartImage2.setFitHeight(200);
+        Text fCartText2 = new Text("Towels");
+        Text fCartPrice2 = new Text("$15.00");
+        Text fCartQuantity2 = new Text("Quantity" + "1");
+        VBox fCartItemInfo2 = new VBox(fCartText2, fCartPrice2, fCartQuantity2);
+        HBox fCartItem2 = new HBox(fCartImage2, fCartItemInfo2);
+
+        //  edit button
+        Button editCart = new Button("Edit");
+        editCart.setOnAction(e -> primaryStage.setScene(cartScene));
+
+        VBox fCartItems = new VBox(editCart, fCartItem1, fCartItem2);
+
+        /* credit card */
+        //  cc text
+        Text creditCardText = new Text("Credit Card");
+        Text ccNumConf = new Text("**** **** **** 4444");
+        Text expDateConf = new Text("12/22");
+
+        //  edit button
+        Button editCard = new Button("Edit");
+        editCard.setOnAction(e -> primaryStage.setScene(newCardScene));
+        VBox creditCardContainer = new VBox(editCard, creditCardText, ccNumConf, expDateConf);
+
+        /* pick-up location */
+        //  location text
+        Text pickUpLocationText = new Text("Pick-Up Location");
+        Text locationConf = new Text("2347 Harper St., Seattle, WA 12345");
+
+        //  edit button
+        Button editLocation = new Button("Edit");
+        //editCart.setOnAction(e -> primaryStage.setScene(ADDRESS SCREEN));
+        VBox pickUpLocContainer = new VBox(editLocation, pickUpLocationText, locationConf);
+
+        VBox review = new VBox(fCartItems, creditCardContainer, pickUpLocContainer);
+
+        /* cart totals */
+        //  total items
+        Text fQuanText = new Text("Total Items");
+        Text fQuanTotalValue = new Text(totalQuan + ""); //CALCULATE VALUE HERE
+        HBox fTotalItems = new HBox(fQuanText, fQuanTotalValue);
+        //  subtotal
+        Text fSubText = new Text("Subtotal");
+        Text fSubValue = new Text("$" + String.format("%.2f", subTotal));
+        HBox fSubtotal = new HBox(fSubText, fSubValue);
+        //  est. tax
+        estTax = subTotal * 0.6;
+        Text fTaxText = new Text("Est. Tax");
+        Text fTaxValue = new Text("$" + String.format("%.2f", estTax));
+        HBox fTax = new HBox(fTaxText, fTaxValue);
+        //  checkout button
+        Button confirmPurchase = new Button("Confirm Purchase");
+        confirmPurchase.setOnAction(e -> primaryStage.setScene(thankYouScene));
+
+        VBox fCartTotals = new VBox(fTotalItems, fSubtotal, fTax, confirmPurchase);
+
+        finalCheckout.setTop(targetLogoButtonFC);
+        finalCheckout.setCenter(review);
+        finalCheckout.setRight(fCartTotals);
 
         ///////////////////
 
