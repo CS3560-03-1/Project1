@@ -57,7 +57,7 @@ public class UserInterface extends Application {
         BorderPane finalCheckout = new BorderPane();
         Scene finalCheckoutScene = new Scene(finalCheckout, 1280, 720);
         // thank you screen
-        BorderPane thankYou = new BorderPane()
+        BorderPane thankYou = new BorderPane();
         Scene thankYouScene = new Scene(thankYou, 1280, 720);
 
         /*** PRODUCT PAGE */
@@ -693,6 +693,34 @@ public class UserInterface extends Application {
         finalCheckout.setTop(targetLogoButtonFC);
         finalCheckout.setCenter(review);
         finalCheckout.setRight(fCartTotals);
+
+        ///////////////////
+
+        /*** THANK YOU PAGE */
+        /* Target logo */
+        Button targetLogoButtonTY = new Button();
+        ImageView targetLogoTY = new ImageView();
+        targetLogoTY.setImage(logo);
+        targetLogoTY.setFitWidth(234);
+        targetLogoTY.setFitHeight(51);
+        targetLogoButtonTY.setGraphic(targetLogoTY);
+        targetLogoButtonTY.setOnAction(e -> primaryStage.setScene(homePageScene));
+
+        /* message */
+        Text thankYouText = new Text(
+                "Thank you for your purchase. \n" +
+                        "Your payment has been approved, and your order is being prepared. A confirmation email has been sent to you."
+        );
+        thankYouText.setWrappingWidth(800);
+
+        /* continue shopping button */
+        Button continueShopping = new Button("Continue Shopping");
+        continueShopping.setOnAction(e -> primaryStage.setScene(homePageScene));
+
+        VBox thankYouMessage = new VBox(thankYouText, continueShopping);
+
+        thankYou.setTop(targetLogoButtonTY);
+        thankYou.setCenter(thankYouMessage);
 
         ///////////////////
 
