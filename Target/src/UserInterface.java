@@ -132,12 +132,14 @@ public class UserInterface extends Application
         );
         HBox color = new HBox(colorText, colorCombo);
 
+        Button addToCart = new Button("Add to Cart");
+
         Text description = new Text(
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam at iaculis sem. Nulla facilisi. Sed rutrum interdum velit, pharetra elementum neque malesuada at. Donec non arcu eleifend, rhoncus nibh sed, hendrerit nibh. Vivamus dapibus semper odio. Nullam eleifend ante vitae ligula vestibulum interdum."
         );
         description.setWrappingWidth(400);
 
-        VBox productInfo = new VBox(productName, productPrice, rating, productSize, quantity, color, description); //container
+        VBox productInfo = new VBox(productName, productPrice, rating, productSize, quantity, color, addToCart, description); //container
         HBox mainBody = new HBox(productImages, productInfo);
 
         productPage.getChildren().addAll(topBarPP, mainBody);
@@ -455,6 +457,7 @@ public class UserInterface extends Application
         /* Account Information */
         //  header
         Text createAccText = new Text("Enter Guest Information"); //text for create account screen
+
         //  first & last name
         Text fNameText = new Text("First Name");
         TextField fName = new TextField();
@@ -463,19 +466,24 @@ public class UserInterface extends Application
         TextField lName = new TextField();
         VBox lastName = new VBox(lNameText, lName);
         HBox guestName = new HBox(firstName, lastName);
+
         //  email address
         Text emailAddText = new Text("Email Address");
         TextField emailAddr = new TextField();
         VBox emailAddress = new VBox(emailAddText, emailAddr);
+
         //  phone number
         Text phoneNumText = new Text("Phone Number");
         TextField phoneNum = new TextField();
         VBox phoneNumber = new VBox(phoneNumText, phoneNum);
+
         //  container
         VBox accInfo = new VBox(guestName, emailAddress, phoneNumber);
+
         //  confirm button
         Button confirmGuest = new Button("Confirm");
         confirmGuest.setOnAction(e -> primaryStage.setScene(enterAddressScene));
+
         VBox createAccContainer = new VBox(createAccText, accInfo, confirmGuest);
 
         guestAccount.setTop(targetLogoButtonGA);
@@ -499,18 +507,22 @@ public class UserInterface extends Application
         Text streetText = new Text("Street");
         TextField street = new TextField();
         HBox streetContainer = new HBox(streetText, street);
+
         //  city
         Text cityText = new Text("City");
         TextField city = new TextField();
         HBox cityContainer = new HBox(cityText, city);
+
         //  state
         Text stateText = new Text("State");
         TextField state = new TextField();
         HBox stateContainer = new HBox(stateText, state);
+
         //  zip
         Text zipText = new Text("ZIP");
         TextField zip = new TextField();
         HBox zipContainer = new HBox(zipText, zip);
+
         //  confirm button
         Button confirmAddr = new Button("Confirm");
         confirmAddr.setOnAction(e -> primaryStage.setScene(newCardScene));
@@ -524,6 +536,45 @@ public class UserInterface extends Application
         ///////////////////
 
         /*** CREDIT CARD INFORMATION */
+        /* Target Logo */
+        Button targetLogoButtonCC = new Button();
+        ImageView targetLogoCC = new ImageView();
+        targetLogoCC.setImage(logo);
+        targetLogoCC.setFitWidth(234);
+        targetLogoCC.setFitHeight(51);
+        targetLogoButtonCC.setGraphic(targetLogoCC);
+        targetLogoButtonCC.setOnAction(e -> primaryStage.setScene(homePageScene));
+
+        /* credit card info */
+        Text creditCartInfo = new Text("Enter Credit Card Information");
+
+        //  credit card number
+        Text ccNumText = new Text("Credit Card Number");
+        TextField ccNum = new TextField();
+        HBox ccNumContainer = new HBox(ccNumText, ccNum);
+
+        //  expiration date
+        Text expDateText = new Text("Expiration Date");
+        TextField expDate = new TextField();
+        HBox expDateContainer = new HBox(expDateText, expDate);
+
+        //  ccv
+        Text ccvText = new Text("CCV");
+        TextField ccv = new TextField();
+        HBox ccvContainer =  new HBox(ccvText, ccv);
+
+        //  confirm button
+        Button confirmCC = new Button("Confirm");
+        confirmCC.setOnAction(e -> primaryStage.setScene(newCardScene));
+
+        VBox creditCard = new VBox(creditCartInfo, ccNumContainer, expDateContainer, ccvContainer, confirmCC);
+
+        newCard.setTop(targetLogoButtonCC);
+        newCard.setCenter(creditCard);
+
+        ///////////////////
+
+        /*** PICK UP OPTION */
 
         ///////////////////
 
