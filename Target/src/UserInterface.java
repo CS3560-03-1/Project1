@@ -21,6 +21,7 @@ public class UserInterface extends Application
         primaryStage.setTitle("Target.com");
         Image logo = new Image("images/targetlogo.png"); //TARGET LOGO
         Image cartImage = new Image("images/shoppingcart.png"); //CART IMAGE
+
         //product page
         VBox productPage = new VBox();
         Scene productPageScene = new Scene(productPage, 1280, 720); //set search page scene
@@ -64,10 +65,13 @@ public class UserInterface extends Application
             }
         });
         // Target Logo
+        Button targetLogoButtonPP = new Button();
         ImageView targetLogoPP = new ImageView();
         targetLogoPP.setImage(logo);
         targetLogoPP.setFitWidth(234);
         targetLogoPP.setFitHeight(51);
+        targetLogoButtonPP.setGraphic(targetLogoPP);
+        targetLogoButtonPP.setOnAction(e -> primaryStage.setScene(homePageScene));
         //  cart button
         Button cartPP = new Button("Cart");
         cartPP.setOnAction(e -> primaryStage.setScene(cartScene));
@@ -77,7 +81,7 @@ public class UserInterface extends Application
         cartImageViewPP.setImage(cartImage);
         cartPP.setGraphic(cartImageViewPP);
 
-        HBox topBarPP = new HBox(targetLogoPP, searchBarPP, cartPP);
+        HBox topBarPP = new HBox(targetLogoButtonPP, searchBarPP, cartPP);
 
         /* main body */
         Image productImg = new Image("images/placeholder.png");
@@ -143,10 +147,13 @@ public class UserInterface extends Application
         /*** SEARCH PAGE */
         /* sidebar */
         // Target Logo
+        Button targetLogoButtonSP = new Button();
         ImageView targetLogoSP = new ImageView();
         targetLogoSP.setImage(logo);
         targetLogoSP.setFitWidth(234);
         targetLogoSP.setFitHeight(51);
+        targetLogoButtonSP.setGraphic(targetLogoSP);
+        targetLogoButtonSP.setOnAction(e -> primaryStage.setScene(homePageScene));
 
         // Filters
         //  Sort By:
@@ -174,7 +181,7 @@ public class UserInterface extends Application
         CheckBox hndPl = new CheckBox("$100+");
         VBox priceBox = new VBox(priceText, zeroFive, fftTwt, twtFft, ffthnd, hndPl);
 
-        VBox sidebar = new VBox(targetLogoSP, sortByBox, filtersBox, priceBox);
+        VBox sidebar = new VBox(targetLogoButtonSP, sortByBox, filtersBox, priceBox);
 
         /* topbar */
         //  search bar
@@ -299,10 +306,12 @@ public class UserInterface extends Application
                 primaryStage.setScene(searchPageScene); //switches to search results page
             }
         });
-        System.out.println(temp.getText());
         // Target Logo
+        Button targetLogoButtonH = new Button();
         ImageView targetLogoH = new ImageView();
         targetLogoH.setImage(logo);
+        targetLogoButtonH.setGraphic(targetLogoH);
+        targetLogoButtonH.setOnAction(e -> primaryStage.setScene(homePageScene));
         //  cart button
         Button cartH = new Button("Cart");
         cartH.setOnAction(e -> primaryStage.setScene(cartScene));
@@ -312,7 +321,7 @@ public class UserInterface extends Application
         cartImageViewH.setImage(cartImage);
         cartH.setGraphic(cartImageViewH);
 
-        HBox topBarH = new HBox(targetLogoH, searchBarH, cartH);
+        HBox topBarH = new HBox(targetLogoButtonH, searchBarH, cartH);
 
         /* welcome */
         Text welcome = new Text("Welcome back, customer!");
@@ -341,10 +350,13 @@ public class UserInterface extends Application
             }
         });
         // Target Logo
+        Button targetLogoButtonC = new Button();
         ImageView targetLogoC = new ImageView();
         targetLogoC.setImage(logo);
         targetLogoC.setFitWidth(234);
         targetLogoC.setFitHeight(51);
+        targetLogoButtonC.setGraphic(targetLogoC);
+        targetLogoButtonC.setOnAction(e -> primaryStage.setScene(homePageScene));
         //  cart button
         Button cartC = new Button("Cart");
         cartC.setOnAction(e -> primaryStage.setScene(cartScene));
@@ -354,7 +366,7 @@ public class UserInterface extends Application
         cartImageViewC.setImage(cartImage);
         cartC.setGraphic(cartImageViewC);
 
-        HBox topBarC = new HBox(targetLogoC, searchBarC, cartC);
+        HBox topBarC = new HBox(targetLogoButtonC, searchBarC, cartC);
 
         /* cart items */
         //  values
@@ -411,10 +423,13 @@ public class UserInterface extends Application
 
         /*** CHECKOUT OPTIONS */
         /* Target Logo */
+        Button targetLogoButtonCO = new Button();
         ImageView targetLogoCO = new ImageView();
         targetLogoCO.setImage(logo);
         targetLogoCO.setFitWidth(234);
         targetLogoCO.setFitHeight(51);
+        targetLogoButtonCO.setGraphic(targetLogoCO);
+        targetLogoButtonCO.setOnAction(e -> primaryStage.setScene(homePageScene));
         /* buttons */
         Button signIn = new Button("Sign In");
         //signIn.setOnAction(e -> primaryStage.setScene(signInScene));
@@ -422,17 +437,20 @@ public class UserInterface extends Application
         guest.setOnAction(e -> primaryStage.setScene(guestAccountScene));
         HBox checkoutChoices = new HBox(signIn, guest);
 
-        checkoutOption.setTop(targetLogoCO);
+        checkoutOption.setTop(targetLogoButtonCO);
         checkoutOption.setCenter(checkoutChoices);
 
         ///////////////////
 
         /*** GUEST ACCOUNT */
         /* Target Logo */
+        Button targetLogoButtonGA = new Button();
         ImageView targetLogoGA = new ImageView();
         targetLogoGA.setImage(logo);
         targetLogoGA.setFitWidth(234);
         targetLogoGA.setFitHeight(51);
+        targetLogoButtonGA.setGraphic(targetLogoGA);
+        targetLogoButtonGA.setOnAction(e -> primaryStage.setScene(homePageScene));
 
         /* Account Information */
         //  header
@@ -447,8 +465,8 @@ public class UserInterface extends Application
         HBox guestName = new HBox(firstName, lastName);
         //  email address
         Text emailAddText = new Text("Email Address");
-        TextField emailAdd = new TextField();
-        VBox emailAddress = new VBox(emailAddText, emailAdd);
+        TextField emailAddr = new TextField();
+        VBox emailAddress = new VBox(emailAddText, emailAddr);
         //  phone number
         Text phoneNumText = new Text("Phone Number");
         TextField phoneNum = new TextField();
@@ -460,13 +478,52 @@ public class UserInterface extends Application
         confirmGuest.setOnAction(e -> primaryStage.setScene(enterAddressScene));
         VBox createAccContainer = new VBox(createAccText, accInfo, confirmGuest);
 
-        guestAccount.setTop(targetLogoGA);
+        guestAccount.setTop(targetLogoButtonGA);
         guestAccount.setCenter(createAccContainer);
 
         ///////////////////
 
-        /*** CREDIT CARD INFORMATION */
+        /*** ENTER ADDRESS */
+        /* Target Logo */
+        Button targetLogoButtonEA = new Button();
+        ImageView targetLogoEA = new ImageView();
+        targetLogoEA.setImage(logo);
+        targetLogoEA.setFitWidth(234);
+        targetLogoEA.setFitHeight(51);
+        targetLogoButtonEA.setGraphic(targetLogoEA);
+        targetLogoButtonEA.setOnAction(e -> primaryStage.setScene(homePageScene));
 
+        /* address */
+        Text addrText = new Text("Address");
+        //  street
+        Text streetText = new Text("Street");
+        TextField street = new TextField();
+        HBox streetContainer = new HBox(streetText, street);
+        //  city
+        Text cityText = new Text("City");
+        TextField city = new TextField();
+        HBox cityContainer = new HBox(cityText, city);
+        //  state
+        Text stateText = new Text("State");
+        TextField state = new TextField();
+        HBox stateContainer = new HBox(stateText, state);
+        //  zip
+        Text zipText = new Text("ZIP");
+        TextField zip = new TextField();
+        HBox zipContainer = new HBox(zipText, zip);
+        //  confirm button
+        Button confirmAddr = new Button("Confirm");
+        confirmAddr.setOnAction(e -> primaryStage.setScene(newCardScene));
+
+        HBox cityState = new HBox(cityContainer, stateContainer);
+        VBox address = new VBox(addrText, streetContainer, cityState, zipContainer, confirmAddr);
+
+        enterAddress.setTop(targetLogoButtonEA);
+        enterAddress.setCenter(address);
+
+        ///////////////////
+
+        /*** CREDIT CARD INFORMATION */
 
         ///////////////////
 
