@@ -913,7 +913,7 @@ public class UserInterface extends Application {
         Label fCartPrice1 = new Label("$24.00");
         Label fCartQuantity1 = new Label("Quantity" + "1");
         VBox fCartItemInfo = new VBox(fCartText1, fCartPrice1, fCartQuantity1);
-        HBox fCartItem1 = new HBox(fCartImage1, fCartItemInfo);
+        HBox fCartItem1 = new HBox(20, fCartImage1, fCartItemInfo);
 
         Image placeholderFCart2 = new Image("/images/placeholder.png");
         ImageView fCartImage2 = new ImageView(placeholderFCart2);
@@ -922,13 +922,27 @@ public class UserInterface extends Application {
         Label fCartPrice2 = new Label("$15.00");
         Label fCartQuantity2 = new Label("Quantity" + "1");
         VBox fCartItemInfo2 = new VBox(fCartText2, fCartPrice2, fCartQuantity2);
-        HBox fCartItem2 = new HBox(fCartImage2, fCartItemInfo2);
+        HBox fCartItem2 = new HBox(20, fCartImage2, fCartItemInfo2);
+
+        //      CSS
+        fCartText1.getStyleClass().add("cartProductName");
+        fCartPrice1.getStyleClass().add("cartProductInfo");
+        fCartQuantity1.getStyleClass().add("cartProductInfo");
+        fCartText2.getStyleClass().add("cartProductName");
+        fCartPrice2.getStyleClass().add("cartProductInfo");
+        fCartQuantity2.getStyleClass().add("cartProductInfo");
 
         //  edit button
         Button editCart = new Button("Edit");
         editCart.setOnAction(e -> primaryStage.setScene(cartScene));
+        //      CSS
+        editCart.getStyleClass().add("editButton");
+        editCart.setAlignment(Pos.CENTER_RIGHT);
 
-        VBox fCartItems = new VBox(editCart, fCartItem1, fCartItem2);
+        VBox fCartProducts = new VBox(30, fCartItem1, fCartItem2);
+        VBox fCartItems = new VBox(editCart, fCartProducts);
+        //      CSS
+        fCartItems.getStyleClass().add("checkoutModule");
 
         /* credit card */
         //  cc text
@@ -936,42 +950,87 @@ public class UserInterface extends Application {
         Label ccNumConf = new Label("**** **** **** 4444");
         Label expDateConf = new Label("12/22");
 
+        //      CSS
+        creditCardText.getStyleClass().add("boldedText");
+        ccNumConf.getStyleClass().add("unboldedText");
+        expDateConf.getStyleClass().add("unboldedText");
+
         //  edit button
         Button editCard = new Button("Edit");
         editCard.setOnAction(e -> primaryStage.setScene(newCardScene));
         VBox creditCardContainer = new VBox(editCard, creditCardText, ccNumConf, expDateConf);
+        //      CSS
+        editCard.getStyleClass().add("editButton");
+        editCard.setAlignment(Pos.CENTER_RIGHT);
+        creditCardContainer.getStyleClass().add("checkoutModule");
 
         /* pick-up location */
         //  location text
         Label pickUpLocationText = new Label("Pick-Up Location");
         Label locationConf = new Label("2347 Harper St., Seattle, WA 12345");
 
+        //      CSS
+        pickUpLocationText.getStyleClass().add("boldedText");
+        locationConf.getStyleClass().add("unboldedText");
+
         //  edit button
         Button editLocation = new Button("Edit");
         //editCart.setOnAction(e -> primaryStage.setScene(ADDRESS SCREEN));
         VBox pickUpLocContainer = new VBox(editLocation, pickUpLocationText, locationConf);
+        //      CSS
+        editLocation.getStyleClass().add("editButton");
+        editLocation.setAlignment(Pos.CENTER_RIGHT);
+        pickUpLocContainer.getStyleClass().add("checkoutModule");
 
-        VBox review = new VBox(fCartItems, creditCardContainer, pickUpLocContainer);
+        VBox review = new VBox(30, fCartItems, creditCardContainer, pickUpLocContainer);
+        ScrollPane reviewWrapper = new ScrollPane(review);
+
+        //      CSS
+        reviewWrapper.setFitToWidth(true);
+        reviewWrapper.getStyleClass().add("itemWrapper");
+        review.setMargin(fCartItems, new Insets(0, 30, 0, 0));
 
         /* cart totals */
         //  total items
         Label fQuanText = new Label("Total Items");
         Label fQuanTotalValue = new Label(totalQuan + ""); //CALCULATE VALUE HERE
-        HBox fTotalItems = new HBox(fQuanText, fQuanTotalValue);
+        HBox fTotalItems = new HBox(20, fQuanText, fQuanTotalValue);
+
         //  subtotal
         Label fSubText = new Label("Subtotal");
         Label fSubValue = new Label("$" + String.format("%.2f", subTotal));
-        HBox fSubtotal = new HBox(fSubText, fSubValue);
-        //  est. tax
+        HBox fSubtotal = new HBox(20, fSubText, fSubValue);
+
+        //  tax
         estTax = subTotal * 0.6;
         Label fTaxText = new Label("Est. Tax");
         Label fTaxValue = new Label("$" + String.format("%.2f", estTax));
-        HBox fTax = new HBox(fTaxText, fTaxValue);
+        HBox fTax = new HBox(20, fTaxText, fTaxValue);
+
+        // total
+        Label fTotalText = new Label("Total");
+        Label fTotalValue = new Label("$" + String.format("%.2f", priceTotal));
+        HBox fTotals = new HBox(20, fTotalText, fTotalValue);
+
         //  checkout button
         Button confirmPurchase = new Button("Confirm Purchase");
         confirmPurchase.setOnAction(e -> primaryStage.setScene(thankYouScene));
+        //      CSS
+        confirmPurchase.getStyleClass().add("checkoutButton");
 
-        VBox fCartTotals = new VBox(fTotalItems, fSubtotal, fTax, confirmPurchase);
+        //      CSS
+        fQuanText.getStyleClass().add("boldedText");
+        fQuanTotalValue.getStyleClass().add("unboldedText");
+        fSubText.getStyleClass().add("boldedText");
+        fSubValue.getStyleClass().add("unboldedText");
+        fTaxText.getStyleClass().add("boldedText");
+        fTaxValue.getStyleClass().add("unboldedText");
+        fTotalText.getStyleClass().add("boldedText");
+        fTotalValue.getStyleClass().add("boldedText");
+
+        VBox fCartTotals = new VBox(fTotalItems, fSubtotal, fTax, fTotals, confirmPurchase);
+        //      CSS
+        fCartTotals.getStyleClass().add("checkoutModule");
 
         //      CSS
         finalCheckout.setPadding(new Insets(30));

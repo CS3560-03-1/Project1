@@ -10,7 +10,7 @@ button {
     -fx-background-color: #E80018;
     -fx-text-fill: #ffffff;
     -fx-padding: 5px 10px 5px 10p;
-    -fx-border-radius: 5px;
+    -fx-border-radius: 10px;
     -fx-border-width: 0;
 }
 
@@ -22,7 +22,7 @@ button {
 .searchBar {
     -fx-background-color: #302D2D;
     -fx-text-fill: #ffffff;
-    -fx-border-radius: 5px;
+    -fx-border-radius: 10px;
     -fx-border-color: #404040;
     -fx-border-width: 1px;
 }
@@ -33,14 +33,14 @@ button {
     -fx-text-fill: #ffffff;
     -fx-font-size: 30pt;
     -fx-border-color: transparent transparent #E80018 transparent;
-    -fx-border-width: 5px;
+    -fx-border-width: 10px;
 }
 
 #welcomeSubtitle {
     -fx-background-color: #E80018;
     -fx-text-fill: #ffffff;
     -fx-font-size: 20pt;
-    -fx-border-radius: 5px;
+    -fx-border-radius: 10px;
     -fx-padding: 5px 10px;
 }
 
@@ -139,7 +139,7 @@ button {
     -fx-text-fill: #ffffff;
     -fx-border-color: #404040;
     -fx-border-size: 1px;
-    -fx-border-radius: 5px;
+    -fx-border-radius: 10px;
 }
 
 .comboBox .list-cell {
@@ -161,13 +161,13 @@ button {
     -fx-background-color: #E80018;
     -fx-text-fill: #ffffff;
     -fx-padding: 5px 10px;
-    -fx-border-radius: 5px;
+    -fx-border-radius: 10px;
 }
 
 /*** CART */
 .checkoutModule {
     -fx-background-color: #404040;
-    -fx-border-radius: 5px;
+    -fx-border-radius: 10px;
 }
 
 .cartProductName {
@@ -221,7 +221,7 @@ button {
     -fx-background-color: #302D2D;
     -fx-font-size: 14pt;
     -fx-text-fill: #ffffff;
-    -fx-border-radius: 5px;
+    -fx-border-radius: 10px;
     -fx-border-color: #404040;
     -fx-border-width: 1px;
 }
@@ -236,4 +236,12 @@ button {
 .billingAddr {
     -fx-text-fill: #ffffff;
     -fx-font-size: 14pt;
+}
+
+/*** FINAL CHECKOUT */
+.editButton {
+    -fx-background-color: transparent;
+    -fx-text-fill: #aaaaaa;
+    -fx-border-color: #aaaaaa;
+    -fx-border-radius: 10px;
 }
