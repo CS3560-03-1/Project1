@@ -11,12 +11,12 @@ button {
     -fx-text-fill: #ffffff;
     -fx-padding: 5px 10px 5px 10p;
     -fx-border-radius: 5px;
-    -fx-border: none;
+    -fx-border-width: 0;
 }
 
 .targetLogo {
     -fx-background-color: transparent;
-    -fx-border: none;
+    -fx-border-width: 0;
 }
 
 .searchBar {
@@ -25,7 +25,6 @@ button {
     -fx-border-radius: 5px;
     -fx-border-color: #404040;
     -fx-border-width: 1px;
-    -fx-width: 80%;
 }
 
 /*** HOME PAGE */
@@ -77,7 +76,7 @@ button {
     -fx-background-color: transparent;
     -fx-text-fill: #ffffff;
     -fx-font-size: 14pt;
-    -fx-border: none;
+    -fx-border-width: none;
     -fx-padding: 0;
     -fx-border-color: #252525;
     -fx-border-width: 0px 0px 4px 0px;
@@ -95,7 +94,7 @@ button {
 
 .itemWrapper {
     -fx-background-color: transparent;
-    -fx-border: none;
+    -fx-border-width: 0;
     -fx-padding: 20px;
 }
 
@@ -169,4 +168,72 @@ button {
 .checkoutModule {
     -fx-background-color: #404040;
     -fx-border-radius: 5px;
+}
+
+.cartProductName {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14pt;
+    -fx-font-weight: 900;
+}
+
+.cartProductInfo {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 12pt;
+}
+
+.checkoutButton {
+    -fx-background-color: #E80018;
+    -fx-text-fill: #ffffff;
+    -fx-border-color: none;
+}
+
+.unboldedText {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 12pt;
+}
+
+.boldedText {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 12pt;
+    -fx-font-weight: 900;
+}
+
+/*** CHECKOUT/PICKUP OPTIONS */
+.optionButton {
+    -fx-background-color: #E80018;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 20pt;
+    -fx-border-width: 0;
+}
+
+/*** FORM */
+.formTitle {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 30pt;
+}
+
+.formLabel {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14pt;
+}
+
+.form {
+    -fx-background-color: #302D2D;
+    -fx-font-size: 14pt;
+    -fx-text-fill: #ffffff;
+    -fx-border-radius: 5px;
+    -fx-border-color: #404040;
+    -fx-border-width: 1px;
+}
+
+.confirmButton {
+    -fx-background-color: #E80018;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 15pt;
+    -fx-border-width: 0;
+}
+
+.billingAddr {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14pt;
 }

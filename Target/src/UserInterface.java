@@ -556,7 +556,7 @@ public class UserInterface extends Application {
         Label cartPrice1 = new Label("$24.00");
         Label cartQuantity1 = new Label("Quantity" + "1");
         VBox cartItemInfo = new VBox(cartText1, cartPrice1, cartQuantity1);
-        HBox cartItem1 = new HBox(cartImage1, cartItemInfo);
+        HBox cartItem1 = new HBox(20, cartImage1, cartItemInfo);
 
         Image placeholderCart2 = new Image("/images/placeholder.png");
         ImageView cartImage2 = new ImageView(placeholderCart2);
@@ -565,9 +565,17 @@ public class UserInterface extends Application {
         Label cartPrice2 = new Label("$15.00");
         Label cartQuantity2 = new Label("Quantity" + "1");
         VBox cartItemInfo2 = new VBox(cartText2, cartPrice2, cartQuantity2);
-        HBox cartItem2 = new HBox(cartImage2, cartItemInfo2);
+        HBox cartItem2 = new HBox(20, cartImage2, cartItemInfo2);
 
-        VBox cartItems = new VBox(cartItem1, cartItem2);
+        //      CSS
+        cartText1.getStyleClass().add("cartProductName");
+        cartText2.getStyleClass().add("cartProductName");
+        cartPrice1.getStyleClass().add("cartProductInfo");
+        cartPrice2.getStyleClass().add("cartProductInfo");
+        cartQuantity1.getStyleClass().add("cartProductInfo");
+        cartQuantity2.getStyleClass().add("cartProductInfo");
+
+        VBox cartItems = new VBox(30, cartItem1, cartItem2);
         //      CSS
         cartItems.getStyleClass().add("checkoutModule");
         cartItems.setPadding(new Insets(30));
@@ -576,28 +584,44 @@ public class UserInterface extends Application {
         //  total items
         Label quanText = new Label("Total Items");
         Label quanTotalValue = new Label(totalQuan + ""); //CALCULATE VALUE HERE
-        HBox totalItems = new HBox(quanText, quanTotalValue);
+        HBox totalItems = new HBox(20, quanText, quanTotalValue);
 
         //  subtotal
         Label subText = new Label("Subtotal");
         Label subValue = new Label("$" + String.format("%.2f", subTotal));
-        HBox subtotal = new HBox(subText, subValue);
+        HBox subtotal = new HBox(20, subText, subValue);
 
         //  est. tax
         estTax = subTotal * 0.6;
         Label taxText = new Label("Est. Tax");
         Label taxValue = new Label("$" + String.format("%.2f", estTax));
-        HBox estimatedTax = new HBox(taxText, taxValue);
+        HBox estimatedTax = new HBox(20, taxText, taxValue);
 
         // total
         Label totalText = new Label("Total");
         Label totalValue = new Label("$" + String.format("%.2f", priceTotal));
+        HBox totals = new HBox(20, totalText, totalValue);
+
+        //      CSS
+        quanTotalValue.setAlignment(Pos.CENTER_RIGHT);
+        subValue.setAlignment(Pos.CENTER_RIGHT);
+        taxValue.setAlignment(Pos.CENTER_RIGHT);
+        totalValue.setAlignment(Pos.CENTER_RIGHT);
+        quanText.getStyleClass().add("boldedText");
+        quanTotalValue.getStyleClass().add("unboldedText");
+        subText.getStyleClass().add("boldedText");
+        subValue.getStyleClass().add("unboldedText");
+        taxText.getStyleClass().add("boldedText");
+        taxValue.getStyleClass().add("unboldedText");
+        totalText.getStyleClass().add("boldedText");
+        totalValue.getStyleClass().add("boldedText");
 
         //  checkout button
         Button proceedCheckout = new Button("Proceed to Checkout");
         proceedCheckout.setOnAction(e -> primaryStage.setScene(checkoutOptionScene));
+        proceedCheckout.getStyleClass().add("checkoutButton");
 
-        VBox cartTotals = new VBox(totalItems, subtotal, estimatedTax, proceedCheckout);
+        VBox cartTotals = new VBox(15, totalItems, subtotal, estimatedTax, totals, proceedCheckout);
         //      CSS
         cartTotals.getStyleClass().add("checkoutModule");
         cartTotals.setPadding(new Insets(30));
@@ -629,7 +653,11 @@ public class UserInterface extends Application {
         //signIn.setOnAction(e -> primaryStage.setScene(signInScene));
         Button guest = new Button("Purchase as Guest");
         guest.setOnAction(e -> primaryStage.setScene(guestAccountScene));
-        HBox checkoutChoices = new HBox(signIn, guest);
+        HBox checkoutChoices = new HBox(30, signIn, guest);
+        //      CSS
+        signIn.getStyleClass().add("optionButton");
+        guest.getStyleClass().add("optionButton");
+        checkoutChoices.setAlignment(Pos.CENTER);
 
         //      CSS
         checkoutOption.setPadding(new Insets(30));
@@ -655,6 +683,9 @@ public class UserInterface extends Application {
         //  header
         Label createAccText = new Label("Enter Guest Information"); //text for create account screen
 
+        //      CSS
+        createAccText.getStyleClass().add("formTitle");
+
         //  first & last name
         Label fNameText = new Label("First Name");
         TextField fName = new TextField();
@@ -662,7 +693,7 @@ public class UserInterface extends Application {
         Label lNameText = new Label("Last Name");
         TextField lName = new TextField();
         VBox lastName = new VBox(lNameText, lName);
-        HBox guestName = new HBox(firstName, lastName);
+        HBox guestName = new HBox(20, firstName, lastName);
 
         //  email address
         Label emailAddText = new Label("Email Address");
@@ -674,14 +705,26 @@ public class UserInterface extends Application {
         TextField phoneNum = new TextField();
         VBox phoneNumber = new VBox(phoneNumText, phoneNum);
 
+        //      CSS
+        fNameText.getStyleClass().add("formLabel");
+        fName.getStyleClass().add("form");
+        lNameText.getStyleClass().add("formLabel");
+        lName.getStyleClass().add("form");
+        emailAddText.getStyleClass().add("formLabel");
+        emailAddr.getStyleClass().add("form");
+        phoneNumText.getStyleClass().add("formLabel");
+        phoneNum.getStyleClass().add("form");
+
         //  container
-        VBox accInfo = new VBox(guestName, emailAddress, phoneNumber);
+        VBox accInfo = new VBox(15, guestName, emailAddress, phoneNumber);
 
         //  confirm button
         Button confirmGuest = new Button("Confirm");
         confirmGuest.setOnAction(e -> primaryStage.setScene(enterAddressScene));
+        //      CSS
+        confirmGuest.getStyleClass().add("confirmButton");
 
-        VBox createAccContainer = new VBox(createAccText, accInfo, confirmGuest);
+        VBox createAccContainer = new VBox(30, createAccText, accInfo, confirmGuest);
 
         //      CSS
         guestAccount.setPadding(new Insets(30));
@@ -705,35 +748,51 @@ public class UserInterface extends Application {
 
         /* address */
         Label addrText = new Label("Address");
+
         //  street
         Label streetText = new Label("Street");
         TextField street = new TextField();
-        HBox streetContainer = new HBox(streetText, street);
+        HBox streetContainer = new HBox(15, streetText, street);
 
         //  city
         Label cityText = new Label("City");
         TextField city = new TextField();
-        HBox cityContainer = new HBox(cityText, city);
+        HBox cityContainer = new HBox(15, cityText, city);
 
         //  state
         Label stateText = new Label("State");
         TextField state = new TextField();
-        HBox stateContainer = new HBox(stateText, state);
+        HBox stateContainer = new HBox(15, stateText, state);
 
         //  zip
         Label zipText = new Label("ZIP");
         TextField zip = new TextField();
-        HBox zipContainer = new HBox(zipText, zip);
+        HBox zipContainer = new HBox(15, zipText, zip);
 
         //  billing address
         CheckBox billingAddr = new CheckBox("Billing address is the same");
 
+        //      CSS
+        addrText.getStyleClass().add("formTitle");
+        streetText.getStyleClass().add("formLabel");
+        street.getStyleClass().add("form");
+        cityText.getStyleClass().add("formLabel");
+        city.getStyleClass().add("form");
+        stateText.getStyleClass().add("formLabel");
+        state.getStyleClass().add("form");
+        zipText.getStyleClass().add("formLabel");
+        zip.getStyleClass().add("form");
+        billingAddr.getStyleClass().add("billingAddr");
+
         //  confirm button
         Button confirmAddr = new Button("Confirm");
         confirmAddr.setOnAction(e -> primaryStage.setScene(newCardScene));
+        //      CSS
+        confirmAddr.getStyleClass().add("confirmButton");
 
-        HBox cityState = new HBox(cityContainer, stateContainer);
-        VBox address = new VBox(addrText, streetContainer, cityState, zipContainer, billingAddr, confirmAddr);
+        HBox cityState = new HBox(15, cityContainer, stateContainer);
+        VBox addressForm = new VBox(15, streetContainer, cityState, zipContainer, billingAddr);
+        VBox address = new VBox(30, addrText, addressForm, confirmAddr);
 
         //      CSS
         enterAddress.setPadding(new Insets(30));
@@ -761,23 +820,35 @@ public class UserInterface extends Application {
         //  credit card number
         Label ccNumText = new Label("Credit Card Number");
         TextField ccNum = new TextField();
-        HBox ccNumContainer = new HBox(ccNumText, ccNum);
+        HBox ccNumContainer = new HBox(15, ccNumText, ccNum);
 
         //  expiration date
         Label expDateText = new Label("Expiration Date");
         TextField expDate = new TextField();
-        HBox expDateContainer = new HBox(expDateText, expDate);
+        HBox expDateContainer = new HBox(15, expDateText, expDate);
 
         //  ccv
         Label ccvText = new Label("CCV");
         TextField ccv = new TextField();
-        HBox ccvContainer =  new HBox(ccvText, ccv);
+        HBox ccvContainer =  new HBox(15, ccvText, ccv);
+
+        //      CSS
+        creditCartInfo.getStyleClass().add("formTitle");
+        ccNumText.getStyleClass().add("formLabel");
+        ccNum.getStyleClass().add("form");
+        expDateText.getStyleClass().add("formLabel");
+        expDate.getStyleClass().add("form");
+        ccvText.getStyleClass().add("formLabel");
+        ccv.getStyleClass().add("form");
 
         //  confirm button
         Button confirmCC = new Button("Confirm");
         confirmCC.setOnAction(e -> primaryStage.setScene(pickUpScene));
+        //      CSS
+        confirmCC.getStyleClass().add("confirmButton");
 
-        VBox creditCard = new VBox(creditCartInfo, ccNumContainer, expDateContainer, ccvContainer, confirmCC);
+        VBox ccForm = new VBox(15, ccNumContainer, expDateContainer, ccvContainer);
+        VBox creditCard = new VBox(30, creditCartInfo, ccForm, confirmCC);
 
         //      CSS
         newCard.setPadding(new Insets(30));
@@ -808,7 +879,11 @@ public class UserInterface extends Application {
         Button delivery = new Button("Delivery");
         delivery.setOnAction(e -> primaryStage.setScene(finalCheckoutScene));
 
-        HBox pickUpOptions = new HBox(inStore, delivery);
+        HBox pickUpOptions = new HBox(30, inStore, delivery);
+        //      CSS
+        inStore.getStyleClass().add("optionButton");
+        delivery.getStyleClass().add("optionButton");
+        pickUpOptions.setAlignment(Pos.CENTER);
 
         //      CSS
         pickUp.setPadding(new Insets(30));
