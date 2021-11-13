@@ -2,8 +2,10 @@ public class PackageInformation {
     private int packageID;
     private float weight;
 
-    public PackageInformation() {
-        //packageInformation object
+    public PackageInformation()
+    {
+        packageID = 0;
+        weight = 0.0;
     }
 
     public int getPackageID() {

@@ -3,8 +3,11 @@ public class Order {
     private boolean confirmation;
     private String delMethod;
 
-    public Order() {
-        //Order constructor
+    public Order()
+    {
+        orderID = 0;
+        confirmation = false;
+        delMethod = "in-person";
     }
 
     public int getOrderID() {

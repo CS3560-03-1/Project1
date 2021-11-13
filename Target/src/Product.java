@@ -4,8 +4,12 @@ public class Product {
     private boolean prodPerishable;
     private String prodDescription;
 
-    public Product(){
-        //product constructor
+    public Product()
+    {
+        prodID = 0;
+        prodPrice = 0.0, prodWeight = 0.0;
+        prodPerishable = false;
+        prodDescription = "";
     }
 
     public int getProdID(){

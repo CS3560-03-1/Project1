@@ -7,7 +7,11 @@ public class Customer {
 
     public Customer()
     {
-        //Customer constructor
+        custID = 0;
+        address = "";
+        billAddress = "";
+        phoneNum = 0;
+        creditCard = 0;
     }
 
     public int getCustID() {
