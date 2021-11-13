@@ -989,6 +989,11 @@ public class UserInterface extends Application {
         reviewWrapper.setFitToWidth(true);
         reviewWrapper.getStyleClass().add("itemWrapper");
         review.setMargin(fCartItems, new Insets(0, 30, 0, 0));
+        review.setMargin(creditCardContainer, new Insets(0, 30, 0, 0));
+        review.setMargin(pickUpLocContainer, new Insets(0, 30, 0, 0));
+        fCartItems.setPadding(new Insets(30));
+        creditCardContainer.setPadding(new Insets(30));
+        pickUpLocContainer.setPadding(new Insets(30));
 
         /* cart totals */
         //  total items
@@ -1031,6 +1036,7 @@ public class UserInterface extends Application {
         VBox fCartTotals = new VBox(fTotalItems, fSubtotal, fTax, fTotals, confirmPurchase);
         //      CSS
         fCartTotals.getStyleClass().add("checkoutModule");
+        fCartTotals.setPadding(new Insets(30));
 
         //      CSS
         finalCheckout.setPadding(new Insets(30));
@@ -1059,12 +1065,19 @@ public class UserInterface extends Application {
                         "Your payment has been approved, and your order is being prepared. A confirmation email has been sent to you."
         );
         thankYouText.setPrefWidth(800);
+        //      CSS
+        thankYouText.getStyleClass().add("thankYou");
+        thankYouText.setWrapText(true);
+        thankYouText.setAlignment(Pos.CENTER);
 
         /* continue shopping button */
         Button continueShopping = new Button("Continue Shopping");
         continueShopping.setOnAction(e -> primaryStage.setScene(homePageScene));
+        //      CSS
+        continueShopping.getStyleClass().add("optionButton");
+        continueShopping.setAlignment(Pos.CENTER);
 
-        VBox thankYouMessage = new VBox(thankYouText, continueShopping);
+        VBox thankYouMessage = new VBox(30, thankYouText, continueShopping);
 
         //      CSS
         thankYou.setPadding(new Insets(30));

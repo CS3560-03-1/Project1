@@ -185,6 +185,7 @@ button {
     -fx-background-color: #E80018;
     -fx-text-fill: #ffffff;
     -fx-border-color: none;
+    -fx-font-size: 15pt;
 }
 
 .unboldedText {
@@ -244,4 +245,11 @@ button {
     -fx-text-fill: #aaaaaa;
     -fx-border-color: #aaaaaa;
     -fx-border-radius: 10px;
+}
+
+/*** THANK YOU */
+.thankYou {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14pt;
+    -fx-text-align: center;
 }
