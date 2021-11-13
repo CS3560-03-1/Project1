@@ -51,3 +51,8 @@ button {
     -fx-border-color: #E80018;
     -fx-border-width: 10px;
 }
+
+/*** SIDEBAR */
+.sidebar {
+    -fx-background-color: #404040;
+}

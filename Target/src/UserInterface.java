@@ -118,7 +118,7 @@ public class UserInterface extends Application {
         cartPP.getStyleClass().add("cartButton");
 
 
-        HBox topBarPP = new HBox(targetLogoButtonPP, searchBarPP, cartPP);
+        HBox topBarPP = new HBox(20, targetLogoButtonPP, searchBarPP, cartPP);
 
         /* main body */
         Image productImg = new Image("images/placeholder.png");
@@ -180,6 +180,8 @@ public class UserInterface extends Application {
         HBox mainBody = new HBox(productImages, productInfo);
 
         productPage.getChildren().addAll(topBarPP, mainBody);
+        //      CSS
+        productPage.setPadding(new Insets(30));
 
         ///////////////////
 
@@ -222,7 +224,10 @@ public class UserInterface extends Application {
         CheckBox hndPl = new CheckBox("$100+");
         VBox priceBox = new VBox(priceText, zeroFive, fftTwt, twtFft, ffthnd, hndPl);
 
-        VBox sidebar = new VBox(targetLogoButtonSP, sortByBox, filtersBox, priceBox);
+        VBox sidebar = new VBox(20, targetLogoButtonSP, sortByBox, filtersBox, priceBox);
+
+        //      CSS
+        sidebar.getStyleClass().add("sidebar");
 
         /* topbar */
         //  search bar
@@ -243,7 +248,7 @@ public class UserInterface extends Application {
         cartSP.getStyleClass().add("cartButton");
 
 
-        HBox topbarSP = new HBox(searchBarSP, cartSP);
+        HBox topbarSP = new HBox(20, searchBarSP, cartSP);
 
         /* items */
         Image placeholderImg = new Image("images/placeholder.png");
@@ -338,9 +343,11 @@ public class UserInterface extends Application {
 
         VBox rightSide = new VBox(topbarSP, items, pagination);
 
-        /* border pane */
         searchPage.setLeft(sidebar);
         searchPage.setCenter(rightSide);
+        //      CSS
+        rightSide.setPadding(new Insets(30));
+        sidebar.setPadding(new Insets(30));
 
         ///////////////////
 
@@ -453,7 +460,7 @@ public class UserInterface extends Application {
         cartC.getStyleClass().add("cartButton");
 
 
-        HBox topBarC = new HBox(targetLogoButtonC, searchBarC, cartC);
+        HBox topBarC = new HBox(20, targetLogoButtonC, searchBarC, cartC);
 
         /* cart items */
         Image placeholderCart1 = new Image("/images/placeholder.png");
