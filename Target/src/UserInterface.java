@@ -2,6 +2,7 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -88,7 +89,7 @@ public class UserInterface extends Application {
         TextField searchBarPP = new TextField("Search");
         //      CSS
         searchBarPP.getStyleClass().add("searchBar");
-        searchBarPP.setPrefWidth(750);
+        searchBarPP.setPrefWidth(800);
         //      controls
         searchBarPP.setOnKeyReleased(e -> {
             if (e.getCode() == KeyCode.ENTER) {
@@ -117,7 +118,6 @@ public class UserInterface extends Application {
         //      CSS styling
         cartPP.getStyleClass().add("cartButton");
 
-
         HBox topBarPP = new HBox(20, targetLogoButtonPP, searchBarPP, cartPP);
 
         /* main body */
@@ -129,15 +129,25 @@ public class UserInterface extends Application {
         addImage2.setImage(productImg);
         addImage1.setFitWidth(150); addImage1.setFitHeight(150);
         addImage2.setFitWidth(150); addImage2.setFitHeight(150);
+        VBox additionalImages = new VBox(20, addImage1, addImage2);
+
         //  main image
         ImageView mainImage = new ImageView();
         mainImage.setImage(productImg);
-        VBox additionalImages = new VBox(addImage1, addImage2);
-        HBox productImages = new HBox(additionalImages, mainImage); //container
+        HBox productImages = new HBox(20, additionalImages, mainImage); //container
+
         //  product information
         Label productName = new Label("Sports Shoe");
         Label productPrice = new Label("$24.00");
         Label rating = new Label("★★★★☆");
+
+        VBox namePriceRate = new VBox(productName, productPrice, rating);
+
+        //      CSS
+        productName.getStyleClass().add("productName");
+        productPrice.getStyleClass().add("productPrice");
+        rating.getStyleClass().add("productRating");
+
         //      size
         Label productSizeText = new Label("Size");
         ComboBox productSizeCombo = new ComboBox();
@@ -149,7 +159,8 @@ public class UserInterface extends Application {
                 "7.5",
                 "8"
         );
-        HBox productSize = new HBox(productSizeText, productSizeCombo);
+        HBox productSize = new HBox(15, productSizeText, productSizeCombo);
+
         //      Quantity
         Label quantityText = new Label("Quantity");
         ComboBox quantityCombo = new ComboBox();
@@ -157,7 +168,8 @@ public class UserInterface extends Application {
         quantityCombo.getItems().addAll(
                 "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"
         );
-        HBox quantity = new HBox(quantityText, quantityCombo);
+        HBox quantity = new HBox(15, quantityText, quantityCombo);
+
         //      Color
         Label colorText = new Label("Color");
         ComboBox colorCombo = new ComboBox();
@@ -167,17 +179,33 @@ public class UserInterface extends Application {
                 "red",
                 "blue"
         );
-        HBox color = new HBox(colorText, colorCombo);
+        HBox color = new HBox(15, colorText, colorCombo);
+
+        VBox sizeQuantColor = new VBox(15, productSize, quantity, color);
+
+        //      CSS
+        productSizeText.getStyleClass().add("comboBoxLabel");
+        quantityText.getStyleClass().add("comboBoxLabel");
+        colorText.getStyleClass().add("comboBoxLabel");
+        productSizeCombo.getStyleClass().add("comboBox");
+        quantityCombo.getStyleClass().add("comboBox");
+        colorCombo.getStyleClass().add("comboBox");
 
         Button addToCart = new Button("Add to Cart");
+        //      CSS
+        addToCart.getStyleClass().add("addToCart");
 
         Label description = new Label(
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam at iaculis sem. Nulla facilisi. Sed rutrum interdum velit, pharetra elementum neque malesuada at. Donec non arcu eleifend, rhoncus nibh sed, hendrerit nibh. Vivamus dapibus semper odio. Nullam eleifend ante vitae ligula vestibulum interdum."
         );
+        //      CSS
         description.prefWidth(400);
+        description.setWrapText(true);
+        description.getStyleClass().add("productDescription");
 
-        VBox productInfo = new VBox(productName, productPrice, rating, productSize, quantity, color, addToCart, description); //container
-        HBox mainBody = new HBox(productImages, productInfo);
+        VBox productInfo = new VBox(30, namePriceRate, sizeQuantColor, addToCart, description); //container
+
+        HBox mainBody = new HBox(15, productImages, productInfo);
 
         productPage.getChildren().addAll(topBarPP, mainBody);
         //      CSS
@@ -228,13 +256,30 @@ public class UserInterface extends Application {
 
         //      CSS
         sidebar.getStyleClass().add("sidebar");
+        sortByText.getStyleClass().add("filterTitle");
+        filterText.getStyleClass().add("filterTitle");
+        priceText.getStyleClass().add("filterTitle");
+        relevance.getStyleClass().add("filterItems");
+        price.getStyleClass().add("filterItems");
+        alphabet.getStyleClass().add("filterItems");
+        clothing.getStyleClass().add("filterItems");
+        jewelry.getStyleClass().add("filterItems");
+        stationary.getStyleClass().add("filterItems");
+        homeEssentials.getStyleClass().add("filterItems");
+        food.getStyleClass().add("filterItems");
+        zeroFive.getStyleClass().add("filterItems");
+        fftTwt.getStyleClass().add("filterItems");
+        twtFft.getStyleClass().add("filterItems");
+        ffthnd.getStyleClass().add("filterItems");
+        hndPl.getStyleClass().add("filterItems");
+
 
         /* topbar */
         //  search bar
         TextField searchBarSP = new TextField("Search");
         //      CSS
         searchBarSP.getStyleClass().add("searchBar");
-        searchBarSP.setPrefWidth(750);
+        searchBarSP.setPrefWidth(850);
         //      controls
         //  cart button
         Button cartSP = new Button("Cart");
@@ -246,7 +291,6 @@ public class UserInterface extends Application {
         cartSP.setGraphic(cartImageViewSP);
         //      CSS styling
         cartSP.getStyleClass().add("cartButton");
-
 
         HBox topbarSP = new HBox(20, searchBarSP, cartSP);
 
@@ -325,6 +369,27 @@ public class UserInterface extends Application {
         Label shoe9Price = new Label("$30.00");
         VBox shoe9 = new VBox(placeholder9, shoe9Name, shoe9Price);
 
+        //     CSS
+        shoe1Name.getStyleClass().add("spProductName");
+        shoe2Name.getStyleClass().add("spProductName");
+        shoe3Name.getStyleClass().add("spProductName");
+        shoe4Name.getStyleClass().add("spProductName");
+        shoe5Name.getStyleClass().add("spProductName");
+        shoe6Name.getStyleClass().add("spProductName");
+        shoe7Name.getStyleClass().add("spProductName");
+        shoe8Name.getStyleClass().add("spProductName");
+        shoe9Name.getStyleClass().add("spProductName");
+
+        shoe1Price.getStyleClass().add("spProductPrice");
+        shoe2Price.getStyleClass().add("spProductPrice");
+        shoe3Price.getStyleClass().add("spProductPrice");
+        shoe4Price.getStyleClass().add("spProductPrice");
+        shoe5Price.getStyleClass().add("spProductPrice");
+        shoe6Price.getStyleClass().add("spProductPrice");
+        shoe7Price.getStyleClass().add("spProductPrice");
+        shoe8Price.getStyleClass().add("spProductPrice");
+        shoe9Price.getStyleClass().add("spProductPrice");
+
         GridPane items = new GridPane();
         items.add(shoe1, 0, 0);
         items.add(shoe2, 0, 1);
@@ -335,13 +400,26 @@ public class UserInterface extends Application {
         items.add(shoe7, 2, 0);
         items.add(shoe8, 2, 1);
         items.add(shoe9, 2, 2);
+        ScrollPane itemWrapper = new ScrollPane(items);
+
+        //      CSS
+        items.setHgap(20);
+        items.setVgap(20);
+        itemWrapper.setFitToWidth(true);
+        itemWrapper.getStyleClass().add("itemWrapper");
 
         Button leftArrow = new Button("<");
         Label pageNumbers = new Label("1   2   3   ...   5");
         Button rightArrow = new Button(">");
-        HBox pagination = new HBox(leftArrow, pageNumbers, rightArrow);
+        HBox pagination = new HBox(10, leftArrow, pageNumbers, rightArrow);
+        pagination.setAlignment(Pos.CENTER_RIGHT);
 
-        VBox rightSide = new VBox(topbarSP, items, pagination);
+        //      CSS
+        leftArrow.getStyleClass().add("arrow");
+        rightArrow.getStyleClass().add("arrow");
+        pageNumbers.getStyleClass().add("pagination");
+
+        VBox rightSide = new VBox(topbarSP, itemWrapper, pagination);
 
         searchPage.setLeft(sidebar);
         searchPage.setCenter(rightSide);
@@ -407,15 +485,24 @@ public class UserInterface extends Application {
         icon1.setFitWidth(300); icon1.setFitHeight(300);
         icon2.setFitWidth(300); icon2.setFitHeight(300);
         icon3.setFitWidth(330); icon3.setFitHeight(330);
+        Label redLabel = new Label("Rewards, Coupons, and Discounts");
+        Label shopCartLabel = new Label("Shopping Categories");
+        Label accountLabel = new Label("Your Account");
 
-        VBox redCard = new VBox(icon1, new Text("Rewards, Coupons, and Discounts"));
-        VBox shopCart = new VBox(icon2, new Text("Shopping Categories"));
-        VBox yourAccount = new VBox(icon3, new Text("Your Account"));
+        VBox redCard = new VBox(15, icon1, redLabel);
+        VBox shopCart = new VBox(15, icon2, shopCartLabel);
+        VBox yourAccount = new VBox(15, icon3, accountLabel);
 
         //      CSS
         redCard.getStyleClass().add("homePagePanel");
         shopCart.getStyleClass().add("homePagePanel");
         yourAccount.getStyleClass().add("homePagePanel");
+        redLabel.getStyleClass().add("carouselText");
+        shopCartLabel.getStyleClass().add("carouselText");
+        accountLabel.getStyleClass().add("carouselText");
+        redCard.setAlignment(Pos.CENTER);
+        shopCart.setAlignment(Pos.CENTER);
+        yourAccount.setAlignment(Pos.CENTER);
 
         HBox carousel = new HBox(20, redCard, shopCart,yourAccount);
 
@@ -430,7 +517,7 @@ public class UserInterface extends Application {
         TextField searchBarC = new TextField("Search");
         //      CSS
         searchBarC.getStyleClass().add("searchBar");
-        searchBarC.setPrefWidth(750);
+        searchBarC.setPrefWidth(800);
         //      controls
         searchBarC.setOnKeyReleased(e -> {
             if (e.getCode() == KeyCode.ENTER) {
@@ -459,7 +546,6 @@ public class UserInterface extends Application {
         //      CSS styling
         cartC.getStyleClass().add("cartButton");
 
-
         HBox topBarC = new HBox(20, targetLogoButtonC, searchBarC, cartC);
 
         /* cart items */
@@ -482,6 +568,9 @@ public class UserInterface extends Application {
         HBox cartItem2 = new HBox(cartImage2, cartItemInfo2);
 
         VBox cartItems = new VBox(cartItem1, cartItem2);
+        //      CSS
+        cartItems.getStyleClass().add("checkoutModule");
+        cartItems.setPadding(new Insets(30));
 
         /* cart totals */
         //  total items
@@ -509,6 +598,13 @@ public class UserInterface extends Application {
         proceedCheckout.setOnAction(e -> primaryStage.setScene(checkoutOptionScene));
 
         VBox cartTotals = new VBox(totalItems, subtotal, estimatedTax, proceedCheckout);
+        //      CSS
+        cartTotals.getStyleClass().add("checkoutModule");
+        cartTotals.setPadding(new Insets(30));
+
+        //      CSS
+        cart.setPadding(new Insets(30));
+        cart.setMargin(cartItems, new Insets(0, 30, 0, 0));
 
         cart.setTop(topBarC);
         cart.setCenter(cartItems);
@@ -534,6 +630,9 @@ public class UserInterface extends Application {
         Button guest = new Button("Purchase as Guest");
         guest.setOnAction(e -> primaryStage.setScene(guestAccountScene));
         HBox checkoutChoices = new HBox(signIn, guest);
+
+        //      CSS
+        checkoutOption.setPadding(new Insets(30));
 
         checkoutOption.setTop(targetLogoButtonCO);
         checkoutOption.setCenter(checkoutChoices);
@@ -584,6 +683,9 @@ public class UserInterface extends Application {
 
         VBox createAccContainer = new VBox(createAccText, accInfo, confirmGuest);
 
+        //      CSS
+        guestAccount.setPadding(new Insets(30));
+
         guestAccount.setTop(targetLogoButtonGA);
         guestAccount.setCenter(createAccContainer);
 
@@ -633,6 +735,9 @@ public class UserInterface extends Application {
         HBox cityState = new HBox(cityContainer, stateContainer);
         VBox address = new VBox(addrText, streetContainer, cityState, zipContainer, billingAddr, confirmAddr);
 
+        //      CSS
+        enterAddress.setPadding(new Insets(30));
+
         enterAddress.setTop(targetLogoButtonEA);
         enterAddress.setCenter(address);
 
@@ -674,6 +779,9 @@ public class UserInterface extends Application {
 
         VBox creditCard = new VBox(creditCartInfo, ccNumContainer, expDateContainer, ccvContainer, confirmCC);
 
+        //      CSS
+        newCard.setPadding(new Insets(30));
+
         newCard.setTop(targetLogoButtonCC);
         newCard.setCenter(creditCard);
 
@@ -700,11 +808,10 @@ public class UserInterface extends Application {
         Button delivery = new Button("Delivery");
         delivery.setOnAction(e -> primaryStage.setScene(finalCheckoutScene));
 
-        //  drive-up pick-up
-        Button driveUp = new Button("Drive-Up Pick Up");
-        driveUp.setOnAction(e -> primaryStage.setScene(finalCheckoutScene));
+        HBox pickUpOptions = new HBox(inStore, delivery);
 
-        HBox pickUpOptions = new HBox(inStore, delivery, driveUp);
+        //      CSS
+        pickUp.setPadding(new Insets(30));
 
         pickUp.setTop(targetLogoButtonPU);
         pickUp.setCenter(pickUpOptions);
@@ -791,6 +898,9 @@ public class UserInterface extends Application {
 
         VBox fCartTotals = new VBox(fTotalItems, fSubtotal, fTax, confirmPurchase);
 
+        //      CSS
+        finalCheckout.setPadding(new Insets(30));
+
         finalCheckout.setTop(targetLogoButtonFC);
         finalCheckout.setCenter(review);
         finalCheckout.setRight(fCartTotals);
@@ -821,6 +931,9 @@ public class UserInterface extends Application {
         continueShopping.setOnAction(e -> primaryStage.setScene(homePageScene));
 
         VBox thankYouMessage = new VBox(thankYouText, continueShopping);
+
+        //      CSS
+        thankYou.setPadding(new Insets(30));
 
         thankYou.setTop(targetLogoButtonTY);
         thankYou.setCenter(thankYouMessage);

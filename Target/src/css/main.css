@@ -52,7 +52,121 @@ button {
     -fx-border-width: 10px;
 }
 
-/*** SIDEBAR */
+.carouselText {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 15pt;
+}
+
+/*** SEARCH PAGE */
+/* sidebar */
 .sidebar {
     -fx-background-color: #404040;
+}
+
+.filterTitle {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 20pt;
+}
+
+.filterItems {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 12pt;
+}
+
+.spProductName {
+    -fx-background-color: transparent;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14pt;
+    -fx-border: none;
+    -fx-padding: 0;
+    -fx-border-color: #252525;
+    -fx-border-width: 0px 0px 4px 0px;
+}
+
+.spProductName:hover {
+    -fx-border-color: #E80018;
+    -fx-border-width: 0px 0px 4px 0px;
+}
+
+.spProductPrice {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 12pt;
+}
+
+.itemWrapper {
+    -fx-background-color: transparent;
+    -fx-border: none;
+    -fx-padding: 20px;
+}
+
+.itemWrapper .viewport {
+    -fx-background-color: transparent;
+}
+
+.arrow {
+    -fx-background-color: #E80018;
+    -fx-text-fill: #ffffff;
+    -fx-border-radius: 50px;
+}
+
+.pagination {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 13pt;
+}
+
+.productName {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 40pt;
+    -fx-font-weight: 900;
+}
+
+.productPrice {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 40pt;
+}
+
+.productRating {
+    -fx-text-fill: #E80018;
+    -tx-font-size: 22pt;
+}
+
+.comboBoxLabel {
+    -fx-text-fill: #ffffff;
+    -tx-font-size: 12pt;
+}
+
+.comboBox {
+    -fx-background-color: #302D2D;
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #404040;
+    -fx-border-size: 1px;
+    -fx-border-radius: 5px;
+}
+
+.comboBox .list-cell {
+    -fx-text-fill: #ffffff;
+}
+
+.combo-box .list-view .list-cell {
+    -fx-background-color: #302D2D;
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #404040;
+}
+
+.productDescription {
+    -fx-text-fill: #A7A7A7;
+    -fx-font-size: 12pt;
+}
+
+.addToCart {
+    -fx-background-color: #E80018;
+    -fx-text-fill: #ffffff;
+    -fx-padding: 5px 10px;
+    -fx-border-radius: 5px;
+}
+
+/*** CART */
+.checkoutModule {
+    -fx-background-color: #404040;
+    -fx-border-radius: 5px;
 }
