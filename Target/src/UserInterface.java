@@ -39,7 +39,7 @@ public class UserInterface extends Application {
         searchPageScene.getStylesheets().add("css/main.css");
 
         // home page
-        VBox homePage = new VBox();
+        VBox homePage = new VBox(10);
         Scene homePageScene = new Scene(homePage, 1280, 720);
         homePageScene.getStylesheets().add("css/main.css");
 
@@ -135,11 +135,11 @@ public class UserInterface extends Application {
         VBox additionalImages = new VBox(addImage1, addImage2);
         HBox productImages = new HBox(additionalImages, mainImage); //container
         //  product information
-        Text productName = new Text("Sports Shoe");
-        Text productPrice = new Text("$24.00");
-        Text rating = new Text("★★★★☆");
+        Label productName = new Label("Sports Shoe");
+        Label productPrice = new Label("$24.00");
+        Label rating = new Label("★★★★☆");
         //      size
-        Text productSizeText = new Text("Size");
+        Label productSizeText = new Label("Size");
         ComboBox productSizeCombo = new ComboBox();
         productSizeCombo.setPromptText("Select a size");
         productSizeCombo.getItems().addAll(
@@ -151,7 +151,7 @@ public class UserInterface extends Application {
         );
         HBox productSize = new HBox(productSizeText, productSizeCombo);
         //      Quantity
-        Text quantityText = new Text("Quantity");
+        Label quantityText = new Label("Quantity");
         ComboBox quantityCombo = new ComboBox();
         quantityCombo.setPromptText("Select quantity");
         quantityCombo.getItems().addAll(
@@ -159,7 +159,7 @@ public class UserInterface extends Application {
         );
         HBox quantity = new HBox(quantityText, quantityCombo);
         //      Color
-        Text colorText = new Text("Color");
+        Label colorText = new Label("Color");
         ComboBox colorCombo = new ComboBox();
         colorCombo.setPromptText("Select color");
         colorCombo.getItems().addAll(
@@ -171,10 +171,10 @@ public class UserInterface extends Application {
 
         Button addToCart = new Button("Add to Cart");
 
-        Text description = new Text(
+        Label description = new Label(
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam at iaculis sem. Nulla facilisi. Sed rutrum interdum velit, pharetra elementum neque malesuada at. Donec non arcu eleifend, rhoncus nibh sed, hendrerit nibh. Vivamus dapibus semper odio. Nullam eleifend ante vitae ligula vestibulum interdum."
         );
-        description.setWrappingWidth(400);
+        description.prefWidth(400);
 
         VBox productInfo = new VBox(productName, productPrice, rating, productSize, quantity, color, addToCart, description); //container
         HBox mainBody = new HBox(productImages, productInfo);
@@ -198,14 +198,14 @@ public class UserInterface extends Application {
 
         // Filters
         //  Sort By:
-        Text sortByText = new Text("Sort by:");
+        Label sortByText = new Label("Sort by:");
         RadioButton relevance = new RadioButton("Relevance");
         RadioButton price = new RadioButton("Price");
         RadioButton alphabet = new RadioButton("Alphabet");
         VBox sortByBox = new VBox(sortByText, relevance, price, alphabet);
 
         //  Filters:
-        Text filterText = new Text("Filters:");
+        Label filterText = new Label("Filters:");
         CheckBox clothing = new CheckBox("Clothing");
         CheckBox jewelry = new CheckBox("Jewelry");
         CheckBox stationary = new CheckBox("stationary");
@@ -214,7 +214,7 @@ public class UserInterface extends Application {
         VBox filtersBox = new VBox(filterText, clothing, jewelry, stationary, homeEssentials, food);
 
         //  Price:
-        Text priceText = new Text("Price:");
+        Label priceText = new Label("Price:");
         CheckBox zeroFive = new CheckBox("$0 - $5");
         CheckBox fftTwt = new CheckBox("$15 - $25");
         CheckBox twtFft = new CheckBox("$25 - $50");
@@ -253,7 +253,7 @@ public class UserInterface extends Application {
         placeholder1.setFitWidth(150); placeholder1.setFitHeight(150);
         Button shoe1Name = new Button("Sports Shoe");
         shoe1Name.setOnAction(e -> primaryStage.setScene(productPageScene)); //switches to product page
-        Text shoe1Price = new Text("$24.00");
+        Label shoe1Price = new Label("$24.00");
         VBox shoe1 = new VBox(placeholder1, shoe1Name, shoe1Price);
 
         ImageView placeholder2 = new ImageView(); //placeholder image
@@ -261,7 +261,7 @@ public class UserInterface extends Application {
         placeholder2.setFitWidth(150); placeholder2.setFitHeight(150);
         Button shoe2Name = new Button("Tennis Shoe");
         shoe2Name.setOnAction(e -> primaryStage.setScene(productPageScene)); //switches to product page
-        Text shoe2Price = new Text("$10.00");
+        Label shoe2Price = new Label("$10.00");
         VBox shoe2 = new VBox(placeholder2, shoe2Name, shoe2Price);
 
         ImageView placeholder3 = new ImageView(); //placeholder image
@@ -269,7 +269,7 @@ public class UserInterface extends Application {
         placeholder3.setFitWidth(150); placeholder3.setFitHeight(150);
         Button shoe3Name = new Button("Slacks");
         shoe3Name.setOnAction(e -> primaryStage.setScene(productPageScene)); //switches to product page
-        Text shoe3Price = new Text("$30.00");
+        Label shoe3Price = new Label("$30.00");
         VBox shoe3 = new VBox(placeholder3, shoe3Name, shoe3Price);
 
         ImageView placeholder4 = new ImageView(); //placeholder image
@@ -277,7 +277,7 @@ public class UserInterface extends Application {
         placeholder4.setFitWidth(150); placeholder4.setFitHeight(150);
         Button shoe4Name = new Button("Sports Shoe");
         shoe4Name.setOnAction(e -> primaryStage.setScene(productPageScene)); //switches to product page
-        Text shoe4Price = new Text("$24.00");
+        Label shoe4Price = new Label("$24.00");
         VBox shoe4 = new VBox(placeholder4, shoe4Name, shoe4Price);
 
         ImageView placeholder5 = new ImageView(); //placeholder image
@@ -285,7 +285,7 @@ public class UserInterface extends Application {
         placeholder5.setFitWidth(150); placeholder5.setFitHeight(150);
         Button shoe5Name = new Button("Tennis Shoe");
         shoe5Name.setOnAction(e -> primaryStage.setScene(productPageScene)); //switches to product page
-        Text shoe5Price = new Text("$10.00");
+        Label shoe5Price = new Label("$10.00");
         VBox shoe5 = new VBox(placeholder5, shoe5Name, shoe5Price);
 
         ImageView placeholder6 = new ImageView(); //placeholder image
@@ -293,7 +293,7 @@ public class UserInterface extends Application {
         placeholder6.setFitWidth(150); placeholder6.setFitHeight(150);
         Button shoe6Name = new Button("Slacks");
         shoe6Name.setOnAction(e -> primaryStage.setScene(productPageScene)); //switches to product page
-        Text shoe6Price = new Text("$30.00");
+        Label shoe6Price = new Label("$30.00");
         VBox shoe6 = new VBox(placeholder6, shoe6Name, shoe6Price);
 
         ImageView placeholder7 = new ImageView(); //placeholder image
@@ -301,7 +301,7 @@ public class UserInterface extends Application {
         placeholder7.setFitWidth(150); placeholder7.setFitHeight(150);
         Button shoe7Name = new Button("Sports Shoe");
         shoe7Name.setOnAction(e -> primaryStage.setScene(productPageScene)); //switches to product page
-        Text shoe7Price = new Text("$24.00");
+        Label shoe7Price = new Label("$24.00");
         VBox shoe7 = new VBox(placeholder7, shoe7Name, shoe7Price);
 
         ImageView placeholder8 = new ImageView(); //placeholder image
@@ -309,7 +309,7 @@ public class UserInterface extends Application {
         placeholder8.setFitWidth(150); placeholder8.setFitHeight(150);
         Button shoe8Name = new Button("Tennis Shoe");
         shoe8Name.setOnAction(e -> primaryStage.setScene(productPageScene)); //switches to product page
-        Text shoe8Price = new Text("$10.00");
+        Label shoe8Price = new Label("$10.00");
         VBox shoe8 = new VBox(placeholder8, shoe8Name, shoe8Price);
 
         ImageView placeholder9 = new ImageView(); //placeholder image
@@ -317,7 +317,7 @@ public class UserInterface extends Application {
         placeholder9.setFitWidth(150); placeholder9.setFitHeight(150);
         Button shoe9Name = new Button("Slacks");
         shoe9Name.setOnAction(e -> primaryStage.setScene(productPageScene)); //switches to product page
-        Text shoe9Price = new Text("$30.00");
+        Label shoe9Price = new Label("$30.00");
         VBox shoe9 = new VBox(placeholder9, shoe9Name, shoe9Price);
 
         GridPane items = new GridPane();
@@ -332,7 +332,7 @@ public class UserInterface extends Application {
         items.add(shoe9, 2, 2);
 
         Button leftArrow = new Button("<");
-        Text pageNumbers = new Text("1   2   3   ...   5");
+        Label pageNumbers = new Label("1   2   3   ...   5");
         Button rightArrow = new Button(">");
         HBox pagination = new HBox(leftArrow, pageNumbers, rightArrow);
 
@@ -352,7 +352,7 @@ public class UserInterface extends Application {
         searchBarH.getStyleClass().add("searchBar");
         searchBarH.setPrefWidth(650);
         //      controls
-        Text temp = new Text();
+        Label temp = new Label();
         searchBarH.setOnKeyReleased(e -> {
             if (e.getCode() == KeyCode.ENTER) {
                 temp.setText(searchBarH.getText()); //gets search query
@@ -381,8 +381,6 @@ public class UserInterface extends Application {
         cartH.getStyleClass().add("cartButton");
 
         HBox topBarH = new HBox(20, targetLogoButtonH, searchBarH, cartH);
-        //      Styling
-        topBarH.setPadding(new Insets(30));
 
         /* welcome */
         Label welcome = new Label("Welcome back, customer!");
@@ -415,6 +413,8 @@ public class UserInterface extends Application {
         HBox carousel = new HBox(20, redCard, shopCart,yourAccount);
 
         homePage.getChildren().addAll(topBarH, welcome, just4You, carousel);
+        //      CSS
+        homePage.setPadding(new Insets(30));
 
         ///////////////////
 
@@ -459,18 +459,18 @@ public class UserInterface extends Application {
         Image placeholderCart1 = new Image("/images/placeholder.png");
         ImageView cartImage1 = new ImageView(placeholderCart1);
         cartImage1.setFitWidth(200); cartImage1.setFitHeight(200);
-        Text cartText1 = new Text("Sports Shoe");
-        Text cartPrice1 = new Text("$24.00");
-        Text cartQuantity1 = new Text("Quantity" + "1");
+        Label cartText1 = new Label("Sports Shoe");
+        Label cartPrice1 = new Label("$24.00");
+        Label cartQuantity1 = new Label("Quantity" + "1");
         VBox cartItemInfo = new VBox(cartText1, cartPrice1, cartQuantity1);
         HBox cartItem1 = new HBox(cartImage1, cartItemInfo);
 
         Image placeholderCart2 = new Image("/images/placeholder.png");
         ImageView cartImage2 = new ImageView(placeholderCart2);
         cartImage2.setFitWidth(200); cartImage2.setFitHeight(200);
-        Text cartText2 = new Text("Towels");
-        Text cartPrice2 = new Text("$15.00");
-        Text cartQuantity2 = new Text("Quantity" + "1");
+        Label cartText2 = new Label("Towels");
+        Label cartPrice2 = new Label("$15.00");
+        Label cartQuantity2 = new Label("Quantity" + "1");
         VBox cartItemInfo2 = new VBox(cartText2, cartPrice2, cartQuantity2);
         HBox cartItem2 = new HBox(cartImage2, cartItemInfo2);
 
@@ -478,24 +478,24 @@ public class UserInterface extends Application {
 
         /* cart totals */
         //  total items
-        Text quanText = new Text("Total Items");
-        Text quanTotalValue = new Text(totalQuan + ""); //CALCULATE VALUE HERE
+        Label quanText = new Label("Total Items");
+        Label quanTotalValue = new Label(totalQuan + ""); //CALCULATE VALUE HERE
         HBox totalItems = new HBox(quanText, quanTotalValue);
 
         //  subtotal
-        Text subText = new Text("Subtotal");
-        Text subValue = new Text("$" + String.format("%.2f", subTotal));
+        Label subText = new Label("Subtotal");
+        Label subValue = new Label("$" + String.format("%.2f", subTotal));
         HBox subtotal = new HBox(subText, subValue);
 
         //  est. tax
         estTax = subTotal * 0.6;
-        Text taxText = new Text("Est. Tax");
-        Text taxValue = new Text("$" + String.format("%.2f", estTax));
+        Label taxText = new Label("Est. Tax");
+        Label taxValue = new Label("$" + String.format("%.2f", estTax));
         HBox estimatedTax = new HBox(taxText, taxValue);
 
         // total
-        Text totalText = new Text("Total");
-        Text totalValue = new Text("$" + String.format("%.2f", priceTotal));
+        Label totalText = new Label("Total");
+        Label totalValue = new Label("$" + String.format("%.2f", priceTotal));
 
         //  checkout button
         Button proceedCheckout = new Button("Proceed to Checkout");
@@ -547,24 +547,24 @@ public class UserInterface extends Application {
 
         /* Account Information */
         //  header
-        Text createAccText = new Text("Enter Guest Information"); //text for create account screen
+        Label createAccText = new Label("Enter Guest Information"); //text for create account screen
 
         //  first & last name
-        Text fNameText = new Text("First Name");
+        Label fNameText = new Label("First Name");
         TextField fName = new TextField();
         VBox firstName = new VBox(fNameText, fName);
-        Text lNameText = new Text("Last Name");
+        Label lNameText = new Label("Last Name");
         TextField lName = new TextField();
         VBox lastName = new VBox(lNameText, lName);
         HBox guestName = new HBox(firstName, lastName);
 
         //  email address
-        Text emailAddText = new Text("Email Address");
+        Label emailAddText = new Label("Email Address");
         TextField emailAddr = new TextField();
         VBox emailAddress = new VBox(emailAddText, emailAddr);
 
         //  phone number
-        Text phoneNumText = new Text("Phone Number");
+        Label phoneNumText = new Label("Phone Number");
         TextField phoneNum = new TextField();
         VBox phoneNumber = new VBox(phoneNumText, phoneNum);
 
@@ -595,24 +595,24 @@ public class UserInterface extends Application {
         targetLogoButtonEA.getStyleClass().add("targetLogo");
 
         /* address */
-        Text addrText = new Text("Address");
+        Label addrText = new Label("Address");
         //  street
-        Text streetText = new Text("Street");
+        Label streetText = new Label("Street");
         TextField street = new TextField();
         HBox streetContainer = new HBox(streetText, street);
 
         //  city
-        Text cityText = new Text("City");
+        Label cityText = new Label("City");
         TextField city = new TextField();
         HBox cityContainer = new HBox(cityText, city);
 
         //  state
-        Text stateText = new Text("State");
+        Label stateText = new Label("State");
         TextField state = new TextField();
         HBox stateContainer = new HBox(stateText, state);
 
         //  zip
-        Text zipText = new Text("ZIP");
+        Label zipText = new Label("ZIP");
         TextField zip = new TextField();
         HBox zipContainer = new HBox(zipText, zip);
 
@@ -644,20 +644,20 @@ public class UserInterface extends Application {
         targetLogoButtonCC.getStyleClass().add("targetLogo");
 
         /* credit card info */
-        Text creditCartInfo = new Text("Enter Credit Card Information");
+        Label creditCartInfo = new Label("Enter Credit Card Information");
 
         //  credit card number
-        Text ccNumText = new Text("Credit Card Number");
+        Label ccNumText = new Label("Credit Card Number");
         TextField ccNum = new TextField();
         HBox ccNumContainer = new HBox(ccNumText, ccNum);
 
         //  expiration date
-        Text expDateText = new Text("Expiration Date");
+        Label expDateText = new Label("Expiration Date");
         TextField expDate = new TextField();
         HBox expDateContainer = new HBox(expDateText, expDate);
 
         //  ccv
-        Text ccvText = new Text("CCV");
+        Label ccvText = new Label("CCV");
         TextField ccv = new TextField();
         HBox ccvContainer =  new HBox(ccvText, ccv);
 
@@ -720,18 +720,18 @@ public class UserInterface extends Application {
         Image placeholderFCart1 = new Image("/images/placeholder.png");
         ImageView fCartImage1 = new ImageView(placeholderFCart1);
         fCartImage1.setFitWidth(200); fCartImage1.setFitHeight(200);
-        Text fCartText1 = new Text("Sports Shoe");
-        Text fCartPrice1 = new Text("$24.00");
-        Text fCartQuantity1 = new Text("Quantity" + "1");
+        Label fCartText1 = new Label("Sports Shoe");
+        Label fCartPrice1 = new Label("$24.00");
+        Label fCartQuantity1 = new Label("Quantity" + "1");
         VBox fCartItemInfo = new VBox(fCartText1, fCartPrice1, fCartQuantity1);
         HBox fCartItem1 = new HBox(fCartImage1, fCartItemInfo);
 
         Image placeholderFCart2 = new Image("/images/placeholder.png");
         ImageView fCartImage2 = new ImageView(placeholderFCart2);
         fCartImage2.setFitWidth(200); fCartImage2.setFitHeight(200);
-        Text fCartText2 = new Text("Towels");
-        Text fCartPrice2 = new Text("$15.00");
-        Text fCartQuantity2 = new Text("Quantity" + "1");
+        Label fCartText2 = new Label("Towels");
+        Label fCartPrice2 = new Label("$15.00");
+        Label fCartQuantity2 = new Label("Quantity" + "1");
         VBox fCartItemInfo2 = new VBox(fCartText2, fCartPrice2, fCartQuantity2);
         HBox fCartItem2 = new HBox(fCartImage2, fCartItemInfo2);
 
@@ -743,9 +743,9 @@ public class UserInterface extends Application {
 
         /* credit card */
         //  cc text
-        Text creditCardText = new Text("Credit Card");
-        Text ccNumConf = new Text("**** **** **** 4444");
-        Text expDateConf = new Text("12/22");
+        Label creditCardText = new Label("Credit Card");
+        Label ccNumConf = new Label("**** **** **** 4444");
+        Label expDateConf = new Label("12/22");
 
         //  edit button
         Button editCard = new Button("Edit");
@@ -754,8 +754,8 @@ public class UserInterface extends Application {
 
         /* pick-up location */
         //  location text
-        Text pickUpLocationText = new Text("Pick-Up Location");
-        Text locationConf = new Text("2347 Harper St., Seattle, WA 12345");
+        Label pickUpLocationText = new Label("Pick-Up Location");
+        Label locationConf = new Label("2347 Harper St., Seattle, WA 12345");
 
         //  edit button
         Button editLocation = new Button("Edit");
@@ -766,17 +766,17 @@ public class UserInterface extends Application {
 
         /* cart totals */
         //  total items
-        Text fQuanText = new Text("Total Items");
-        Text fQuanTotalValue = new Text(totalQuan + ""); //CALCULATE VALUE HERE
+        Label fQuanText = new Label("Total Items");
+        Label fQuanTotalValue = new Label(totalQuan + ""); //CALCULATE VALUE HERE
         HBox fTotalItems = new HBox(fQuanText, fQuanTotalValue);
         //  subtotal
-        Text fSubText = new Text("Subtotal");
-        Text fSubValue = new Text("$" + String.format("%.2f", subTotal));
+        Label fSubText = new Label("Subtotal");
+        Label fSubValue = new Label("$" + String.format("%.2f", subTotal));
         HBox fSubtotal = new HBox(fSubText, fSubValue);
         //  est. tax
         estTax = subTotal * 0.6;
-        Text fTaxText = new Text("Est. Tax");
-        Text fTaxValue = new Text("$" + String.format("%.2f", estTax));
+        Label fTaxText = new Label("Est. Tax");
+        Label fTaxValue = new Label("$" + String.format("%.2f", estTax));
         HBox fTax = new HBox(fTaxText, fTaxValue);
         //  checkout button
         Button confirmPurchase = new Button("Confirm Purchase");
@@ -803,11 +803,11 @@ public class UserInterface extends Application {
         targetLogoButtonTY.getStyleClass().add("targetLogo");
 
         /* message */
-        Text thankYouText = new Text(
+        Label thankYouText = new Label(
                 "Thank you for your purchase. \n" +
                         "Your payment has been approved, and your order is being prepared. A confirmation email has been sent to you."
         );
-        thankYouText.setWrappingWidth(800);
+        thankYouText.setPrefWidth(800);
 
         /* continue shopping button */
         Button continueShopping = new Button("Continue Shopping");
