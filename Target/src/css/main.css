@@ -6,10 +6,15 @@ button {
     -fx-cursor: pointer, auto;
 }
 
+.divider {
+    -fx-background-color: #686868;
+    -fx-font-size: 1px;
+}
+
 .cartButton {
     -fx-background-color: #E80018;
     -fx-text-fill: #ffffff;
-    -fx-padding: 5px 10px 5px 10p;
+    -fx-padding: 5px 10px 5px 10px;
     -fx-border-radius: 10px;
     -fx-border-width: 0;
 }
@@ -21,7 +26,7 @@ button {
 
 .searchBar {
     -fx-background-color: #302D2D;
-    -fx-text-fill: #ffffff;
+    -fx-text-fill: #aaaaaa;
     -fx-border-radius: 10px;
     -fx-border-color: #404040;
     -fx-border-width: 1px;
@@ -240,6 +245,12 @@ button {
 }
 
 /*** FINAL CHECKOUT */
+.moduleHeader {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 20pt;
+    -fx-font-weight: 900;
+}
+
 .editButton {
     -fx-background-color: transparent;
     -fx-text-fill: #aaaaaa;

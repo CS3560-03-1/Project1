@@ -279,7 +279,7 @@ public class UserInterface extends Application {
         TextField searchBarSP = new TextField("Search");
         //      CSS
         searchBarSP.getStyleClass().add("searchBar");
-        searchBarSP.setPrefWidth(850);
+        searchBarSP.setPrefWidth(800);
         //      controls
         //  cart button
         Button cartSP = new Button("Cart");
@@ -435,12 +435,10 @@ public class UserInterface extends Application {
         TextField searchBarH = new TextField("Search");
         //      CSS
         searchBarH.getStyleClass().add("searchBar");
-        searchBarH.setPrefWidth(650);
+        searchBarH.setPrefWidth(625);
         //      controls
-        Label temp = new Label();
         searchBarH.setOnKeyReleased(e -> {
             if (e.getCode() == KeyCode.ENTER) {
-                temp.setText(searchBarH.getText()); //gets search query
                 primaryStage.setScene(searchPageScene); //switches to search results page
             }
         });
@@ -581,32 +579,38 @@ public class UserInterface extends Application {
         cartItems.setPadding(new Insets(30));
 
         /* cart totals */
+        //      region spacers
+        Region region1 = new Region();
+        HBox.setHgrow(region1, Priority.ALWAYS);
+        Region region2 = new Region();
+        HBox.setHgrow(region2, Priority.ALWAYS);
+        Region region3 = new Region();
+        HBox.setHgrow(region3, Priority.ALWAYS);
+        Region region4 = new Region();
+        HBox.setHgrow(region4, Priority.ALWAYS);
+
         //  total items
         Label quanText = new Label("Total Items");
         Label quanTotalValue = new Label(totalQuan + ""); //CALCULATE VALUE HERE
-        HBox totalItems = new HBox(20, quanText, quanTotalValue);
+        HBox totalItems = new HBox(quanText, region1, quanTotalValue);
 
         //  subtotal
         Label subText = new Label("Subtotal");
         Label subValue = new Label("$" + String.format("%.2f", subTotal));
-        HBox subtotal = new HBox(20, subText, subValue);
+        HBox subtotal = new HBox(subText, region2, subValue);
 
         //  est. tax
         estTax = subTotal * 0.6;
         Label taxText = new Label("Est. Tax");
         Label taxValue = new Label("$" + String.format("%.2f", estTax));
-        HBox estimatedTax = new HBox(20, taxText, taxValue);
+        HBox estimatedTax = new HBox(taxText, region3, taxValue);
 
         // total
         Label totalText = new Label("Total");
         Label totalValue = new Label("$" + String.format("%.2f", priceTotal));
-        HBox totals = new HBox(20, totalText, totalValue);
+        HBox totals = new HBox(totalText, region4, totalValue);
 
         //      CSS
-        quanTotalValue.setAlignment(Pos.CENTER_RIGHT);
-        subValue.setAlignment(Pos.CENTER_RIGHT);
-        taxValue.setAlignment(Pos.CENTER_RIGHT);
-        totalValue.setAlignment(Pos.CENTER_RIGHT);
         quanText.getStyleClass().add("boldedText");
         quanTotalValue.getStyleClass().add("unboldedText");
         subText.getStyleClass().add("boldedText");
@@ -621,7 +625,14 @@ public class UserInterface extends Application {
         proceedCheckout.setOnAction(e -> primaryStage.setScene(checkoutOptionScene));
         proceedCheckout.getStyleClass().add("checkoutButton");
 
-        VBox cartTotals = new VBox(15, totalItems, subtotal, estimatedTax, totals, proceedCheckout);
+        //      divider line
+        HBox divider1 = new HBox(new Text(" "));
+        divider1.getStyleClass().add("divider");
+
+        //      grouping containers
+        VBox indivValues = new VBox(totalItems, subtotal, estimatedTax);
+
+        VBox cartTotals = new VBox(15, indivValues, divider1, totals, proceedCheckout);
         //      CSS
         cartTotals.getStyleClass().add("checkoutModule");
         cartTotals.setPadding(new Insets(30));
@@ -937,10 +948,19 @@ public class UserInterface extends Application {
         editCart.setOnAction(e -> primaryStage.setScene(cartScene));
         //      CSS
         editCart.getStyleClass().add("editButton");
-        editCart.setAlignment(Pos.CENTER_RIGHT);
+
+        //      region spacers
+        Region region9 = new Region();
+        HBox.setHgrow(region9, Priority.ALWAYS);
+
+        //  module header
+        Label cartModule = new Label("Cart");
+        HBox cartHeader = new HBox(cartModule, region9, editCart);
+        //      CSS
+        cartModule.getStyleClass().add("moduleHeader");
 
         VBox fCartProducts = new VBox(30, fCartItem1, fCartItem2);
-        VBox fCartItems = new VBox(editCart, fCartProducts);
+        VBox fCartItems = new VBox(cartHeader, fCartProducts);
         //      CSS
         fCartItems.getStyleClass().add("checkoutModule");
 
@@ -951,17 +971,27 @@ public class UserInterface extends Application {
         Label expDateConf = new Label("12/22");
 
         //      CSS
-        creditCardText.getStyleClass().add("boldedText");
+        creditCardText.getStyleClass().add("moduleHeader");
         ccNumConf.getStyleClass().add("unboldedText");
         expDateConf.getStyleClass().add("unboldedText");
 
         //  edit button
         Button editCard = new Button("Edit");
         editCard.setOnAction(e -> primaryStage.setScene(newCardScene));
-        VBox creditCardContainer = new VBox(editCard, creditCardText, ccNumConf, expDateConf);
         //      CSS
         editCard.getStyleClass().add("editButton");
-        editCard.setAlignment(Pos.CENTER_RIGHT);
+
+        //      region spacers
+        Region region10 = new Region();
+        HBox.setHgrow(region10, Priority.ALWAYS);
+
+        //  module header
+        HBox ccHeader = new HBox(creditCardText, region10, editCard);
+        //      CSS
+        cartModule.getStyleClass().add("moduleHeader");
+
+        VBox creditCardContainer = new VBox(ccHeader, ccNumConf, expDateConf);
+        //      CSS
         creditCardContainer.getStyleClass().add("checkoutModule");
 
         /* pick-up location */
@@ -970,17 +1000,27 @@ public class UserInterface extends Application {
         Label locationConf = new Label("2347 Harper St., Seattle, WA 12345");
 
         //      CSS
-        pickUpLocationText.getStyleClass().add("boldedText");
+        pickUpLocationText.getStyleClass().add("moduleHeader");
         locationConf.getStyleClass().add("unboldedText");
 
         //  edit button
         Button editLocation = new Button("Edit");
         //editCart.setOnAction(e -> primaryStage.setScene(ADDRESS SCREEN));
-        VBox pickUpLocContainer = new VBox(editLocation, pickUpLocationText, locationConf);
         //      CSS
         editLocation.getStyleClass().add("editButton");
-        editLocation.setAlignment(Pos.CENTER_RIGHT);
+
+        //      region spacers
+        Region region11 = new Region();
+        HBox.setHgrow(region11, Priority.ALWAYS);
+
+        //  module header
+        HBox pickUpHeader = new HBox(pickUpLocationText, region11, editLocation);
+        //      CSS
+        cartModule.getStyleClass().add("moduleHeader");
+
+        VBox pickUpLocContainer = new VBox(pickUpHeader, locationConf);
         pickUpLocContainer.getStyleClass().add("checkoutModule");
+
 
         VBox review = new VBox(30, fCartItems, creditCardContainer, pickUpLocContainer);
         ScrollPane reviewWrapper = new ScrollPane(review);
@@ -988,34 +1028,44 @@ public class UserInterface extends Application {
         //      CSS
         reviewWrapper.setFitToWidth(true);
         reviewWrapper.getStyleClass().add("itemWrapper");
-        review.setMargin(fCartItems, new Insets(0, 30, 0, 0));
-        review.setMargin(creditCardContainer, new Insets(0, 30, 0, 0));
-        review.setMargin(pickUpLocContainer, new Insets(0, 30, 0, 0));
+        review.setMargin(fCartItems, new Insets(0, 15, 0, 0));
+        review.setMargin(creditCardContainer, new Insets(0, 15, 0, 0));
+        review.setMargin(pickUpLocContainer, new Insets(0, 15, 0, 0));
         fCartItems.setPadding(new Insets(30));
         creditCardContainer.setPadding(new Insets(30));
         pickUpLocContainer.setPadding(new Insets(30));
 
         /* cart totals */
+        //      region spacers
+        Region region5 = new Region();
+        HBox.setHgrow(region5, Priority.ALWAYS);
+        Region region6 = new Region();
+        HBox.setHgrow(region6, Priority.ALWAYS);
+        Region region7 = new Region();
+        HBox.setHgrow(region7, Priority.ALWAYS);
+        Region region8 = new Region();
+        HBox.setHgrow(region8, Priority.ALWAYS);
+
         //  total items
         Label fQuanText = new Label("Total Items");
         Label fQuanTotalValue = new Label(totalQuan + ""); //CALCULATE VALUE HERE
-        HBox fTotalItems = new HBox(20, fQuanText, fQuanTotalValue);
+        HBox fTotalItems = new HBox(fQuanText, region5, fQuanTotalValue);
 
         //  subtotal
         Label fSubText = new Label("Subtotal");
         Label fSubValue = new Label("$" + String.format("%.2f", subTotal));
-        HBox fSubtotal = new HBox(20, fSubText, fSubValue);
+        HBox fSubtotal = new HBox(fSubText, region6, fSubValue);
 
         //  tax
         estTax = subTotal * 0.6;
         Label fTaxText = new Label("Est. Tax");
         Label fTaxValue = new Label("$" + String.format("%.2f", estTax));
-        HBox fTax = new HBox(20, fTaxText, fTaxValue);
+        HBox fTax = new HBox(fTaxText, region7, fTaxValue);
 
         // total
         Label fTotalText = new Label("Total");
         Label fTotalValue = new Label("$" + String.format("%.2f", priceTotal));
-        HBox fTotals = new HBox(20, fTotalText, fTotalValue);
+        HBox fTotals = new HBox(fTotalText, region8, fTotalValue);
 
         //  checkout button
         Button confirmPurchase = new Button("Confirm Purchase");
@@ -1033,7 +1083,14 @@ public class UserInterface extends Application {
         fTotalText.getStyleClass().add("boldedText");
         fTotalValue.getStyleClass().add("boldedText");
 
-        VBox fCartTotals = new VBox(fTotalItems, fSubtotal, fTax, fTotals, confirmPurchase);
+        //      divider line
+        HBox divider2 = new HBox(new Text(" "));
+        divider2.getStyleClass().add("divider");
+
+        //      grouping containers
+        VBox fIndivValues = new VBox(fTotalItems, fSubtotal, fTax);
+
+        VBox fCartTotals = new VBox(15, fIndivValues, divider2, fTotals, confirmPurchase);
         //      CSS
         fCartTotals.getStyleClass().add("checkoutModule");
         fCartTotals.setPadding(new Insets(30));
@@ -1042,7 +1099,7 @@ public class UserInterface extends Application {
         finalCheckout.setPadding(new Insets(30));
 
         finalCheckout.setTop(targetLogoButtonFC);
-        finalCheckout.setCenter(review);
+        finalCheckout.setCenter(reviewWrapper);
         finalCheckout.setRight(fCartTotals);
 
         ///////////////////
