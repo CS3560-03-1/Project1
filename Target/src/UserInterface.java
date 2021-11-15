@@ -3,7 +3,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -11,7 +10,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 public class UserInterface extends Application {
@@ -54,7 +52,12 @@ public class UserInterface extends Application {
         Scene checkoutOptionScene = new Scene(checkoutOption, 1280, 720);
         checkoutOptionScene.getStylesheets().add("css/main.css");
 
-        // create account
+        // sign in
+        BorderPane signIn = new BorderPane();
+        Scene signInScene = new Scene(signIn, 1280, 720);
+        signInScene.getStylesheets().add("css/main.css");
+
+        // guest account
         BorderPane guestAccount = new BorderPane();
         Scene guestAccountScene = new Scene(guestAccount, 1280, 720);
         guestAccountScene.getStylesheets().add("css/main.css");
@@ -660,14 +663,14 @@ public class UserInterface extends Application {
         targetLogoButtonCO.getStyleClass().add("targetLogo");
 
         /* buttons */
-        Button signIn = new Button("Sign In");
-        //signIn.setOnAction(e -> primaryStage.setScene(signInScene));
-        Button guest = new Button("Purchase as Guest");
-        guest.setOnAction(e -> primaryStage.setScene(guestAccountScene));
-        HBox checkoutChoices = new HBox(30, signIn, guest);
+        Button signInButton = new Button("Sign In");
+        signInButton.setOnAction(e -> primaryStage.setScene(signInScene));
+        Button guestButton = new Button("Purchase as Guest");
+        guestButton.setOnAction(e -> primaryStage.setScene(guestAccountScene));
+        HBox checkoutChoices = new HBox(30, signInButton, guestButton);
         //      CSS
-        signIn.getStyleClass().add("optionButton");
-        guest.getStyleClass().add("optionButton");
+        signInButton.getStyleClass().add("optionButton");
+        guestButton.getStyleClass().add("optionButton");
         checkoutChoices.setAlignment(Pos.CENTER);
 
         //      CSS
@@ -675,6 +678,61 @@ public class UserInterface extends Application {
 
         checkoutOption.setTop(targetLogoButtonCO);
         checkoutOption.setCenter(checkoutChoices);
+
+        ///////////////////
+
+        /*** SIGN IN ACCOUNT */
+        /* Target Logo */
+        Button targetLogoButtonSI = new Button();
+        ImageView targetLogoSI = new ImageView();
+        targetLogoSI.setImage(logo);
+        targetLogoSI.setFitWidth(234);
+        targetLogoSI.setFitHeight(51);
+        targetLogoButtonSI.setGraphic(targetLogoSI);
+        targetLogoButtonSI.setOnAction(e -> primaryStage.setScene(homePageScene));
+        //      CSS
+        targetLogoButtonSI.getStyleClass().add("targetLogo");
+
+        /* Account Information */
+        //  header
+        Label signInText = new Label("Sign In"); //text for create account screen
+        //      CSS
+        signInText.getStyleClass().add("formTitle");
+
+        //  username
+        Label usernameText = new Label("Username");
+        TextField username = new TextField();
+        HBox usernameContainer = new HBox(15, usernameText, username);
+        //      CSS
+        usernameText.getStyleClass().add("formLabel");
+        username.getStyleClass().add("form");
+
+        //  password
+        Label passwordText = new Label("Password");
+        PasswordField password = new PasswordField();
+        HBox passwordContainer = new HBox(15, passwordText, password);
+        //      CSS
+        passwordText.getStyleClass().add("formLabel");
+        password.getStyleClass().add("form");
+
+        VBox logIn = new VBox(8, usernameContainer, passwordContainer);
+        //      CSS
+        usernameContainer.setAlignment(Pos.CENTER);
+        passwordContainer.setAlignment(Pos.CENTER);
+
+        //  confirm button
+        Button confirmSignIn = new Button("Confirm");
+        confirmSignIn.setOnAction(e -> primaryStage.setScene(finalCheckoutScene));
+        //      CSS
+        confirmSignIn.getStyleClass().add("confirmButton");
+
+        VBox signInContainer = new VBox(30, signInText, logIn, confirmSignIn);
+        //      CSS
+        signInContainer.setAlignment(Pos.CENTER);
+        signIn.setPadding(new Insets(30));
+
+        signIn.setTop(targetLogoButtonSI);
+        signIn.setCenter(signInContainer);
 
         ///////////////////
 
@@ -692,8 +750,7 @@ public class UserInterface extends Application {
 
         /* Account Information */
         //  header
-        Label createAccText = new Label("Enter Guest Information"); //text for create account screen
-
+        Label createAccText = new Label("Enter Guest Information");
         //      CSS
         createAccText.getStyleClass().add("formTitle");
 
