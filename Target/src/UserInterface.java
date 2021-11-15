@@ -795,6 +795,9 @@ public class UserInterface extends Application {
         VBox createAccContainer = new VBox(30, createAccText, accInfo, confirmGuest);
 
         //      CSS
+        accInfo.setPrefWidth(500);
+        accInfo.setMaxWidth(500);
+        createAccContainer.setAlignment(Pos.CENTER);
         guestAccount.setPadding(new Insets(30));
 
         guestAccount.setTop(targetLogoButtonGA);
@@ -863,6 +866,9 @@ public class UserInterface extends Application {
         VBox address = new VBox(30, addrText, addressForm, confirmAddr);
 
         //      CSS
+        addressForm.setPrefWidth(700);
+        addressForm.setMaxWidth(700);
+        address.setAlignment(Pos.CENTER);
         enterAddress.setPadding(new Insets(30));
 
         enterAddress.setTop(targetLogoButtonEA);
@@ -919,6 +925,9 @@ public class UserInterface extends Application {
         VBox creditCard = new VBox(30, creditCartInfo, ccForm, confirmCC);
 
         //      CSS
+        ccForm.setPrefWidth(500);
+        ccForm.setMaxWidth(500);
+        creditCard.setAlignment(Pos.CENTER);
         newCard.setPadding(new Insets(30));
 
         newCard.setTop(targetLogoButtonCC);
