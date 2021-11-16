@@ -11,6 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 public class UserInterface extends Application {
@@ -722,8 +723,14 @@ public class UserInterface extends Application {
         passwordText.getStyleClass().add("formLabel");
         password.getStyleClass().add("form");
 
-        VBox logIn = new VBox(8, usernameContainer, passwordContainer);
+        // make an account
+        Label newAccount = new Label("Make an Account");
         //      CSS
+        newAccount.getStyleClass().add("fakeLink");
+
+        VBox logIn = new VBox(8, usernameContainer, passwordContainer, newAccount);
+        //      CSS
+        logIn.setAlignment(Pos.CENTER);
         usernameContainer.setAlignment(Pos.CENTER);
         passwordContainer.setAlignment(Pos.CENTER);
 
@@ -732,6 +739,22 @@ public class UserInterface extends Application {
         confirmSignIn.setOnAction(e -> primaryStage.setScene(finalCheckoutScene));
         //      CSS
         confirmSignIn.getStyleClass().add("confirmButton");
+        //      controls
+        BooleanBinding signInBinding = new BooleanBinding() {
+            {
+                super.bind(username.textProperty(),
+                        password.textProperty()
+                );
+            }
+
+            @Override
+            protected boolean computeValue() {
+                return (username.getText().isEmpty()
+                        || password.getText().isEmpty()
+                );
+            }
+        };
+        confirmSignIn.disableProperty().bind(signInBinding);
 
         VBox signInContainer = new VBox(30, signInText, logIn, confirmSignIn);
         //      CSS
@@ -764,28 +787,28 @@ public class UserInterface extends Application {
         //  first & last name
         Label fNameText = new Label("First Name");
         TextField fName = new TextField();
-        VBox firstName = new VBox(fNameText, fName);
+        VBox fNameContainer = new VBox(fNameText, fName);
         Label lNameText = new Label("Last Name");
         TextField lName = new TextField();
-        VBox lastName = new VBox(lNameText, lName);
-        HBox guestName = new HBox(20, firstName, lastName);
+        VBox lNameContainer = new VBox(lNameText, lName);
+        HBox guestName = new HBox(20, fNameContainer, lNameContainer);
 
         //  email address
-        Label emailAddText = new Label("Email Address");
+        Label emailAddrText = new Label("Email Address");
         TextField emailAddr = new TextField();
-        VBox emailAddress = new VBox(emailAddText, emailAddr);
+        VBox emailAddrContainer = new VBox(emailAddrText, emailAddr);
 
         //  phone number
         Label phoneNumText = new Label("Phone Number");
         TextField phoneNum = new TextField();
-        VBox phoneNumber = new VBox(phoneNumText, phoneNum);
+        VBox phoneNumContainer = new VBox(phoneNumText, phoneNum);
 
         //      CSS
         fNameText.getStyleClass().add("formLabel");
         fName.getStyleClass().add("form");
         lNameText.getStyleClass().add("formLabel");
         lName.getStyleClass().add("form");
-        emailAddText.getStyleClass().add("formLabel");
+        emailAddrText.getStyleClass().add("formLabel");
         emailAddr.getStyleClass().add("form");
         phoneNumText.getStyleClass().add("formLabel");
         phoneNum.getStyleClass().add("form");
@@ -796,7 +819,7 @@ public class UserInterface extends Application {
         errorGuest.getStyleClass().add("error");
 
         //  container
-        VBox accInfo = new VBox(15, guestName, emailAddress, phoneNumber, errorGuest);
+        VBox accInfo = new VBox(15, guestName, emailAddrContainer, phoneNumContainer, errorGuest);
 
         //  confirm button
         Button confirmGuest = new Button("Confirm");
@@ -825,10 +848,11 @@ public class UserInterface extends Application {
         confirmGuest.setOnAction(e -> {
             if (!emailAddr.getText().contains("@") || !emailAddr.getText().contains("."))
                 errorGuest.setText("Invalid email address");
-            else
+            else {
+                errorGuest.setText("");
                 primaryStage.setScene(enterAddressScene);
-            });
-
+            }
+        });
 
         VBox createAccContainer = new VBox(30, createAccText, accInfo, confirmGuest);
 
@@ -898,6 +922,26 @@ public class UserInterface extends Application {
         confirmAddr.setOnAction(e -> primaryStage.setScene(newCardScene));
         //      CSS
         confirmAddr.getStyleClass().add("confirmButton");
+        //      controls
+        BooleanBinding addrBinding = new BooleanBinding() {
+            {
+                super.bind(street.textProperty(),
+                        city.textProperty(),
+                        state.textProperty(),
+                        zip.textProperty()
+                );
+            }
+
+            @Override
+            protected boolean computeValue() {
+                return (street.getText().isEmpty()
+                        || city.getText().isEmpty()
+                        || state.getText().isEmpty()
+                        || zip.getText().isEmpty()
+                );
+            }
+        };
+        confirmAddr.disableProperty().bind(addrBinding);
 
         HBox cityState = new HBox(15, cityContainer, stateContainer);
         VBox addressForm = new VBox(15, streetContainer, cityState, zipContainer, billingAddr);
@@ -953,13 +997,44 @@ public class UserInterface extends Application {
         ccvText.getStyleClass().add("formLabel");
         ccv.getStyleClass().add("form");
 
+        // error message
+        Label errorCC = new Label();
+        //      CSS
+        errorCC.getStyleClass().add("error");
+
+        VBox ccForm = new VBox(15, ccNumContainer, expDateContainer, ccvContainer, errorCC);
+
         //  confirm button
         Button confirmCC = new Button("Confirm");
-        confirmCC.setOnAction(e -> primaryStage.setScene(pickUpScene));
         //      CSS
         confirmCC.getStyleClass().add("confirmButton");
+        //      controls
+        BooleanBinding ccBinding = new BooleanBinding() {
+            {
+                super.bind(ccNum.textProperty(),
+                        expDate.textProperty(),
+                        ccv.textProperty()
+                );
+            }
 
-        VBox ccForm = new VBox(15, ccNumContainer, expDateContainer, ccvContainer);
+            @Override
+            protected boolean computeValue() {
+                return (ccNum.getText().isEmpty()
+                        || expDate.getText().isEmpty()
+                        || ccv.getText().isEmpty()
+                );
+            }
+        };
+        confirmCC.disableProperty().bind(ccBinding);
+        confirmCC.setOnAction(e -> {
+            if (ccv.getText().length() != 3)
+                errorCC.setText("Invalid CCV");
+            else {
+                errorCC.setText("");
+                primaryStage.setScene(pickUpScene);
+            }
+        });
+
         VBox creditCard = new VBox(30, creditCartInfo, ccForm, confirmCC);
 
         //      CSS
@@ -1229,6 +1304,7 @@ public class UserInterface extends Application {
         //      CSS
         thankYouText.getStyleClass().add("thankYou");
         thankYouText.setWrapText(true);
+        thankYouText.setTextAlignment(TextAlignment.CENTER);
 
         /* continue shopping button */
         Button continueShopping = new Button("Continue Shopping");

@@ -41,6 +41,16 @@ button {
     -fx-font-size: 13pt;
 }
 
+.fakeLink {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 12pt;
+    -fx-underline: true;
+}
+
+    .fakeLink:hover {
+        -fx-underline: false;
+    }
+
 /*** HOME PAGE */
 
 #welcome {
@@ -249,7 +259,7 @@ button {
 }
 
 .formLabel {
-    -fx-text-fill: #ffffff;
+    -fx-text-fill: #aaaaaa;
     -fx-font-size: 14pt;
 }
 
