@@ -95,7 +95,7 @@ public class UserInterface extends Application {
         searchBarPP.setPrefWidth(800);
         //      controls
         searchBarPP.setOnKeyReleased(e -> {
-            if (e.getCode() == KeyCode.ENTER) {
+            if (!searchBarPP.getText().isEmpty() && (e.getCode() == KeyCode.ENTER)) {
                 primaryStage.setScene(searchPageScene); //switches to search results page
             }
         });
@@ -284,6 +284,12 @@ public class UserInterface extends Application {
         searchBarSP.getStyleClass().add("searchBar");
         searchBarSP.setPrefWidth(800);
         //      controls
+        searchBarSP.setOnKeyReleased(e -> {
+            if (!searchBarSP.getText().isEmpty() && (e.getCode() == KeyCode.ENTER)) {
+                primaryStage.setScene(searchPageScene); //switches to search results page
+            }
+        });
+
         //  cart button
         Button cartSP = new Button("Cart");
         cartSP.setOnAction(e -> primaryStage.setScene(cartScene));
@@ -441,7 +447,7 @@ public class UserInterface extends Application {
         searchBarH.setPrefWidth(625);
         //      controls
         searchBarH.setOnKeyReleased(e -> {
-            if (e.getCode() == KeyCode.ENTER) {
+            if (!searchBarH.getText().isEmpty() && (e.getCode() == KeyCode.ENTER)) {
                 primaryStage.setScene(searchPageScene); //switches to search results page
             }
         });
@@ -521,7 +527,7 @@ public class UserInterface extends Application {
         searchBarC.setPrefWidth(800);
         //      controls
         searchBarC.setOnKeyReleased(e -> {
-            if (e.getCode() == KeyCode.ENTER) {
+            if (!searchBarC.getText().isEmpty() && e.getCode() == KeyCode.ENTER) {
                 primaryStage.setScene(searchPageScene); //switches to search results page
             }
         });
@@ -1191,18 +1197,17 @@ public class UserInterface extends Application {
         //      CSS
         thankYouText.getStyleClass().add("thankYou");
         thankYouText.setWrapText(true);
-        thankYouText.setAlignment(Pos.CENTER);
 
         /* continue shopping button */
         Button continueShopping = new Button("Continue Shopping");
         continueShopping.setOnAction(e -> primaryStage.setScene(homePageScene));
         //      CSS
         continueShopping.getStyleClass().add("optionButton");
-        continueShopping.setAlignment(Pos.CENTER);
 
         VBox thankYouMessage = new VBox(30, thankYouText, continueShopping);
 
         //      CSS
+        thankYouMessage.setAlignment(Pos.CENTER);
         thankYou.setPadding(new Insets(30));
 
         thankYou.setTop(targetLogoButtonTY);
