@@ -1,4 +1,5 @@
 import javafx.application.Application;
+import javafx.beans.binding.BooleanBinding;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -789,14 +790,45 @@ public class UserInterface extends Application {
         phoneNumText.getStyleClass().add("formLabel");
         phoneNum.getStyleClass().add("form");
 
+        // error message
+        Label errorGuest = new Label();
+        //      CSS
+        errorGuest.getStyleClass().add("error");
+
         //  container
-        VBox accInfo = new VBox(15, guestName, emailAddress, phoneNumber);
+        VBox accInfo = new VBox(15, guestName, emailAddress, phoneNumber, errorGuest);
 
         //  confirm button
         Button confirmGuest = new Button("Confirm");
-        confirmGuest.setOnAction(e -> primaryStage.setScene(enterAddressScene));
         //      CSS
         confirmGuest.getStyleClass().add("confirmButton");
+        //      controls
+        BooleanBinding guestBinding = new BooleanBinding() {
+            {
+                super.bind(fName.textProperty(),
+                        lName.textProperty(),
+                        emailAddr.textProperty(),
+                        phoneNum.textProperty()
+                );
+            }
+
+            @Override
+            protected boolean computeValue() {
+                return (fName.getText().isEmpty()
+                        || lName.getText().isEmpty()
+                        || emailAddr.getText().isEmpty()
+                        || phoneNum.getText().isEmpty()
+                );
+            }
+        };
+        confirmGuest.disableProperty().bind(guestBinding);
+        confirmGuest.setOnAction(e -> {
+            if (!emailAddr.getText().contains("@") || !emailAddr.getText().contains("."))
+                errorGuest.setText("Invalid email address");
+            else
+                primaryStage.setScene(enterAddressScene);
+            });
+
 
         VBox createAccContainer = new VBox(30, createAccText, accInfo, confirmGuest);
 

@@ -36,6 +36,11 @@ button {
     -fx-border-width: 1px;
 }
 
+.error {
+    -fx-text-fill: #E80018;
+    -fx-font-size: 13pt;
+}
+
 /*** HOME PAGE */
 
 #welcome {
@@ -252,9 +257,13 @@ button {
     -fx-background-color: #302D2D;
     -fx-font-size: 14pt;
     -fx-text-fill: #ffffff;
-      -fx-border-radius: 10px;
+    -fx-border-radius: 10px;
     -fx-border-color: #404040;
     -fx-border-width: 1px;
+}
+
+.emptyForm {
+    -fx-border-color: #E80018;
 }
 
 .confirmButton {
