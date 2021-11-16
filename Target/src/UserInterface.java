@@ -74,6 +74,11 @@ public class UserInterface extends Application {
         Scene enterAddressScene = new Scene(enterAddress, 1280, 720);
         enterAddressScene.getStylesheets().add("css/main.css");
 
+        // enter billing address
+        BorderPane billingAddress = new BorderPane();
+        Scene billingAddressScene = new Scene(billingAddress, 1280, 720);
+        billingAddress.getStylesheets().add("css/main.css");
+
         // add new card
         BorderPane newCard = new BorderPane();
         Scene newCardScene = new Scene(newCard, 1280, 720);
@@ -903,7 +908,7 @@ public class UserInterface extends Application {
         HBox zipContainer = new HBox(15, zipText, zip);
 
         //  billing address
-        CheckBox billingAddr = new CheckBox("Billing address is the same");
+        CheckBox billingAddressIsTheSame = new CheckBox("Billing address is the same");
 
         //      CSS
         addrText.getStyleClass().add("formTitle");
@@ -915,11 +920,16 @@ public class UserInterface extends Application {
         state.getStyleClass().add("form");
         zipText.getStyleClass().add("formLabel");
         zip.getStyleClass().add("form");
-        billingAddr.getStyleClass().add("billingAddr");
+        billingAddressIsTheSame.getStyleClass().add("billingAddr");
 
         //  confirm button
         Button confirmAddr = new Button("Confirm");
-        confirmAddr.setOnAction(e -> primaryStage.setScene(newCardScene));
+        confirmAddr.setOnAction(e -> {
+            if (billingAddressIsTheSame.isSelected())
+                primaryStage.setScene(newCardScene);
+            else
+                primaryStage.setScene(billingAddressScene);
+        });
         //      CSS
         confirmAddr.getStyleClass().add("confirmButton");
         //      controls
@@ -944,7 +954,7 @@ public class UserInterface extends Application {
         confirmAddr.disableProperty().bind(addrBinding);
 
         HBox cityState = new HBox(15, cityContainer, stateContainer);
-        VBox addressForm = new VBox(15, streetContainer, cityState, zipContainer, billingAddr);
+        VBox addressForm = new VBox(15, streetContainer, cityState, zipContainer, billingAddressIsTheSame);
         VBox address = new VBox(30, addrText, addressForm, confirmAddr);
 
         //      CSS
@@ -955,6 +965,93 @@ public class UserInterface extends Application {
 
         enterAddress.setTop(targetLogoButtonEA);
         enterAddress.setCenter(address);
+
+        ///////////////////
+
+        /*** ENTER BILLING ADDRESS */
+        /* Target Logo */
+        Button targetLogoButtonBA = new Button();
+        ImageView targetLogoBA = new ImageView();
+        targetLogoBA.setImage(logo);
+        targetLogoBA.setFitWidth(234);
+        targetLogoBA.setFitHeight(51);
+        targetLogoButtonBA.setGraphic(targetLogoBA);
+        targetLogoButtonBA.setOnAction(e -> primaryStage.setScene(homePageScene));
+        //      CSS
+        targetLogoButtonBA.getStyleClass().add("targetLogo");
+
+        /* address */
+        Label billingText = new Label("Billing Address");
+
+        //  street
+        Label billingStreetText = new Label("Street");
+        TextField billingStreet = new TextField();
+        HBox billingStreetContainer = new HBox(15, billingStreetText, billingStreet);
+
+        //  city
+        Label billingCityText = new Label("City");
+        TextField billingCity = new TextField();
+        HBox billingCityContainer = new HBox(15, billingCityText, billingCity);
+
+        //  state
+        Label billingStateText = new Label("State");
+        TextField billingState = new TextField();
+        HBox billingStateContainer = new HBox(15, billingStateText, billingState);
+
+        //  zip
+        Label billingZipText = new Label("ZIP");
+        TextField billingZip = new TextField();
+        HBox billingZipContainer = new HBox(15, billingZipText, billingZip);
+
+        //      CSS
+        billingText.getStyleClass().add("formTitle");
+        billingStreetText.getStyleClass().add("formLabel");
+        billingStreet.getStyleClass().add("form");
+        billingCityText.getStyleClass().add("formLabel");
+        billingCity.getStyleClass().add("form");
+        billingStateText.getStyleClass().add("formLabel");
+        billingState.getStyleClass().add("form");
+        billingZipText.getStyleClass().add("formLabel");
+        billingZip.getStyleClass().add("form");
+
+        //  confirm button
+        Button confirmBilling = new Button("Confirm");
+        confirmBilling.setOnAction(e -> primaryStage.setScene(newCardScene));
+        //      CSS
+        confirmBilling.getStyleClass().add("confirmButton");
+        //      controls
+        BooleanBinding billingBinding = new BooleanBinding() {
+            {
+                super.bind(billingStreet.textProperty(),
+                        billingCity.textProperty(),
+                        billingState.textProperty(),
+                        billingZip.textProperty()
+                );
+            }
+
+            @Override
+            protected boolean computeValue() {
+                return (billingStreet.getText().isEmpty()
+                        || billingCity.getText().isEmpty()
+                        || billingState.getText().isEmpty()
+                        || billingZip.getText().isEmpty()
+                );
+            }
+        };
+        confirmBilling.disableProperty().bind(billingBinding);
+
+        HBox billingCityState = new HBox(15, billingCityContainer, billingStateContainer);
+        VBox billingForm = new VBox(15, billingStreetContainer, billingCityState, billingZipContainer);
+        VBox billing = new VBox(30, billingText, billingForm, confirmBilling);
+
+        //      CSS
+        billingForm.setPrefWidth(700);
+        billingForm.setMaxWidth(700);
+        billing.setAlignment(Pos.CENTER);
+        billingAddress.setPadding(new Insets(30));
+
+        billingAddress.setTop(targetLogoButtonBA);
+        billingAddress.setCenter(billing);
 
         ///////////////////
 
