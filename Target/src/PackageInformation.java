@@ -5,7 +5,7 @@ public class PackageInformation {
     public PackageInformation()
     {
         packageID = 0;
-        weight = 0.0;
+        weight = 0;
     }
 
     public int getPackageID() {

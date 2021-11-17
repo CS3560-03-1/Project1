@@ -7,7 +7,7 @@ public class ShoppingCart {
     {
         cartID = 0;
         prodQuantity = 0;
-        totalCost = 0.0;
+        totalCost = 0;
     }
 
     public boolean addProduct(Product product) {
