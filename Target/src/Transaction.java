@@ -17,6 +17,7 @@ public class Transaction {
     public void transAmt(float tax, float shipping, float totalCost) {
         //totalCost taken from shoppingCart object
         //shipping taken from external shipping database
+        transAmount = tax + shipping + totalCost;
     }
 
     public int getTransID() {

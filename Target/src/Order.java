@@ -28,8 +28,9 @@ public class Order {
         return delMethod;
     }
 
-    public void setConfirmation(){
+    public void setConfirmation(boolean status){
         //change the status of order confirmation
+        this.confirmation = status;
     }
 
     public void setDelMethod(String delMethod) {

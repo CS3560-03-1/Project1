@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5e0b49ea-6ac6-4241-857e-140a6aa36c6f" name="Changes" comment="module fix" />
+    <list default="true" id="5e0b49ea-6ac6-4241-857e-140a6aa36c6f" name="Changes" comment="new module fix">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Target/src/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/Target/src/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Target/src/PackageInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/Target/src/PackageInformation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Target/src/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Target/src/Transaction.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -89,7 +94,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637128224272</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="new module fix">
+      <created>1637128693873</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1637128693873</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -109,7 +121,8 @@
     <MESSAGE value="set constructors" />
     <MESSAGE value="javafx error fix" />
     <MESSAGE value="module fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="module fix" />
+    <MESSAGE value="new module fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="new module fix" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

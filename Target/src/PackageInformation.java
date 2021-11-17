@@ -23,5 +23,9 @@ public class PackageInformation {
 
     public void setWeight(int ...amt) { //have an unlimited amount of argument
         //take in the weight of each package and total them up here
+        float packageWeight = 0;
+        for (int i : amt)
+            packageWeight += amt[i];
+        this.weight = packageWeight;
     }
 }
