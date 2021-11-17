@@ -2,7 +2,7 @@ CREATE DATABASE  IF NOT EXISTS `mydb` /*!40100 DEFAULT CHARACTER SET utf8 */ /*!
 USE `mydb`;
 -- MySQL dump 10.13  Distrib 8.0.27, for Win64 (x86_64)
 --
--- Host: localhost    Database: mydb
+-- Host: 127.0.0.1    Database: mydb
 -- ------------------------------------------------------
 -- Server version	8.0.27
 
@@ -84,6 +84,7 @@ DROP TABLE IF EXISTS `inventoryitem`;
 CREATE TABLE `inventoryitem` (
   `inventoryItemID` int NOT NULL,
   `productID` int NOT NULL,
+  `item name` varchar(45) DEFAULT NULL,
   `quantity` int DEFAULT NULL,
   `cost` double(10,2) DEFAULT NULL,
   `color` varchar(45) DEFAULT NULL,
@@ -102,7 +103,7 @@ CREATE TABLE `inventoryitem` (
 
 LOCK TABLES `inventoryitem` WRITE;
 /*!40000 ALTER TABLE `inventoryitem` DISABLE KEYS */;
-INSERT INTO `inventoryitem` VALUES (1,1001,21,69.99,'red',1.75,'12 in','Shoe used for sports and running'),(2,1002,29,59.99,'red',2.00,'11 in','Casual shoes for walking'),(3,1003,50,30.00,'red',2.00,'30 x 30','Regular slacks'),(4,1004,51,15.00,'red',2.00,'Medium','Normal baic t shirt'),(5,1005,169,8.99,'red',2.00,'Medium','Casual fitting hat'),(6,1006,98,12.00,'red',2.00,'N/A','Delicious cake with frosting'),(7,1007,324,3.50,'red',2.00,'N/A','Pack of twinkies'),(8,1008,132,4.99,'red',2.00,'N/A','Hot dog sausages for cooking'),(9,1009,68,2.50,'red',2.00,'N/A','Fast and easy noodles'),(10,1010,19,3.00,'red',2.00,'N/A','Delicious healthy grapes'),(11,1011,90,10.00,'red',2.00,'5 in','Fragrant and nice candle'),(12,1012,85,35.00,'red',2.00,'3.5 ft','Comfortable wooden chair'),(13,1013,15,5.00,'red',2.00,'8 in','Pack of sharpened pencils'),(14,1014,321,3.00,'red',2.00,'4 in','Pack of colorful crayons'),(15,1015,56,200.00,'gold',2.00,'2 in','Basic gold ring'),(16,1016,98,150.00,'silver',2.00,'N/A','Blingy silver necklace');
+INSERT INTO `inventoryitem` VALUES (1,1001,NULL,21,69.99,'red',1.75,'12 in','Shoe used for sports and running'),(2,1002,NULL,29,59.99,'red',2.00,'11 in','Casual shoes for walking'),(3,1003,NULL,50,30.00,'red',2.00,'30 x 30','Regular slacks'),(4,1004,NULL,51,15.00,'red',2.00,'Medium','Normal baic t shirt'),(5,1005,NULL,169,8.99,'red',2.00,'Medium','Casual fitting hat'),(6,1006,NULL,98,12.00,'red',2.00,'N/A','Delicious cake with frosting'),(7,1007,NULL,324,3.50,'red',2.00,'N/A','Pack of twinkies'),(8,1008,NULL,132,4.99,'red',2.00,'N/A','Hot dog sausages for cooking'),(9,1009,NULL,68,2.50,'red',2.00,'N/A','Fast and easy noodles'),(10,1010,NULL,19,3.00,'red',2.00,'N/A','Delicious healthy grapes'),(11,1011,NULL,90,10.00,'red',2.00,'5 in','Fragrant and nice candle'),(12,1012,NULL,85,35.00,'red',2.00,'3.5 ft','Comfortable wooden chair'),(13,1013,NULL,15,5.00,'red',2.00,'8 in','Pack of sharpened pencils'),(14,1014,NULL,321,3.00,'red',2.00,'4 in','Pack of colorful crayons'),(15,1015,NULL,56,200.00,'gold',2.00,'2 in','Basic gold ring'),(16,1016,NULL,98,150.00,'silver',2.00,'N/A','Blingy silver necklace');
 /*!40000 ALTER TABLE `inventoryitem` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -224,4 +225,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-16 20:26:56
+-- Dump completed on 2021-11-16 22:30:58
