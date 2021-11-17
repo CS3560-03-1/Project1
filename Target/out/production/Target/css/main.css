@@ -129,10 +129,27 @@ button {
     -fx-padding: 20px;
 }
 
-.itemWrapper .viewport {
-    -fx-background-color: transparent;
-}
+    .itemWrapper .viewport {
+        -fx-background-color: transparent;
+    }
 
+    .itemWrapper .track {
+        -fx-background-color: #404040;
+    }
+
+    .itemWrapper .thumb {
+        -fx-background-color: #aaaaaa;
+    }
+
+    .itemWrapper .increment-button, .itemWrapper .decrement-button {
+        -fx-background-color: #404040;
+    }
+
+    .itemWrapper .increment-arrow, .itemWrapper .decrement-arrow {
+        -fx-background-color: #aaaaaa;
+    }
+
+/*center page*/
 .arrow {
     -fx-background-color: #E80018;
     -fx-text-fill: #ffffff;

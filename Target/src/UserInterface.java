@@ -315,111 +315,28 @@ public class UserInterface extends Application {
         HBox topbarSP = new HBox(20, searchBarSP, cartSP);
 
         /* items */
-        Image placeholderImg = new Image("images/placeholder.png");
-
-        ImageView placeholder1 = new ImageView(); //placeholder image
-        placeholder1.setImage(placeholderImg);
-        placeholder1.setFitWidth(150); placeholder1.setFitHeight(150);
-        Button shoe1Name = new Button("Sports Shoe");
-        shoe1Name.setOnAction(e -> primaryStage.setScene(productPageScene)); //switches to product page
-        Label shoe1Price = new Label("$24.00");
-        VBox shoe1 = new VBox(placeholder1, shoe1Name, shoe1Price);
-
-        ImageView placeholder2 = new ImageView(); //placeholder image
-        placeholder2.setImage(placeholderImg);
-        placeholder2.setFitWidth(150); placeholder2.setFitHeight(150);
-        Button shoe2Name = new Button("Tennis Shoe");
-        shoe2Name.setOnAction(e -> primaryStage.setScene(productPageScene)); //switches to product page
-        Label shoe2Price = new Label("$10.00");
-        VBox shoe2 = new VBox(placeholder2, shoe2Name, shoe2Price);
-
-        ImageView placeholder3 = new ImageView(); //placeholder image
-        placeholder3.setImage(placeholderImg);
-        placeholder3.setFitWidth(150); placeholder3.setFitHeight(150);
-        Button shoe3Name = new Button("Slacks");
-        shoe3Name.setOnAction(e -> primaryStage.setScene(productPageScene)); //switches to product page
-        Label shoe3Price = new Label("$30.00");
-        VBox shoe3 = new VBox(placeholder3, shoe3Name, shoe3Price);
-
-        ImageView placeholder4 = new ImageView(); //placeholder image
-        placeholder4.setImage(placeholderImg);
-        placeholder4.setFitWidth(150); placeholder4.setFitHeight(150);
-        Button shoe4Name = new Button("Sports Shoe");
-        shoe4Name.setOnAction(e -> primaryStage.setScene(productPageScene)); //switches to product page
-        Label shoe4Price = new Label("$24.00");
-        VBox shoe4 = new VBox(placeholder4, shoe4Name, shoe4Price);
-
-        ImageView placeholder5 = new ImageView(); //placeholder image
-        placeholder5.setImage(placeholderImg);
-        placeholder5.setFitWidth(150); placeholder5.setFitHeight(150);
-        Button shoe5Name = new Button("Tennis Shoe");
-        shoe5Name.setOnAction(e -> primaryStage.setScene(productPageScene)); //switches to product page
-        Label shoe5Price = new Label("$10.00");
-        VBox shoe5 = new VBox(placeholder5, shoe5Name, shoe5Price);
-
-        ImageView placeholder6 = new ImageView(); //placeholder image
-        placeholder6.setImage(placeholderImg);
-        placeholder6.setFitWidth(150); placeholder6.setFitHeight(150);
-        Button shoe6Name = new Button("Slacks");
-        shoe6Name.setOnAction(e -> primaryStage.setScene(productPageScene)); //switches to product page
-        Label shoe6Price = new Label("$30.00");
-        VBox shoe6 = new VBox(placeholder6, shoe6Name, shoe6Price);
-
-        ImageView placeholder7 = new ImageView(); //placeholder image
-        placeholder7.setImage(placeholderImg);
-        placeholder7.setFitWidth(150); placeholder7.setFitHeight(150);
-        Button shoe7Name = new Button("Sports Shoe");
-        shoe7Name.setOnAction(e -> primaryStage.setScene(productPageScene)); //switches to product page
-        Label shoe7Price = new Label("$24.00");
-        VBox shoe7 = new VBox(placeholder7, shoe7Name, shoe7Price);
-
-        ImageView placeholder8 = new ImageView(); //placeholder image
-        placeholder8.setImage(placeholderImg);
-        placeholder8.setFitWidth(150); placeholder8.setFitHeight(150);
-        Button shoe8Name = new Button("Tennis Shoe");
-        shoe8Name.setOnAction(e -> primaryStage.setScene(productPageScene)); //switches to product page
-        Label shoe8Price = new Label("$10.00");
-        VBox shoe8 = new VBox(placeholder8, shoe8Name, shoe8Price);
-
-        ImageView placeholder9 = new ImageView(); //placeholder image
-        placeholder9.setImage(placeholderImg);
-        placeholder9.setFitWidth(150); placeholder9.setFitHeight(150);
-        Button shoe9Name = new Button("Slacks");
-        shoe9Name.setOnAction(e -> primaryStage.setScene(productPageScene)); //switches to product page
-        Label shoe9Price = new Label("$30.00");
-        VBox shoe9 = new VBox(placeholder9, shoe9Name, shoe9Price);
-
-        //     CSS
-        shoe1Name.getStyleClass().add("spProductName");
-        shoe2Name.getStyleClass().add("spProductName");
-        shoe3Name.getStyleClass().add("spProductName");
-        shoe4Name.getStyleClass().add("spProductName");
-        shoe5Name.getStyleClass().add("spProductName");
-        shoe6Name.getStyleClass().add("spProductName");
-        shoe7Name.getStyleClass().add("spProductName");
-        shoe8Name.getStyleClass().add("spProductName");
-        shoe9Name.getStyleClass().add("spProductName");
-
-        shoe1Price.getStyleClass().add("spProductPrice");
-        shoe2Price.getStyleClass().add("spProductPrice");
-        shoe3Price.getStyleClass().add("spProductPrice");
-        shoe4Price.getStyleClass().add("spProductPrice");
-        shoe5Price.getStyleClass().add("spProductPrice");
-        shoe6Price.getStyleClass().add("spProductPrice");
-        shoe7Price.getStyleClass().add("spProductPrice");
-        shoe8Price.getStyleClass().add("spProductPrice");
-        shoe9Price.getStyleClass().add("spProductPrice");
-
         GridPane items = new GridPane();
-        items.add(shoe1, 0, 0);
-        items.add(shoe2, 0, 1);
-        items.add(shoe3, 0, 2);
-        items.add(shoe4, 1, 0);
-        items.add(shoe5, 1, 1);
-        items.add(shoe6, 1, 2);
-        items.add(shoe7, 2, 0);
-        items.add(shoe8, 2, 1);
-        items.add(shoe9, 2, 2);
+
+        int itemNum = 1;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                ImageView productImage = new ImageView();
+                productImage.setImage(new Image("images/placeholder.png"));
+                //productImage.setImage(new Image("images/product" + itemNum + ".png"));
+                productImage.setFitWidth(150); productImage.setFitHeight(150);
+                Button productNameSearch = new Button("Product Name"); //get the product name
+                Label productPriceSearch = new Label("$00.00"); //getProdPrice()
+                VBox product = new VBox(productImage, productNameSearch, productPriceSearch);
+                //      controls
+                productNameSearch.setOnAction(e -> primaryStage.setScene(productPageScene)); //switches to product page
+                //      CSS
+                productNameSearch.getStyleClass().add("spProductName");
+                productPriceSearch.getStyleClass().add("spProductPrice");
+
+                items.add(product, i, j);
+            }
+        }
+
         ScrollPane itemWrapper = new ScrollPane(items);
 
         //      CSS
@@ -439,7 +356,7 @@ public class UserInterface extends Application {
         rightArrow.getStyleClass().add("arrow");
         pageNumbers.getStyleClass().add("pagination");
 
-        VBox rightSide = new VBox(topbarSP, itemWrapper, pagination);
+        VBox rightSide = new VBox(15, topbarSP, itemWrapper, pagination);
 
         searchPage.setLeft(sidebar);
         searchPage.setCenter(rightSide);
