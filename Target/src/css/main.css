@@ -75,8 +75,16 @@ button {
 }
 
 .carouselText {
+    -fx-background-color: transparent;
     -fx-text-fill: #ffffff;
     -fx-font-size: 15pt;
+    -fx-padding: 0px;
+    -fx-border-color: transparent;
+    -fx-border-width: 0px 0px 5px 0px;
+}
+
+.carouselText:hover {
+    -fx-border-color: #E80018;
 }
 
 /*** SEARCH PAGE */
@@ -322,4 +330,15 @@ button {
 
 .bg {
     -fx-background-color: grey;
+}
+
+/*** PENDING ORDERS */
+.pendingOrder {
+    -fx-background-color: #404040;
+    -fx-padding: 20px;
+    -fx-margin-bottom: 20px;
+}
+
+.orderNumber {
+    -fx-font-size: 20pt;
 }

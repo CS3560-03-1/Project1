@@ -94,6 +94,11 @@ public class UserInterface extends Application {
         Scene thankYouScene = new Scene(thankYou, 1280, 720);
         thankYouScene.getStylesheets().add("css/main.css");
 
+        // pending orders page
+        BorderPane pendingOrders = new BorderPane();
+        Scene pendingOrdersScene = new Scene(pendingOrders, 1280, 720);
+        pendingOrdersScene.getStylesheets().add("css/main.css");
+
         /*** PRODUCT PAGE */
         /* top bar */
         TextField searchBarPP = new TextField("Search");
@@ -282,7 +287,6 @@ public class UserInterface extends Application {
         twtFft.getStyleClass().add("filterItems");
         ffthnd.getStyleClass().add("filterItems");
         hndPl.getStyleClass().add("filterItems");
-
 
         /* topbar */
         //  search bar
@@ -499,26 +503,29 @@ public class UserInterface extends Application {
         icon1.setFitWidth(300); icon1.setFitHeight(300);
         icon2.setFitWidth(300); icon2.setFitHeight(300);
         icon3.setFitWidth(330); icon3.setFitHeight(330);
+        Button ordersLabel = new Button("Pending Orders");
         Label redLabel = new Label("Rewards, Coupons, and Discounts");
-        Label shopCartLabel = new Label("Shopping Categories");
         Label accountLabel = new Label("Your Account");
 
+        //      controls
+        ordersLabel.setOnAction( e -> primaryStage.setScene(pendingOrdersScene));
+
+        VBox ordersBox = new VBox(15, icon2, ordersLabel);
         VBox redCard = new VBox(15, icon1, redLabel);
-        VBox shopCart = new VBox(15, icon2, shopCartLabel);
         VBox yourAccount = new VBox(15, icon3, accountLabel);
 
         //      CSS
+        ordersBox.getStyleClass().add("homePagePanel");
         redCard.getStyleClass().add("homePagePanel");
-        shopCart.getStyleClass().add("homePagePanel");
         yourAccount.getStyleClass().add("homePagePanel");
         redLabel.getStyleClass().add("carouselText");
-        shopCartLabel.getStyleClass().add("carouselText");
+        ordersLabel.getStyleClass().add("carouselText");
         accountLabel.getStyleClass().add("carouselText");
+        ordersBox.setAlignment(Pos.CENTER);
         redCard.setAlignment(Pos.CENTER);
-        shopCart.setAlignment(Pos.CENTER);
         yourAccount.setAlignment(Pos.CENTER);
 
-        HBox carousel = new HBox(20, redCard, shopCart,yourAccount);
+        HBox carousel = new HBox(20, ordersBox, redCard, yourAccount);
 
         homePage.getChildren().addAll(topBarH, welcome, just4You, carousel);
         //      CSS
@@ -1397,11 +1404,14 @@ public class UserInterface extends Application {
                 "Thank you for your purchase. \n" +
                         "Your payment has been approved, and your order is being prepared. A confirmation email has been sent to you."
         );
+        Label orderNumber = new Label("Your order number is: #" + 123456789); // display the packageID
         thankYouText.setPrefWidth(800);
         //      CSS
         thankYouText.getStyleClass().add("thankYou");
+        orderNumber.getStyleClass().add("thankYou");
         thankYouText.setWrapText(true);
         thankYouText.setTextAlignment(TextAlignment.CENTER);
+        orderNumber.setTextAlignment(TextAlignment.CENTER);
 
         /* continue shopping button */
         Button continueShopping = new Button("Continue Shopping");
@@ -1409,7 +1419,7 @@ public class UserInterface extends Application {
         //      CSS
         continueShopping.getStyleClass().add("optionButton");
 
-        VBox thankYouMessage = new VBox(30, thankYouText, continueShopping);
+        VBox thankYouMessage = new VBox(30, thankYouText, orderNumber, continueShopping);
 
         //      CSS
         thankYouMessage.setAlignment(Pos.CENTER);
@@ -1417,6 +1427,92 @@ public class UserInterface extends Application {
 
         thankYou.setTop(targetLogoButtonTY);
         thankYou.setCenter(thankYouMessage);
+
+        ///////////////////
+
+        /*** PENDING ORDERS */
+        /* top bar */
+        TextField searchBarPO = new TextField("Search");
+        //      CSS
+        searchBarPO.getStyleClass().add("searchBar");
+        searchBarPO.setPrefWidth(800);
+        //      controls
+        searchBarPO.setOnKeyReleased(e -> {
+            if (!searchBarPO.getText().isEmpty() && (e.getCode() == KeyCode.ENTER)) {
+                primaryStage.setScene(searchPageScene); //switches to search results page
+            }
+        });
+        // Target Logo
+        Button targetLogoButtonPO = new Button();
+        ImageView targetLogoPO = new ImageView();
+        targetLogoPO.setImage(logo);
+        targetLogoPO.setFitWidth(234);
+        targetLogoPO.setFitHeight(51);
+        targetLogoButtonPO.setGraphic(targetLogoPO);
+        targetLogoButtonPO.setOnAction(e -> primaryStage.setScene(homePageScene));
+        //      CSS
+        targetLogoButtonPO.getStyleClass().add("targetLogo");
+
+        //  cart button
+        Button cartPO = new Button("Cart");
+        cartPO.setOnAction(e -> primaryStage.setScene(cartScene));
+        ImageView cartImageViewPO = new ImageView();
+        cartImageViewPO.setFitHeight(25);
+        cartImageViewPO.setFitWidth(25);
+        cartImageViewPO.setImage(cartImage);
+        cartPO.setGraphic(cartImageViewPO);
+        //      CSS styling
+        cartPO.getStyleClass().add("cartButton");
+
+        /* list of orders */
+        // first order
+        //  order number
+        Label orderNumberLabel1 = new Label("Order Number: ");
+        Label orderNumberValue1 = new Label("#" + 123456789); // corresponding order number
+        HBox orderNumber1 = new HBox(orderNumberLabel1, orderNumberValue1);
+        //      CSS
+        orderNumberLabel1.getStyleClass().add("boldedText");
+        orderNumberValue1.getStyleClass().add("unboldedText");
+        orderNumberLabel1.getStyleClass().add("orderNumber");
+        orderNumberValue1.getStyleClass().add("orderNumber");
+
+        //  delivery type
+        Label deliveryTypeText = new Label("Method: ");
+        Label deliveryType = new Label("Pick-Up"); // pick-up or delivery, getDelMethod()
+        HBox deliveryTypeContainer = new HBox(deliveryTypeText, deliveryType);
+        //      CSS
+        deliveryTypeText.getStyleClass().add("boldedText");
+        deliveryType.getStyleClass().add("unboldedText");
+
+        //  address
+        Label deliveryAddrText = new Label("Address: ");
+        Label deliveryAddr = new Label("2347 Harper St., Seattle, WA 12345"); // target location if pick-up, customer addr if delivery
+        HBox deliveryAddrContainer = new HBox(deliveryAddrText, deliveryAddr);
+        //      CSS
+        deliveryAddrText.getStyleClass().add("boldedText");
+        deliveryAddr.getStyleClass().add("unboldedText");
+
+        //  status
+        Label statusText = new Label("Status: ");
+        Label status = new Label("Ready"); // status of the package
+        HBox statusContainer = new HBox(statusText, status);
+        //      CSS
+        statusText.getStyleClass().add("boldedText");
+        status.getStyleClass().add("unboldedText");
+
+        VBox order1 = new VBox(orderNumber1, deliveryTypeContainer, deliveryAddrContainer, statusContainer);
+
+        //      CSS
+        order1.getStyleClass().add("pendingOrder");
+
+        VBox listOfOrders = new VBox(order1);
+
+        HBox topBarPO = new HBox(20, targetLogoButtonPO, searchBarPO, cartPO);
+
+        pendingOrders.setTop(topBarPO);
+        pendingOrders.setCenter(listOfOrders);
+        //      CSS
+        pendingOrders.setPadding(new Insets(30));
 
         ///////////////////
 
