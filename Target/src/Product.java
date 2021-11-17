@@ -7,8 +7,8 @@ public class Product {
     public Product()
     {
         prodID = 0;
-        prodPrice = 0.0;
-        prodWeight = 0.0;
+        prodPrice = 0.0F;
+        prodWeight = 0.0F;
         prodPerishable = false;
         prodDescription = "";
     }

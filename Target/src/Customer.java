@@ -2,16 +2,20 @@ public class Customer {
     private int custID;
     private String address;
     private String billAddress;
-    private int phoneNum;
-    private int creditCard;
+    private String phoneNum;
+    private String creditCard;
+    private String username;
+    private String password;
 
-    public Customer()
+    public Customer(int ID, String add, String billAdd, String phoNum, String credCard, String user, String pass)
     {
-        custID = 0;
-        address = "";
-        billAddress = "";
-        phoneNum = 0;
-        creditCard = 0;
+        custID = ID;
+        address = add;
+        billAddress = billAdd;
+        phoneNum = phoNum;
+        creditCard = credCard;
+        username = user;
+        password = pass;
     }
 
     public int getCustID() {
@@ -26,12 +30,20 @@ public class Customer {
         return billAddress;
     }
 
-    public int getPhoneNum() {
+    public String getPhoneNum() {
         return phoneNum;
     }
 
-    public int getCreditCard() {
+    public String getCreditCard() {
         return creditCard;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     public void setAddress(String address) {
@@ -42,11 +54,24 @@ public class Customer {
         this.billAddress = billAddress;
     }
 
-    public void setPhoneNum(int phoneNum) {
+    public void setPhoneNum(String phoneNum) {
         this.phoneNum = phoneNum;
     }
 
-    public void setCreditCard(int creditCard) {
+    public void setCreditCard(String creditCard) {
         this.creditCard = creditCard;
     }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setCustID(int custID){
+        this.custID = custID;
+    }
+
 }

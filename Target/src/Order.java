@@ -10,6 +10,12 @@ public class Order {
         delMethod = "in-person";
     }
 
+    public Order(int ID, boolean confirm, String delMet){
+        orderID = ID;
+        confirmation = confirm;
+        delMethod = delMet;
+    }
+
     public int getOrderID() {
         return orderID;
     }

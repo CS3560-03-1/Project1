@@ -6,13 +6,22 @@ button {
     -fx-cursor: pointer, auto;
 }
 
+.divider {
+    -fx-background-color: #686868;
+    -fx-font-size: 1px;
+}
+
 .cartButton {
     -fx-background-color: #E80018;
     -fx-text-fill: #ffffff;
-    -fx-padding: 5px 10px 5px 10p;
-    -fx-border-radius: 10px;
-    -fx-border-width: 0;
+    -fx-padding: 5px 10px 5px 10px;
+
 }
+
+    .cartButton:hover {
+        -fx-background-color: #ffffff;
+        -fx-text-fill: #E80018;
+    }
 
 .targetLogo {
     -fx-background-color: transparent;
@@ -21,10 +30,15 @@ button {
 
 .searchBar {
     -fx-background-color: #302D2D;
-    -fx-text-fill: #ffffff;
+    -fx-text-fill: #aaaaaa;
     -fx-border-radius: 10px;
     -fx-border-color: #404040;
     -fx-border-width: 1px;
+}
+
+.error {
+    -fx-text-fill: #E80018;
+    -fx-font-size: 13pt;
 }
 
 /*** HOME PAGE */
@@ -40,14 +54,13 @@ button {
     -fx-background-color: #E80018;
     -fx-text-fill: #ffffff;
     -fx-font-size: 20pt;
-    -fx-border-radius: 10px;
     -fx-padding: 5px 10px;
 }
 
 .homePagePanel {
     -fx-padding: 20px;
-    -fx-border-radius: 10px;
     -fx-border-color: #E80018;
+    -fx-border-radius: 10px;
     -fx-border-width: 10px;
 }
 
@@ -82,10 +95,10 @@ button {
     -fx-border-width: 0px 0px 4px 0px;
 }
 
-.spProductName:hover {
-    -fx-border-color: #E80018;
-    -fx-border-width: 0px 0px 4px 0px;
-}
+    .spProductName:hover {
+        -fx-border-color: #E80018;
+        -fx-border-width: 0px 0px 4px 0px;
+    }
 
 .spProductPrice {
     -fx-text-fill: #ffffff;
@@ -107,6 +120,12 @@ button {
     -fx-text-fill: #ffffff;
     -fx-border-radius: 50px;
 }
+
+    .arrow:hover {
+        -fx-background-color: #ffffff;
+        -fx-text-fill: #E80018;
+        -fx-border-radius: 50px;
+    }
 
 .pagination {
     -fx-text-fill: #ffffff;
@@ -139,12 +158,12 @@ button {
     -fx-text-fill: #ffffff;
     -fx-border-color: #404040;
     -fx-border-size: 1px;
-    -fx-border-radius: 10px;
+    -fx-border-radius: 5px;
 }
 
-.comboBox .list-cell {
-    -fx-text-fill: #ffffff;
-}
+    .comboBox .list-cell {
+        -fx-text-fill: #ffffff;
+    }
 
 .combo-box .list-view .list-cell {
     -fx-background-color: #302D2D;
@@ -159,15 +178,20 @@ button {
 
 .addToCart {
     -fx-background-color: #E80018;
+    -fx-font-size: 15pt;
     -fx-text-fill: #ffffff;
     -fx-padding: 5px 10px;
-    -fx-border-radius: 10px;
 }
+
+    .addToCart:hover {
+        -fx-background-color: #ffffff;
+        -fx-text-fill: #E80018;
+    }
 
 /*** CART */
 .checkoutModule {
     -fx-background-color: #404040;
-    -fx-border-radius: 10px;
+
 }
 
 .cartProductName {
@@ -185,7 +209,13 @@ button {
     -fx-background-color: #E80018;
     -fx-text-fill: #ffffff;
     -fx-border-color: none;
+    -fx-font-size: 15pt;
 }
+
+    .checkoutButton:hover {
+        -fx-background-color: #ffffff;
+        -fx-text-fill: #E80018;
+    }
 
 .unboldedText {
     -fx-text-fill: #ffffff;
@@ -204,7 +234,13 @@ button {
     -fx-text-fill: #ffffff;
     -fx-font-size: 20pt;
     -fx-border-width: 0;
+
 }
+
+    .optionButton:hover {
+        -fx-background-color: #ffffff;
+        -fx-text-fill: #E80018;
+    }
 
 /*** FORM */
 .formTitle {
@@ -226,12 +262,22 @@ button {
     -fx-border-width: 1px;
 }
 
+.emptyForm {
+    -fx-border-color: #E80018;
+}
+
 .confirmButton {
     -fx-background-color: #E80018;
     -fx-text-fill: #ffffff;
     -fx-font-size: 15pt;
     -fx-border-width: 0;
+
 }
+
+    .confirmButton:hover {
+        -fx-background-color: #ffffff;
+        -fx-text-fill: #E80018;
+    }
 
 .billingAddr {
     -fx-text-fill: #ffffff;
@@ -239,9 +285,31 @@ button {
 }
 
 /*** FINAL CHECKOUT */
+.moduleHeader {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 20pt;
+    -fx-font-weight: 900;
+}
+
 .editButton {
     -fx-background-color: transparent;
     -fx-text-fill: #aaaaaa;
     -fx-border-color: #aaaaaa;
-    -fx-border-radius: 10px;
+    -fx-border-radius: 5px;
+}
+
+    .editButton:hover {
+        -fx-background-color: #aaaaaa;
+        -fx-text-fill: #252525;
+    }
+
+/*** THANK YOU */
+.thankYou {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14pt;
+    -fx-text-align: center;
+}
+
+.bg {
+    -fx-background-color: grey;
 }
