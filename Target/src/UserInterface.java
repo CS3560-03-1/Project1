@@ -312,12 +312,18 @@ public class UserInterface extends Application {
         int itemNum = 1; //the index of the product on the page, 1-9
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
+                //  fetch data from database
+                InventoryItem inventoryItem = new InventoryItem(itemNum + "");
+                String prodName = inventoryItem.dbGetItemName(itemNum);
+                double prodCost = inventoryItem.dbGetCost(itemNum);
+                String prodDesc = inventoryItem.dbGetDesc(itemNum);
+
                 ImageView productImage = new ImageView();
                 Image temp = new Image("images/product" + itemNum + ".png");
                 productImage.setImage(temp);
                 productImage.setFitWidth(150); productImage.setFitHeight(150);
-                Button productNameSearch = new Button("Product Name"); //get the product name
-                Label productPriceSearch = new Label("$00.00"); //getProdPrice()
+                Button productNameSearch = new Button(prodName); //get the product name
+                Label productPriceSearch = new Label("$" + String.format("%.2f", prodCost)); //getProdPrice()
                 VBox product = new VBox(productImage, productNameSearch, productPriceSearch);
                 //      controls
                 productNameSearch.setOnAction(e -> {
@@ -327,8 +333,8 @@ public class UserInterface extends Application {
                     addImage1.setImage(temp);
                     addImage2.setImage(temp);
                     // render the product page
-                    productName.setText("Product Name"); //get product name
-                    productPrice.setText("$" + 00.00); //get product price
+                    productName.setText(prodName); //get product name
+                    productPrice.setText("$" + String.format("%.2f", prodCost)); //get product price
                     rating.setText("★★★★☆"); //get product rating
                     // render number of sizes a product comes in
                     int numOfSizes = 5;
@@ -341,11 +347,7 @@ public class UserInterface extends Application {
                         colorCombo.getItems().add(invItem + ""); //get color
                     }
                     //render product description
-                    description.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam at iaculis sem." +
-                            "Nulla facilisi. Sed rutrum interdum velit, pharetra elementum neque malesuada at. Donec non" +
-                            "arcu eleifend, rhoncus nibh sed, hendrerit nibh. Vivamus dapibus semper odio. Nullam eleifend" +
-                            "ante vitae ligula vestibulum interdum."
-                    );
+                    description.setText(prodDesc);
                     // switch to product page scene
                     primaryStage.setScene(productPageScene);
                 }); //switches to product page

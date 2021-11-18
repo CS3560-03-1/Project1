@@ -48,5 +48,7 @@ public class ProductDAO
         }
     }
 
-    public void update(ProductItem product)
+    public void update(ProductItem product) {
+        ;
+    }
 }
