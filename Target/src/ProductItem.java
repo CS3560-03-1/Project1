@@ -62,11 +62,20 @@ public class ProductItem {
     {
         ProductDAO product = new ProductDAO();
         ProductItem prod = new ProductItem();
-        prod.setProdID(1017);
+        /*
+        prod.setProdID(1018);
         prod.setProdPerishable(true);
-        prod.setProdName("bananas");
-        prod.setProdPhoto("banana");
-        prod.setProdDescription("banana");
+        prod.setProdName("apples");
+        prod.setProdPhoto("apples");
+        prod.setProdDescription("apples");
         product.add(prod);
+         */
+        ProductItem newProd = new ProductItem();
+        newProd.setProdID(1016);
+        newProd.setProdPerishable(false);
+        newProd.setProdName("phone");
+        newProd.setProdPhoto("phone");
+        newProd.setProdDescription("phone");
+        product.update(newProd);
     }
 }

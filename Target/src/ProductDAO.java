@@ -49,4 +49,33 @@ public class ProductDAO
     }
 
     public void update(ProductItem product)
+    {
+        try {
+            String queryString = "UPDATE productitem SET perishable=?, photo=?, description=?, name=? WHERE productID=?";
+            connection = getConnection();
+            ptmt = connection.prepareStatement(queryString);
+            ptmt.setBoolean(1, product.isProdPerishable());
+            ptmt.setString(2, product.getProdPhoto());
+            ptmt.setString(3, product.displayProdDescript());
+            ptmt.setString(4, product.displayProdName());
+            ptmt.setInt(5, product.getProdID());
+            ptmt.executeUpdate();
+            System.out.println("Table Updated Successfully");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (ptmt != null)
+                    ptmt.close();
+                if (connection != null)
+                    connection.close();
+            }
+
+            catch (SQLException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }
