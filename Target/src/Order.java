@@ -1,3 +1,5 @@
+import java.sql.*;
+
 public class Order {
     private int orderID;
     private boolean confirmation;
@@ -35,5 +37,36 @@ public class Order {
 
     public void setDelMethod(String delMethod) {
         this.delMethod = delMethod;
+    }
+
+
+    public static void printOrderInfo(){
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "jpacio123");
+
+            Statement statement = connection.createStatement();
+
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM mydb.order;");
+
+            while (resultSet.next()) {
+                System.out.println("Delivery Method: " + resultSet.getString("deliveryMethod"));
+                System.out.print("Confirmation: ");
+
+                if(resultSet.getInt("confirmation") == 1){
+                    System.out.print("Order Confirmed.\n");
+                }
+                else {
+                    System.out.println("Order Not Yet Confirmed.\n");
+                }
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
+    public static void main(String[] args) {
+        printOrderInfo();
     }
 }
