@@ -197,7 +197,12 @@ public class UserInterface extends Application {
         Button addToCart = new Button("Add to Cart");
         //      controls
         addToCart.setOnAction(e -> {
-            ; // send all information to database to add to cart
+            if (productSizeCombo.getValue() != null
+                    && quantityCombo.getValue() != null
+                    && colorCombo.getValue() != null) {
+                System.out.println("added to cart");
+                ; // send all information to database to add to cart
+            }
         });
         //      CSS
         addToCart.getStyleClass().add("addToCart");
