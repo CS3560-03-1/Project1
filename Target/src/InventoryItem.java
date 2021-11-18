@@ -1,3 +1,5 @@
+import java.sql.*;
+
 public class InventoryItem
 {
     private int inventoryID;
@@ -90,6 +92,91 @@ public class InventoryItem
         this.itemName = itemName;
     }
 
+    public void getInventoryItems(){
 
+}
+
+    //Retrieves Item Description of the desired item ID (any int from 1-16) (used for product screen in the GUI)
+    public String dbGetDesc(int ID){
+        String result = " ";
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "jpacio123");
+
+            Statement statement = connection.createStatement();
+
+            ResultSet resultSet = statement.executeQuery("SELECT description FROM mydb.inventoryitem WHERE inventoryItemID = '" + ID + "'");
+
+            result = resultSet.getString("description");
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public String dbGetItemName(int ID){
+        String result = " ";
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "jpacio123");
+
+            Statement statement = connection.createStatement();
+
+            ResultSet resultSet = statement.executeQuery("SELECT item name FROM mydb.inventoryitem WHERE inventoryItemID = '" + ID + "'");
+
+            result = resultSet.getString("item name");
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    //Retrieve the Cost of the desired item (Use ID's 1-16)
+    public double dbGetCost(int ID){
+        double result = 0.0;
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "jpacio123");
+
+            Statement statement = connection.createStatement();
+
+            ResultSet resultSet = statement.executeQuery("SELECT cost FROM mydb.inventoryitem WHERE inventoryItemID = '" + ID + "'");
+
+            result = resultSet.getDouble("cost");
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    //Sets the quantity of the items ordered (will be used in product screen when buying)
+    public void dbSetQuantity(int quantity, int ID) {
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "jpacio123");
+
+            Statement statement = connection.createStatement();
+
+            statement.executeUpdate("UPDATE mydb.inventoryitem SET quantity =" + quantity + " WHERE inventoryItemID =" + ID);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    //Retrieve the Quantity of the item ordered (Use ID's 1-16) (will be used in the shopping cart screen)
+    public int dbGetQuantity(int ID) {
+        int result = 0;
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "jpacio123");
+
+            Statement statement = connection.createStatement();
+
+            ResultSet resultSet = statement.executeQuery("SELECT quantity FROM mydb.inventoryitem WHERE inventoryItemID = '" + ID + "'");
+
+            result = resultSet.getInt("quantity");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
 
 }
