@@ -67,6 +67,8 @@ public class ProductItem {
 
             ResultSet resultSet = statement.executeQuery("SELECT name FROM mydb.productitem WHERE productID = '" + ID + "'");
 
+            resultSet.next();
+
             result = resultSet.getString("name");
         }
         catch(Exception e){

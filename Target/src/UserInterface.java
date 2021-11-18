@@ -314,7 +314,8 @@ public class UserInterface extends Application {
             for (int j = 0; j < 3; j++) {
                 //  fetch data from database
                 InventoryItem inventoryItem = new InventoryItem(itemNum + "");
-                String prodName = inventoryItem.dbGetItemName(itemNum);
+                ProductItem p = new ProductItem();
+                String prodName = p.dbGetProdName(1000 + itemNum);
                 double prodCost = inventoryItem.dbGetCost(itemNum);
                 String prodDesc = inventoryItem.dbGetDesc(itemNum);
 

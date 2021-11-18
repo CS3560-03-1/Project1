@@ -106,6 +106,8 @@ public class InventoryItem
 
             ResultSet resultSet = statement.executeQuery("SELECT description FROM mydb.inventoryitem WHERE inventoryItemID = '" + ID + "'");
 
+            resultSet.next();
+
             result = resultSet.getString("description");
         }
         catch(Exception e){
@@ -121,7 +123,7 @@ public class InventoryItem
 
             Statement statement = connection.createStatement();
 
-            ResultSet resultSet = statement.executeQuery("SELECT item name FROM mydb.inventoryitem WHERE inventoryItemID = '" + ID + "'");
+            ResultSet resultSet = statement.executeQuery("SELECT 'item name' FROM mydb.inventoryitem WHERE inventoryItemID = '" + ID + "'");
 
             result = resultSet.getString("item name");
         }
@@ -140,6 +142,8 @@ public class InventoryItem
             Statement statement = connection.createStatement();
 
             ResultSet resultSet = statement.executeQuery("SELECT cost FROM mydb.inventoryitem WHERE inventoryItemID = '" + ID + "'");
+
+            resultSet.next();
 
             result = resultSet.getDouble("cost");
         }
