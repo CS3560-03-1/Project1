@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5e0b49ea-6ac6-4241-857e-140a6aa36c6f" name="Changes" comment="new module fix">
+      <change afterPath="$PROJECT_DIR$/Target/src/InventoryItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Target/src/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/Target/src/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Target/src/PackageInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/Target/src/PackageInformation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Target/src/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Target/src/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Target/src/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/Target/src/Product.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +16,13 @@
   </component>
   <component name="CompilerWorkspaceConfiguration">
     <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -52,7 +58,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="editor.reader.mode" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="ReaderModeSettings">
     <option name="showWarnings" value="true" />

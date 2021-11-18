@@ -3,6 +3,7 @@ public class Product {
     private float prodPrice, prodWeight;
     private boolean prodPerishable;
     private String prodDescription;
+    private String prodName;
 
     public Product()
     {
@@ -11,6 +12,7 @@ public class Product {
         prodWeight = 0.0F;
         prodPerishable = false;
         prodDescription = "";
+        prodName = "";
     }
 
     public int getProdID(){
@@ -31,6 +33,11 @@ public class Product {
 
     public String displayProdDescript(){
         return prodDescription;
+    }
+
+    public String displayProdName()
+    {
+        return prodName;
     }
 
 }
