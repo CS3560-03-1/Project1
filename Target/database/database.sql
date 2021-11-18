@@ -103,7 +103,7 @@ CREATE TABLE `inventoryitem` (
 
 LOCK TABLES `inventoryitem` WRITE;
 /*!40000 ALTER TABLE `inventoryitem` DISABLE KEYS */;
-INSERT INTO `inventoryitem` VALUES (1,1001,NULL,21,69.99,'red',1.75,'12 in','Shoe used for sports and running'),(2,1002,NULL,29,59.99,'red',2.00,'11 in','Casual shoes for walking'),(3,1003,NULL,50,30.00,'red',2.00,'30 x 30','Regular slacks'),(4,1004,NULL,51,15.00,'red',2.00,'Medium','Normal baic t shirt'),(5,1005,NULL,169,8.99,'red',2.00,'Medium','Casual fitting hat'),(6,1006,NULL,98,12.00,'red',2.00,'N/A','Delicious cake with frosting'),(7,1007,NULL,324,3.50,'red',2.00,'N/A','Pack of twinkies'),(8,1008,NULL,132,4.99,'red',2.00,'N/A','Hot dog sausages for cooking'),(9,1009,NULL,68,2.50,'red',2.00,'N/A','Fast and easy noodles'),(10,1010,NULL,19,3.00,'red',2.00,'N/A','Delicious healthy grapes'),(11,1011,NULL,90,10.00,'red',2.00,'5 in','Fragrant and nice candle'),(12,1012,NULL,85,35.00,'red',2.00,'3.5 ft','Comfortable wooden chair'),(13,1013,NULL,15,5.00,'red',2.00,'8 in','Pack of sharpened pencils'),(14,1014,NULL,321,3.00,'red',2.00,'4 in','Pack of colorful crayons'),(15,1015,NULL,56,200.00,'gold',2.00,'2 in','Basic gold ring'),(16,1016,NULL,98,150.00,'silver',2.00,'N/A','Blingy silver necklace');
+INSERT INTO `inventoryitem` VALUES (1,1001,'Sports Shoe',21,69.99,'red',1.75,'12 in','Shoe used for sports and running'),(2,1002,'Tennis Shoes',29,59.99,'red',2.00,'11 in','Casual shoes for walking'),(3,1003,'Slacks',50,30.00,'red',2.00,'30 x 30','Regular slacks'),(4,1004,'T Shirt',51,15.00,'red',2.00,'Medium','Normal baic t shirt'),(5,1005,'Hat',169,8.99,'red',2.00,'Medium','Casual fitting hat'),(6,1006,'Cake',98,12.00,'red',2.00,'N/A','Delicious cake with frosting'),(7,1007,'Twinkies',324,3.50,'red',2.00,'N/A','Pack of twinkies'),(8,1008,'Hot dogs',132,4.99,'red',2.00,'N/A','Hot dog sausages for cooking'),(9,1009,'Instant ramen',68,2.50,'red',2.00,'N/A','Fast and easy noodles'),(10,1010,'Grapes',19,3.00,'red',2.00,'N/A','Delicious healthy grapes'),(11,1011,'Candle',90,10.00,'red',2.00,'5 in','Fragrant and nice candle'),(12,1012,'Chair',85,35.00,'red',2.00,'3.5 ft','Comfortable wooden chair'),(13,1013,'Pencils',15,5.00,'red',2.00,'8 in','Pack of sharpened pencils'),(14,1014,'Crayons',321,3.00,'red',2.00,'4 in','Pack of colorful crayons'),(15,1015,'Ring',56,200.00,'gold',2.00,'2 in','Basic gold ring'),(16,1016,'Necklace',98,150.00,'silver',2.00,'N/A','Blingy silver necklace');
 /*!40000 ALTER TABLE `inventoryitem` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -130,7 +130,7 @@ CREATE TABLE `order` (
 
 LOCK TABLES `order` WRITE;
 /*!40000 ALTER TABLE `order` DISABLE KEYS */;
-INSERT INTO `order` VALUES (51,1,'Pick-Up',NULL,NULL),(128,1,'Delivery',NULL,NULL);
+INSERT INTO `order` VALUES (1,0,'Pick-up',NULL,NULL),(2,0,'Pick-up',NULL,NULL),(3,0,'Pick-up',NULL,NULL),(4,0,'Pick-up',NULL,NULL);
 /*!40000 ALTER TABLE `order` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -200,6 +200,7 @@ CREATE TABLE `transaction` (
   `orderID` int NOT NULL,
   `date` int DEFAULT NULL,
   `transType` varchar(45) DEFAULT NULL,
+  `transAmount` double DEFAULT NULL,
   PRIMARY KEY (`transactionID`,`custName`,`orderID`),
   KEY `t.custName` (`custName`),
   KEY `orderID` (`orderID`),
@@ -226,4 +227,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-17 23:02:02
+-- Dump completed on 2021-11-18  7:34:02

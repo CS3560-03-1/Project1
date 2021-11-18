@@ -2,7 +2,7 @@ public class Transaction {
     private int transID;
     private int transDate; //MMDDYYYY
     private String transType;
-    private float transAmount;
+    private double transAmount;
 
     public Transaction()
     {
@@ -14,7 +14,7 @@ public class Transaction {
         transAmount = 0;
     }
 
-    public void transAmt(float tax, float shipping, float totalCost) {
+    public void transAmt(double tax, double shipping, double totalCost) {
         //totalCost taken from shoppingCart object
         //shipping taken from external shipping database
         transAmount = tax + shipping + totalCost;
@@ -32,7 +32,10 @@ public class Transaction {
         return transType;
     }
 
-    public float getTransAmount() {
+    public double getTransAmount() {
         return transAmount;
     }
+
+
+
 }
