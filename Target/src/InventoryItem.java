@@ -1,6 +1,7 @@
 public class InventoryItem
 {
     private int inventoryID;
+    private String itemName;
     private int quantity;
     private float cost;
     private String color;
@@ -8,8 +9,9 @@ public class InventoryItem
     private String size;
     private String description;
 
-    public InventoryItem()
+    public InventoryItem(String itemName)
     {
+        this.itemName = itemName;
         inventoryID = 0;
         quantity = 0;
         cost = 0.0F;
@@ -78,5 +80,13 @@ public class InventoryItem
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getItemName() {
+        return itemName;
+    }
+
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
     }
 }
