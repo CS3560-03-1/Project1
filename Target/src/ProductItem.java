@@ -58,6 +58,23 @@ public class ProductItem {
         this.prodPhoto = prodPhoto;
     }
 
+    public String dbGetProdName(int ID){
+        String result = " ";
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "jpacio123");
+
+            Statement statement = connection.createStatement();
+
+            ResultSet resultSet = statement.executeQuery("SELECT name FROM mydb.productitem WHERE productID = '" + ID + "'");
+
+            result = resultSet.getString("name");
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return result;
+    }
+
     public static void main(String[] args)
     {
         ProductDAO product = new ProductDAO();
