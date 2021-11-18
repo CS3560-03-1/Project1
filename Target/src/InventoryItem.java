@@ -1,8 +1,3 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
-
 public class InventoryItem
 {
     private int inventoryID;
@@ -93,10 +88,6 @@ public class InventoryItem
 
     public void setItemName(String itemName) {
         this.itemName = itemName;
-    }
-
-    public void getInventoryItems(){
-
     }
 
 

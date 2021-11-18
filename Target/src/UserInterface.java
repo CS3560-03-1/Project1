@@ -136,19 +136,16 @@ public class UserInterface extends Application {
         HBox topBarPP = new HBox(20, targetLogoButtonPP, searchBarPP, cartPP);
 
         /* main body */
-        Image productImg = new Image("images/placeholder.png");
+        // TODO
         //  additional images
         ImageView addImage1 = new ImageView();
         ImageView addImage2 = new ImageView();
-        addImage1.setImage(productImg);
-        addImage2.setImage(productImg);
         addImage1.setFitWidth(150); addImage1.setFitHeight(150);
         addImage2.setFitWidth(150); addImage2.setFitHeight(150);
         VBox additionalImages = new VBox(20, addImage1, addImage2);
 
         //  main image
         ImageView mainImage = new ImageView();
-        mainImage.setImage(productImg);
         HBox productImages = new HBox(20, additionalImages, mainImage); //container
 
         //  product information, rendered on search page
@@ -316,14 +313,19 @@ public class UserInterface extends Application {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 ImageView productImage = new ImageView();
-                productImage.setImage(new Image("images/placeholder.png"));
-                //productImage.setImage(new Image("images/product" + itemNum + ".png"));
+                Image temp = new Image("images/product" + itemNum + ".png");
+                productImage.setImage(temp);
                 productImage.setFitWidth(150); productImage.setFitHeight(150);
                 Button productNameSearch = new Button("Product Name"); //get the product name
                 Label productPriceSearch = new Label("$00.00"); //getProdPrice()
                 VBox product = new VBox(productImage, productNameSearch, productPriceSearch);
                 //      controls
                 productNameSearch.setOnAction(e -> {
+                    // render product image
+                    mainImage.setFitWidth(600); mainImage.setFitHeight(600);
+                    mainImage.setImage(temp);
+                    addImage1.setImage(temp);
+                    addImage2.setImage(temp);
                     // render the product page
                     productName.setText("Product Name"); //get product name
                     productPrice.setText("$" + 00.00); //get product price
@@ -347,6 +349,7 @@ public class UserInterface extends Application {
                     // switch to product page scene
                     primaryStage.setScene(productPageScene);
                 }); //switches to product page
+                itemNum++;
                 //      CSS
                 productNameSearch.getStyleClass().add("spProductName");
                 productPriceSearch.getStyleClass().add("spProductPrice");
