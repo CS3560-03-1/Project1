@@ -487,34 +487,32 @@ public class UserInterface extends Application {
         HBox topBarC = new HBox(20, targetLogoButtonC, searchBarC, cartC);
 
         /* cart items */
-        Image placeholderCart1 = new Image("/images/placeholder.png");
-        ImageView cartImage1 = new ImageView(placeholderCart1);
-        cartImage1.setFitWidth(200); cartImage1.setFitHeight(200);
-        Label cartText1 = new Label("Sports Shoe");
-        Label cartPrice1 = new Label("$24.00");
-        Label cartQuantity1 = new Label("Quantity" + "1");
-        VBox cartItemInfo = new VBox(cartText1, cartPrice1, cartQuantity1);
-        HBox cartItem1 = new HBox(20, cartImage1, cartItemInfo);
+        VBox cartItems = new VBox(15);
 
-        Image placeholderCart2 = new Image("/images/placeholder.png");
-        ImageView cartImage2 = new ImageView(placeholderCart2);
-        cartImage2.setFitWidth(200); cartImage2.setFitHeight(200);
-        Label cartText2 = new Label("Towels");
-        Label cartPrice2 = new Label("$15.00");
-        Label cartQuantity2 = new Label("Quantity" + "1");
-        VBox cartItemInfo2 = new VBox(cartText2, cartPrice2, cartQuantity2);
-        HBox cartItem2 = new HBox(20, cartImage2, cartItemInfo2);
+        int cartTotal = 5; //getProdQuantity in shopping cart
+        for (int i = 0; i < cartTotal; i++) {
+            ImageView cartItemImage = new ImageView(new Image("/images/placeholder.png"));
+            //ImageView cartItemImage = new ImageView(new Image("/images/cartImage" + i + ".png"));
+            cartItemImage.setFitWidth(200); cartItemImage.setFitHeight(200);
+            Label itemName = new Label("Product Name"); //get product name
+            Label itemPrice = new Label("$" + 00.00); //get product price
+            Label itemQuantity = new Label("Quantity: " + 0); //get product quantity
+            VBox cartItemInfo = new VBox(itemName, itemPrice, itemQuantity);
+            HBox cartItem = new HBox(20, cartItemImage, cartItemInfo);
+            //      CSS
+            cartItemInfo.setAlignment(Pos.CENTER_LEFT);
+            itemName.getStyleClass().add("cartProductName");
+            itemPrice.getStyleClass().add("cartProductInfo");
+            itemQuantity.getStyleClass().add("cartProductInfo");
+
+            cartItems.getChildren().add(cartItem);
+        }
+
+        ScrollPane cartContainer = new ScrollPane(cartItems);
 
         //      CSS
-        cartText1.getStyleClass().add("cartProductName");
-        cartText2.getStyleClass().add("cartProductName");
-        cartPrice1.getStyleClass().add("cartProductInfo");
-        cartPrice2.getStyleClass().add("cartProductInfo");
-        cartQuantity1.getStyleClass().add("cartProductInfo");
-        cartQuantity2.getStyleClass().add("cartProductInfo");
-
-        VBox cartItems = new VBox(30, cartItem1, cartItem2);
-        //      CSS
+        cartContainer.setFitToWidth(true);
+        cartContainer.getStyleClass().add("itemWrapper");
         cartItems.getStyleClass().add("checkoutModule");
         cartItems.setPadding(new Insets(30));
 
@@ -582,7 +580,7 @@ public class UserInterface extends Application {
         cart.setMargin(cartItems, new Insets(0, 30, 0, 0));
 
         cart.setTop(topBarC);
-        cart.setCenter(cartItems);
+        cart.setCenter(cartContainer);
         cart.setRight(cartTotals);
 
         ///////////////////
