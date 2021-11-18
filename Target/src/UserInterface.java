@@ -11,6 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 public class UserInterface extends Application {
@@ -19,7 +20,7 @@ public class UserInterface extends Application {
     double subTotal = 0;
     int totalQuan = 0;
     double estTax = 0;
-    double priceTotal = 0;
+    double priceTotal = subTotal + estTax;
 
     @Override
     public void start(Stage primaryStage) throws Exception
@@ -73,6 +74,11 @@ public class UserInterface extends Application {
         Scene enterAddressScene = new Scene(enterAddress, 1280, 720);
         enterAddressScene.getStylesheets().add("css/main.css");
 
+        // enter billing address
+        BorderPane billingAddress = new BorderPane();
+        Scene billingAddressScene = new Scene(billingAddress, 1280, 720);
+        billingAddress.getStylesheets().add("css/main.css");
+
         // add new card
         BorderPane newCard = new BorderPane();
         Scene newCardScene = new Scene(newCard, 1280, 720);
@@ -87,6 +93,11 @@ public class UserInterface extends Application {
         BorderPane thankYou = new BorderPane();
         Scene thankYouScene = new Scene(thankYou, 1280, 720);
         thankYouScene.getStylesheets().add("css/main.css");
+
+        // pending orders page
+        BorderPane pendingOrders = new BorderPane();
+        Scene pendingOrdersScene = new Scene(pendingOrders, 1280, 720);
+        pendingOrdersScene.getStylesheets().add("css/main.css");
 
         /*** PRODUCT PAGE */
         /* top bar */
@@ -140,10 +151,10 @@ public class UserInterface extends Application {
         mainImage.setImage(productImg);
         HBox productImages = new HBox(20, additionalImages, mainImage); //container
 
-        //  product information
-        Label productName = new Label("Sports Shoe");
-        Label productPrice = new Label("$24.00");
-        Label rating = new Label("★★★★☆");
+        //  product information, rendered on search page
+        Label productName = new Label(""); //Product Name
+        Label productPrice = new Label(""); //Product Price
+        Label rating = new Label(""); //★★★★☆
 
         VBox namePriceRate = new VBox(productName, productPrice, rating);
 
@@ -156,13 +167,6 @@ public class UserInterface extends Application {
         Label productSizeText = new Label("Size");
         ComboBox productSizeCombo = new ComboBox();
         productSizeCombo.setPromptText("Select a size");
-        productSizeCombo.getItems().addAll(
-                "6",
-                "6.5",
-                "7",
-                "7.5",
-                "8"
-        );
         HBox productSize = new HBox(15, productSizeText, productSizeCombo);
 
         //      Quantity
@@ -178,11 +182,6 @@ public class UserInterface extends Application {
         Label colorText = new Label("Color");
         ComboBox colorCombo = new ComboBox();
         colorCombo.setPromptText("Select color");
-        colorCombo.getItems().addAll(
-                "white",
-                "red",
-                "blue"
-        );
         HBox color = new HBox(15, colorText, colorCombo);
 
         VBox sizeQuantColor = new VBox(15, productSize, quantity, color);
@@ -196,12 +195,14 @@ public class UserInterface extends Application {
         colorCombo.getStyleClass().add("comboBox");
 
         Button addToCart = new Button("Add to Cart");
+        //      controls
+        addToCart.setOnAction(e -> {
+            ; // send all information to database to add to cart
+        });
         //      CSS
         addToCart.getStyleClass().add("addToCart");
 
-        Label description = new Label(
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam at iaculis sem. Nulla facilisi. Sed rutrum interdum velit, pharetra elementum neque malesuada at. Donec non arcu eleifend, rhoncus nibh sed, hendrerit nibh. Vivamus dapibus semper odio. Nullam eleifend ante vitae ligula vestibulum interdum."
-        );
+        Label description = new Label();
         //      CSS
         description.prefWidth(400);
         description.setWrapText(true);
@@ -277,7 +278,6 @@ public class UserInterface extends Application {
         ffthnd.getStyleClass().add("filterItems");
         hndPl.getStyleClass().add("filterItems");
 
-
         /* topbar */
         //  search bar
         TextField searchBarSP = new TextField("Search");
@@ -305,111 +305,51 @@ public class UserInterface extends Application {
         HBox topbarSP = new HBox(20, searchBarSP, cartSP);
 
         /* items */
-        Image placeholderImg = new Image("images/placeholder.png");
-
-        ImageView placeholder1 = new ImageView(); //placeholder image
-        placeholder1.setImage(placeholderImg);
-        placeholder1.setFitWidth(150); placeholder1.setFitHeight(150);
-        Button shoe1Name = new Button("Sports Shoe");
-        shoe1Name.setOnAction(e -> primaryStage.setScene(productPageScene)); //switches to product page
-        Label shoe1Price = new Label("$24.00");
-        VBox shoe1 = new VBox(placeholder1, shoe1Name, shoe1Price);
-
-        ImageView placeholder2 = new ImageView(); //placeholder image
-        placeholder2.setImage(placeholderImg);
-        placeholder2.setFitWidth(150); placeholder2.setFitHeight(150);
-        Button shoe2Name = new Button("Tennis Shoe");
-        shoe2Name.setOnAction(e -> primaryStage.setScene(productPageScene)); //switches to product page
-        Label shoe2Price = new Label("$10.00");
-        VBox shoe2 = new VBox(placeholder2, shoe2Name, shoe2Price);
-
-        ImageView placeholder3 = new ImageView(); //placeholder image
-        placeholder3.setImage(placeholderImg);
-        placeholder3.setFitWidth(150); placeholder3.setFitHeight(150);
-        Button shoe3Name = new Button("Slacks");
-        shoe3Name.setOnAction(e -> primaryStage.setScene(productPageScene)); //switches to product page
-        Label shoe3Price = new Label("$30.00");
-        VBox shoe3 = new VBox(placeholder3, shoe3Name, shoe3Price);
-
-        ImageView placeholder4 = new ImageView(); //placeholder image
-        placeholder4.setImage(placeholderImg);
-        placeholder4.setFitWidth(150); placeholder4.setFitHeight(150);
-        Button shoe4Name = new Button("Sports Shoe");
-        shoe4Name.setOnAction(e -> primaryStage.setScene(productPageScene)); //switches to product page
-        Label shoe4Price = new Label("$24.00");
-        VBox shoe4 = new VBox(placeholder4, shoe4Name, shoe4Price);
-
-        ImageView placeholder5 = new ImageView(); //placeholder image
-        placeholder5.setImage(placeholderImg);
-        placeholder5.setFitWidth(150); placeholder5.setFitHeight(150);
-        Button shoe5Name = new Button("Tennis Shoe");
-        shoe5Name.setOnAction(e -> primaryStage.setScene(productPageScene)); //switches to product page
-        Label shoe5Price = new Label("$10.00");
-        VBox shoe5 = new VBox(placeholder5, shoe5Name, shoe5Price);
-
-        ImageView placeholder6 = new ImageView(); //placeholder image
-        placeholder6.setImage(placeholderImg);
-        placeholder6.setFitWidth(150); placeholder6.setFitHeight(150);
-        Button shoe6Name = new Button("Slacks");
-        shoe6Name.setOnAction(e -> primaryStage.setScene(productPageScene)); //switches to product page
-        Label shoe6Price = new Label("$30.00");
-        VBox shoe6 = new VBox(placeholder6, shoe6Name, shoe6Price);
-
-        ImageView placeholder7 = new ImageView(); //placeholder image
-        placeholder7.setImage(placeholderImg);
-        placeholder7.setFitWidth(150); placeholder7.setFitHeight(150);
-        Button shoe7Name = new Button("Sports Shoe");
-        shoe7Name.setOnAction(e -> primaryStage.setScene(productPageScene)); //switches to product page
-        Label shoe7Price = new Label("$24.00");
-        VBox shoe7 = new VBox(placeholder7, shoe7Name, shoe7Price);
-
-        ImageView placeholder8 = new ImageView(); //placeholder image
-        placeholder8.setImage(placeholderImg);
-        placeholder8.setFitWidth(150); placeholder8.setFitHeight(150);
-        Button shoe8Name = new Button("Tennis Shoe");
-        shoe8Name.setOnAction(e -> primaryStage.setScene(productPageScene)); //switches to product page
-        Label shoe8Price = new Label("$10.00");
-        VBox shoe8 = new VBox(placeholder8, shoe8Name, shoe8Price);
-
-        ImageView placeholder9 = new ImageView(); //placeholder image
-        placeholder9.setImage(placeholderImg);
-        placeholder9.setFitWidth(150); placeholder9.setFitHeight(150);
-        Button shoe9Name = new Button("Slacks");
-        shoe9Name.setOnAction(e -> primaryStage.setScene(productPageScene)); //switches to product page
-        Label shoe9Price = new Label("$30.00");
-        VBox shoe9 = new VBox(placeholder9, shoe9Name, shoe9Price);
-
-        //     CSS
-        shoe1Name.getStyleClass().add("spProductName");
-        shoe2Name.getStyleClass().add("spProductName");
-        shoe3Name.getStyleClass().add("spProductName");
-        shoe4Name.getStyleClass().add("spProductName");
-        shoe5Name.getStyleClass().add("spProductName");
-        shoe6Name.getStyleClass().add("spProductName");
-        shoe7Name.getStyleClass().add("spProductName");
-        shoe8Name.getStyleClass().add("spProductName");
-        shoe9Name.getStyleClass().add("spProductName");
-
-        shoe1Price.getStyleClass().add("spProductPrice");
-        shoe2Price.getStyleClass().add("spProductPrice");
-        shoe3Price.getStyleClass().add("spProductPrice");
-        shoe4Price.getStyleClass().add("spProductPrice");
-        shoe5Price.getStyleClass().add("spProductPrice");
-        shoe6Price.getStyleClass().add("spProductPrice");
-        shoe7Price.getStyleClass().add("spProductPrice");
-        shoe8Price.getStyleClass().add("spProductPrice");
-        shoe9Price.getStyleClass().add("spProductPrice");
-
         GridPane items = new GridPane();
-        items.add(shoe1, 0, 0);
-        items.add(shoe2, 0, 1);
-        items.add(shoe3, 0, 2);
-        items.add(shoe4, 1, 0);
-        items.add(shoe5, 1, 1);
-        items.add(shoe6, 1, 2);
-        items.add(shoe7, 2, 0);
-        items.add(shoe8, 2, 1);
-        items.add(shoe9, 2, 2);
+
+        int itemNum = 1; //the index of the product on the page, 1-9
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                ImageView productImage = new ImageView();
+                productImage.setImage(new Image("images/placeholder.png"));
+                //productImage.setImage(new Image("images/product" + itemNum + ".png"));
+                productImage.setFitWidth(150); productImage.setFitHeight(150);
+                Button productNameSearch = new Button("Product Name"); //get the product name
+                Label productPriceSearch = new Label("$00.00"); //getProdPrice()
+                VBox product = new VBox(productImage, productNameSearch, productPriceSearch);
+                //      controls
+                productNameSearch.setOnAction(e -> {
+                    // render the product page
+                    productName.setText("Product Name"); //get product name
+                    productPrice.setText("$" + 00.00); //get product price
+                    rating.setText("★★★★☆"); //get product rating
+                    // render number of sizes a product comes in
+                    int numOfSizes = 5;
+                    for (int invItem = 0; invItem < numOfSizes; invItem++) { //iterate through all InventoryItems
+                        productSizeCombo.getItems().add(invItem + ""); //get sizes
+                    }
+                    //render number of colors a product comes in
+                    int numOfColors = 5;
+                    for (int invItem = 0; invItem < numOfColors; invItem++) { //iterate through all InventoryItems
+                        colorCombo.getItems().add(invItem + ""); //get color
+                    }
+                    //render product description
+                    description.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam at iaculis sem." +
+                            "Nulla facilisi. Sed rutrum interdum velit, pharetra elementum neque malesuada at. Donec non" +
+                            "arcu eleifend, rhoncus nibh sed, hendrerit nibh. Vivamus dapibus semper odio. Nullam eleifend" +
+                            "ante vitae ligula vestibulum interdum."
+                    );
+                    // switch to product page scene
+                    primaryStage.setScene(productPageScene);
+                }); //switches to product page
+                //      CSS
+                productNameSearch.getStyleClass().add("spProductName");
+                productPriceSearch.getStyleClass().add("spProductPrice");
+
+                items.add(product, i, j);
+            }
+        }
+
         ScrollPane itemWrapper = new ScrollPane(items);
 
         //      CSS
@@ -429,7 +369,7 @@ public class UserInterface extends Application {
         rightArrow.getStyleClass().add("arrow");
         pageNumbers.getStyleClass().add("pagination");
 
-        VBox rightSide = new VBox(topbarSP, itemWrapper, pagination);
+        VBox rightSide = new VBox(15, topbarSP, itemWrapper, pagination);
 
         searchPage.setLeft(sidebar);
         searchPage.setCenter(rightSide);
@@ -493,26 +433,29 @@ public class UserInterface extends Application {
         icon1.setFitWidth(300); icon1.setFitHeight(300);
         icon2.setFitWidth(300); icon2.setFitHeight(300);
         icon3.setFitWidth(330); icon3.setFitHeight(330);
+        Button ordersLabel = new Button("Pending Orders");
         Label redLabel = new Label("Rewards, Coupons, and Discounts");
-        Label shopCartLabel = new Label("Shopping Categories");
         Label accountLabel = new Label("Your Account");
 
+        //      controls
+        ordersLabel.setOnAction( e -> primaryStage.setScene(pendingOrdersScene));
+
+        VBox ordersBox = new VBox(15, icon2, ordersLabel);
         VBox redCard = new VBox(15, icon1, redLabel);
-        VBox shopCart = new VBox(15, icon2, shopCartLabel);
         VBox yourAccount = new VBox(15, icon3, accountLabel);
 
         //      CSS
+        ordersBox.getStyleClass().add("homePagePanel");
         redCard.getStyleClass().add("homePagePanel");
-        shopCart.getStyleClass().add("homePagePanel");
         yourAccount.getStyleClass().add("homePagePanel");
         redLabel.getStyleClass().add("carouselText");
-        shopCartLabel.getStyleClass().add("carouselText");
+        ordersLabel.getStyleClass().add("carouselText");
         accountLabel.getStyleClass().add("carouselText");
+        ordersBox.setAlignment(Pos.CENTER);
         redCard.setAlignment(Pos.CENTER);
-        shopCart.setAlignment(Pos.CENTER);
         yourAccount.setAlignment(Pos.CENTER);
 
-        HBox carousel = new HBox(20, redCard, shopCart,yourAccount);
+        HBox carousel = new HBox(20, ordersBox, redCard, yourAccount);
 
         homePage.getChildren().addAll(topBarH, welcome, just4You, carousel);
         //      CSS
@@ -557,34 +500,32 @@ public class UserInterface extends Application {
         HBox topBarC = new HBox(20, targetLogoButtonC, searchBarC, cartC);
 
         /* cart items */
-        Image placeholderCart1 = new Image("/images/placeholder.png");
-        ImageView cartImage1 = new ImageView(placeholderCart1);
-        cartImage1.setFitWidth(200); cartImage1.setFitHeight(200);
-        Label cartText1 = new Label("Sports Shoe");
-        Label cartPrice1 = new Label("$24.00");
-        Label cartQuantity1 = new Label("Quantity" + "1");
-        VBox cartItemInfo = new VBox(cartText1, cartPrice1, cartQuantity1);
-        HBox cartItem1 = new HBox(20, cartImage1, cartItemInfo);
+        VBox cartItems = new VBox(15);
 
-        Image placeholderCart2 = new Image("/images/placeholder.png");
-        ImageView cartImage2 = new ImageView(placeholderCart2);
-        cartImage2.setFitWidth(200); cartImage2.setFitHeight(200);
-        Label cartText2 = new Label("Towels");
-        Label cartPrice2 = new Label("$15.00");
-        Label cartQuantity2 = new Label("Quantity" + "1");
-        VBox cartItemInfo2 = new VBox(cartText2, cartPrice2, cartQuantity2);
-        HBox cartItem2 = new HBox(20, cartImage2, cartItemInfo2);
+        int cartTotal = 5; //getProdQuantity in shopping cart
+        for (int i = 0; i < cartTotal; i++) {
+            ImageView cartItemImage = new ImageView(new Image("/images/placeholder.png"));
+            //ImageView cartItemImage = new ImageView(new Image("/images/cartImage" + i + ".png"));
+            cartItemImage.setFitWidth(200); cartItemImage.setFitHeight(200);
+            Label itemName = new Label("Product Name"); //get product name
+            Label itemPrice = new Label("$" + 00.00); //get product price
+            Label itemQuantity = new Label("Quantity: " + 0); //get product quantity
+            VBox cartItemInfo = new VBox(itemName, itemPrice, itemQuantity);
+            HBox cartItem = new HBox(20, cartItemImage, cartItemInfo);
+            //      CSS
+            cartItemInfo.setAlignment(Pos.CENTER_LEFT);
+            itemName.getStyleClass().add("cartProductName");
+            itemPrice.getStyleClass().add("cartProductInfo");
+            itemQuantity.getStyleClass().add("cartProductInfo");
+
+            cartItems.getChildren().add(cartItem);
+        }
+
+        ScrollPane cartContainer = new ScrollPane(cartItems);
 
         //      CSS
-        cartText1.getStyleClass().add("cartProductName");
-        cartText2.getStyleClass().add("cartProductName");
-        cartPrice1.getStyleClass().add("cartProductInfo");
-        cartPrice2.getStyleClass().add("cartProductInfo");
-        cartQuantity1.getStyleClass().add("cartProductInfo");
-        cartQuantity2.getStyleClass().add("cartProductInfo");
-
-        VBox cartItems = new VBox(30, cartItem1, cartItem2);
-        //      CSS
+        cartContainer.setFitToWidth(true);
+        cartContainer.getStyleClass().add("itemWrapper");
         cartItems.getStyleClass().add("checkoutModule");
         cartItems.setPadding(new Insets(30));
 
@@ -652,7 +593,7 @@ public class UserInterface extends Application {
         cart.setMargin(cartItems, new Insets(0, 30, 0, 0));
 
         cart.setTop(topBarC);
-        cart.setCenter(cartItems);
+        cart.setCenter(cartContainer);
         cart.setRight(cartTotals);
 
         ///////////////////
@@ -722,8 +663,14 @@ public class UserInterface extends Application {
         passwordText.getStyleClass().add("formLabel");
         password.getStyleClass().add("form");
 
-        VBox logIn = new VBox(8, usernameContainer, passwordContainer);
+        // make an account
+        Label newAccount = new Label("Make an Account");
         //      CSS
+        newAccount.getStyleClass().add("fakeLink");
+
+        VBox logIn = new VBox(8, usernameContainer, passwordContainer, newAccount);
+        //      CSS
+        logIn.setAlignment(Pos.CENTER);
         usernameContainer.setAlignment(Pos.CENTER);
         passwordContainer.setAlignment(Pos.CENTER);
 
@@ -732,6 +679,22 @@ public class UserInterface extends Application {
         confirmSignIn.setOnAction(e -> primaryStage.setScene(finalCheckoutScene));
         //      CSS
         confirmSignIn.getStyleClass().add("confirmButton");
+        //      controls
+        BooleanBinding signInBinding = new BooleanBinding() {
+            {
+                super.bind(username.textProperty(),
+                        password.textProperty()
+                );
+            }
+
+            @Override
+            protected boolean computeValue() {
+                return (username.getText().isEmpty()
+                        || password.getText().isEmpty()
+                );
+            }
+        };
+        confirmSignIn.disableProperty().bind(signInBinding);
 
         VBox signInContainer = new VBox(30, signInText, logIn, confirmSignIn);
         //      CSS
@@ -764,28 +727,28 @@ public class UserInterface extends Application {
         //  first & last name
         Label fNameText = new Label("First Name");
         TextField fName = new TextField();
-        VBox firstName = new VBox(fNameText, fName);
+        VBox fNameContainer = new VBox(fNameText, fName);
         Label lNameText = new Label("Last Name");
         TextField lName = new TextField();
-        VBox lastName = new VBox(lNameText, lName);
-        HBox guestName = new HBox(20, firstName, lastName);
+        VBox lNameContainer = new VBox(lNameText, lName);
+        HBox guestName = new HBox(20, fNameContainer, lNameContainer);
 
         //  email address
-        Label emailAddText = new Label("Email Address");
+        Label emailAddrText = new Label("Email Address");
         TextField emailAddr = new TextField();
-        VBox emailAddress = new VBox(emailAddText, emailAddr);
+        VBox emailAddrContainer = new VBox(emailAddrText, emailAddr);
 
         //  phone number
         Label phoneNumText = new Label("Phone Number");
         TextField phoneNum = new TextField();
-        VBox phoneNumber = new VBox(phoneNumText, phoneNum);
+        VBox phoneNumContainer = new VBox(phoneNumText, phoneNum);
 
         //      CSS
         fNameText.getStyleClass().add("formLabel");
         fName.getStyleClass().add("form");
         lNameText.getStyleClass().add("formLabel");
         lName.getStyleClass().add("form");
-        emailAddText.getStyleClass().add("formLabel");
+        emailAddrText.getStyleClass().add("formLabel");
         emailAddr.getStyleClass().add("form");
         phoneNumText.getStyleClass().add("formLabel");
         phoneNum.getStyleClass().add("form");
@@ -796,7 +759,7 @@ public class UserInterface extends Application {
         errorGuest.getStyleClass().add("error");
 
         //  container
-        VBox accInfo = new VBox(15, guestName, emailAddress, phoneNumber, errorGuest);
+        VBox accInfo = new VBox(15, guestName, emailAddrContainer, phoneNumContainer, errorGuest);
 
         //  confirm button
         Button confirmGuest = new Button("Confirm");
@@ -825,10 +788,11 @@ public class UserInterface extends Application {
         confirmGuest.setOnAction(e -> {
             if (!emailAddr.getText().contains("@") || !emailAddr.getText().contains("."))
                 errorGuest.setText("Invalid email address");
-            else
+            else {
+                errorGuest.setText("");
                 primaryStage.setScene(enterAddressScene);
-            });
-
+            }
+        });
 
         VBox createAccContainer = new VBox(30, createAccText, accInfo, confirmGuest);
 
@@ -879,7 +843,7 @@ public class UserInterface extends Application {
         HBox zipContainer = new HBox(15, zipText, zip);
 
         //  billing address
-        CheckBox billingAddr = new CheckBox("Billing address is the same");
+        CheckBox billingAddressIsTheSame = new CheckBox("Billing address is the same");
 
         //      CSS
         addrText.getStyleClass().add("formTitle");
@@ -891,16 +855,41 @@ public class UserInterface extends Application {
         state.getStyleClass().add("form");
         zipText.getStyleClass().add("formLabel");
         zip.getStyleClass().add("form");
-        billingAddr.getStyleClass().add("billingAddr");
+        billingAddressIsTheSame.getStyleClass().add("billingAddr");
 
         //  confirm button
         Button confirmAddr = new Button("Confirm");
-        confirmAddr.setOnAction(e -> primaryStage.setScene(newCardScene));
+        confirmAddr.setOnAction(e -> {
+            if (billingAddressIsTheSame.isSelected())
+                primaryStage.setScene(newCardScene);
+            else
+                primaryStage.setScene(billingAddressScene);
+        });
         //      CSS
         confirmAddr.getStyleClass().add("confirmButton");
+        //      controls
+        BooleanBinding addrBinding = new BooleanBinding() {
+            {
+                super.bind(street.textProperty(),
+                        city.textProperty(),
+                        state.textProperty(),
+                        zip.textProperty()
+                );
+            }
+
+            @Override
+            protected boolean computeValue() {
+                return (street.getText().isEmpty()
+                        || city.getText().isEmpty()
+                        || state.getText().isEmpty()
+                        || zip.getText().isEmpty()
+                );
+            }
+        };
+        confirmAddr.disableProperty().bind(addrBinding);
 
         HBox cityState = new HBox(15, cityContainer, stateContainer);
-        VBox addressForm = new VBox(15, streetContainer, cityState, zipContainer, billingAddr);
+        VBox addressForm = new VBox(15, streetContainer, cityState, zipContainer, billingAddressIsTheSame);
         VBox address = new VBox(30, addrText, addressForm, confirmAddr);
 
         //      CSS
@@ -911,6 +900,93 @@ public class UserInterface extends Application {
 
         enterAddress.setTop(targetLogoButtonEA);
         enterAddress.setCenter(address);
+
+        ///////////////////
+
+        /*** ENTER BILLING ADDRESS */
+        /* Target Logo */
+        Button targetLogoButtonBA = new Button();
+        ImageView targetLogoBA = new ImageView();
+        targetLogoBA.setImage(logo);
+        targetLogoBA.setFitWidth(234);
+        targetLogoBA.setFitHeight(51);
+        targetLogoButtonBA.setGraphic(targetLogoBA);
+        targetLogoButtonBA.setOnAction(e -> primaryStage.setScene(homePageScene));
+        //      CSS
+        targetLogoButtonBA.getStyleClass().add("targetLogo");
+
+        /* address */
+        Label billingText = new Label("Billing Address");
+
+        //  street
+        Label billingStreetText = new Label("Street");
+        TextField billingStreet = new TextField();
+        HBox billingStreetContainer = new HBox(15, billingStreetText, billingStreet);
+
+        //  city
+        Label billingCityText = new Label("City");
+        TextField billingCity = new TextField();
+        HBox billingCityContainer = new HBox(15, billingCityText, billingCity);
+
+        //  state
+        Label billingStateText = new Label("State");
+        TextField billingState = new TextField();
+        HBox billingStateContainer = new HBox(15, billingStateText, billingState);
+
+        //  zip
+        Label billingZipText = new Label("ZIP");
+        TextField billingZip = new TextField();
+        HBox billingZipContainer = new HBox(15, billingZipText, billingZip);
+
+        //      CSS
+        billingText.getStyleClass().add("formTitle");
+        billingStreetText.getStyleClass().add("formLabel");
+        billingStreet.getStyleClass().add("form");
+        billingCityText.getStyleClass().add("formLabel");
+        billingCity.getStyleClass().add("form");
+        billingStateText.getStyleClass().add("formLabel");
+        billingState.getStyleClass().add("form");
+        billingZipText.getStyleClass().add("formLabel");
+        billingZip.getStyleClass().add("form");
+
+        //  confirm button
+        Button confirmBilling = new Button("Confirm");
+        confirmBilling.setOnAction(e -> primaryStage.setScene(newCardScene));
+        //      CSS
+        confirmBilling.getStyleClass().add("confirmButton");
+        //      controls
+        BooleanBinding billingBinding = new BooleanBinding() {
+            {
+                super.bind(billingStreet.textProperty(),
+                        billingCity.textProperty(),
+                        billingState.textProperty(),
+                        billingZip.textProperty()
+                );
+            }
+
+            @Override
+            protected boolean computeValue() {
+                return (billingStreet.getText().isEmpty()
+                        || billingCity.getText().isEmpty()
+                        || billingState.getText().isEmpty()
+                        || billingZip.getText().isEmpty()
+                );
+            }
+        };
+        confirmBilling.disableProperty().bind(billingBinding);
+
+        HBox billingCityState = new HBox(15, billingCityContainer, billingStateContainer);
+        VBox billingForm = new VBox(15, billingStreetContainer, billingCityState, billingZipContainer);
+        VBox billing = new VBox(30, billingText, billingForm, confirmBilling);
+
+        //      CSS
+        billingForm.setPrefWidth(700);
+        billingForm.setMaxWidth(700);
+        billing.setAlignment(Pos.CENTER);
+        billingAddress.setPadding(new Insets(30));
+
+        billingAddress.setTop(targetLogoButtonBA);
+        billingAddress.setCenter(billing);
 
         ///////////////////
 
@@ -953,13 +1029,44 @@ public class UserInterface extends Application {
         ccvText.getStyleClass().add("formLabel");
         ccv.getStyleClass().add("form");
 
+        // error message
+        Label errorCC = new Label();
+        //      CSS
+        errorCC.getStyleClass().add("error");
+
+        VBox ccForm = new VBox(15, ccNumContainer, expDateContainer, ccvContainer, errorCC);
+
         //  confirm button
         Button confirmCC = new Button("Confirm");
-        confirmCC.setOnAction(e -> primaryStage.setScene(pickUpScene));
         //      CSS
         confirmCC.getStyleClass().add("confirmButton");
+        //      controls
+        BooleanBinding ccBinding = new BooleanBinding() {
+            {
+                super.bind(ccNum.textProperty(),
+                        expDate.textProperty(),
+                        ccv.textProperty()
+                );
+            }
 
-        VBox ccForm = new VBox(15, ccNumContainer, expDateContainer, ccvContainer);
+            @Override
+            protected boolean computeValue() {
+                return (ccNum.getText().isEmpty()
+                        || expDate.getText().isEmpty()
+                        || ccv.getText().isEmpty()
+                );
+            }
+        };
+        confirmCC.disableProperty().bind(ccBinding);
+        confirmCC.setOnAction(e -> {
+            if (ccv.getText().length() != 3)
+                errorCC.setText("Invalid CCV");
+            else {
+                errorCC.setText("");
+                primaryStage.setScene(pickUpScene);
+            }
+        });
+
         VBox creditCard = new VBox(30, creditCartInfo, ccForm, confirmCC);
 
         //      CSS
@@ -1021,31 +1128,26 @@ public class UserInterface extends Application {
         targetLogoButtonFC.getStyleClass().add("targetLogo");
 
         /* cart items */
-        Image placeholderFCart1 = new Image("/images/placeholder.png");
-        ImageView fCartImage1 = new ImageView(placeholderFCart1);
-        fCartImage1.setFitWidth(200); fCartImage1.setFitHeight(200);
-        Label fCartText1 = new Label("Sports Shoe");
-        Label fCartPrice1 = new Label("$24.00");
-        Label fCartQuantity1 = new Label("Quantity" + "1");
-        VBox fCartItemInfo = new VBox(fCartText1, fCartPrice1, fCartQuantity1);
-        HBox fCartItem1 = new HBox(20, fCartImage1, fCartItemInfo);
+        VBox fCartProducts = new VBox(15);
 
-        Image placeholderFCart2 = new Image("/images/placeholder.png");
-        ImageView fCartImage2 = new ImageView(placeholderFCart2);
-        fCartImage2.setFitWidth(200); fCartImage2.setFitHeight(200);
-        Label fCartText2 = new Label("Towels");
-        Label fCartPrice2 = new Label("$15.00");
-        Label fCartQuantity2 = new Label("Quantity" + "1");
-        VBox fCartItemInfo2 = new VBox(fCartText2, fCartPrice2, fCartQuantity2);
-        HBox fCartItem2 = new HBox(20, fCartImage2, fCartItemInfo2);
+        //cartTotal = getProdQuantity in shopping cart
+        for (int i = 0; i < cartTotal; i++) {
+            ImageView cartItemImage = new ImageView(new Image("/images/placeholder.png"));
+            //ImageView cartItemImage = new ImageView(new Image("/images/cartImage" + i + ".png"));
+            cartItemImage.setFitWidth(200); cartItemImage.setFitHeight(200);
+            Label itemName = new Label("Product Name"); //get product name
+            Label itemPrice = new Label("$" + 00.00); //get product price
+            Label itemQuantity = new Label("Quantity: " + 0); //get product quantity
+            VBox cartItemInfo = new VBox(itemName, itemPrice, itemQuantity);
+            HBox cartItem = new HBox(20, cartItemImage, cartItemInfo);
+            //      CSS
+            cartItemInfo.setAlignment(Pos.CENTER_LEFT);
+            itemName.getStyleClass().add("cartProductName");
+            itemPrice.getStyleClass().add("cartProductInfo");
+            itemQuantity.getStyleClass().add("cartProductInfo");
 
-        //      CSS
-        fCartText1.getStyleClass().add("cartProductName");
-        fCartPrice1.getStyleClass().add("cartProductInfo");
-        fCartQuantity1.getStyleClass().add("cartProductInfo");
-        fCartText2.getStyleClass().add("cartProductName");
-        fCartPrice2.getStyleClass().add("cartProductInfo");
-        fCartQuantity2.getStyleClass().add("cartProductInfo");
+            fCartProducts.getChildren().add(cartItem);
+        }
 
         //  edit button
         Button editCart = new Button("Edit");
@@ -1063,7 +1165,6 @@ public class UserInterface extends Application {
         //      CSS
         cartModule.getStyleClass().add("moduleHeader");
 
-        VBox fCartProducts = new VBox(30, fCartItem1, fCartItem2);
         VBox fCartItems = new VBox(cartHeader, fCartProducts);
         //      CSS
         fCartItems.getStyleClass().add("checkoutModule");
@@ -1225,10 +1326,14 @@ public class UserInterface extends Application {
                 "Thank you for your purchase. \n" +
                         "Your payment has been approved, and your order is being prepared. A confirmation email has been sent to you."
         );
+        Label orderNumber = new Label("Your order number is: #" + 123456789); // display the packageID
         thankYouText.setPrefWidth(800);
         //      CSS
         thankYouText.getStyleClass().add("thankYou");
+        orderNumber.getStyleClass().add("thankYou");
         thankYouText.setWrapText(true);
+        thankYouText.setTextAlignment(TextAlignment.CENTER);
+        orderNumber.setTextAlignment(TextAlignment.CENTER);
 
         /* continue shopping button */
         Button continueShopping = new Button("Continue Shopping");
@@ -1236,7 +1341,7 @@ public class UserInterface extends Application {
         //      CSS
         continueShopping.getStyleClass().add("optionButton");
 
-        VBox thankYouMessage = new VBox(30, thankYouText, continueShopping);
+        VBox thankYouMessage = new VBox(30, thankYouText, orderNumber, continueShopping);
 
         //      CSS
         thankYouMessage.setAlignment(Pos.CENTER);
@@ -1244,6 +1349,92 @@ public class UserInterface extends Application {
 
         thankYou.setTop(targetLogoButtonTY);
         thankYou.setCenter(thankYouMessage);
+
+        ///////////////////
+
+        /*** PENDING ORDERS */
+        /* top bar */
+        TextField searchBarPO = new TextField("Search");
+        //      CSS
+        searchBarPO.getStyleClass().add("searchBar");
+        searchBarPO.setPrefWidth(800);
+        //      controls
+        searchBarPO.setOnKeyReleased(e -> {
+            if (!searchBarPO.getText().isEmpty() && (e.getCode() == KeyCode.ENTER)) {
+                primaryStage.setScene(searchPageScene); //switches to search results page
+            }
+        });
+        // Target Logo
+        Button targetLogoButtonPO = new Button();
+        ImageView targetLogoPO = new ImageView();
+        targetLogoPO.setImage(logo);
+        targetLogoPO.setFitWidth(234);
+        targetLogoPO.setFitHeight(51);
+        targetLogoButtonPO.setGraphic(targetLogoPO);
+        targetLogoButtonPO.setOnAction(e -> primaryStage.setScene(homePageScene));
+        //      CSS
+        targetLogoButtonPO.getStyleClass().add("targetLogo");
+
+        //  cart button
+        Button cartPO = new Button("Cart");
+        cartPO.setOnAction(e -> primaryStage.setScene(cartScene));
+        ImageView cartImageViewPO = new ImageView();
+        cartImageViewPO.setFitHeight(25);
+        cartImageViewPO.setFitWidth(25);
+        cartImageViewPO.setImage(cartImage);
+        cartPO.setGraphic(cartImageViewPO);
+        //      CSS styling
+        cartPO.getStyleClass().add("cartButton");
+
+        /* list of orders */
+        // first order
+        //  order number
+        Label orderNumberLabel1 = new Label("Order Number: ");
+        Label orderNumberValue1 = new Label("#" + 123456789); // corresponding order number
+        HBox orderNumber1 = new HBox(orderNumberLabel1, orderNumberValue1);
+        //      CSS
+        orderNumberLabel1.getStyleClass().add("boldedText");
+        orderNumberValue1.getStyleClass().add("unboldedText");
+        orderNumberLabel1.getStyleClass().add("orderNumber");
+        orderNumberValue1.getStyleClass().add("orderNumber");
+
+        //  delivery type
+        Label deliveryTypeText = new Label("Method: ");
+        Label deliveryType = new Label("Pick-Up"); // pick-up or delivery, getDelMethod()
+        HBox deliveryTypeContainer = new HBox(deliveryTypeText, deliveryType);
+        //      CSS
+        deliveryTypeText.getStyleClass().add("boldedText");
+        deliveryType.getStyleClass().add("unboldedText");
+
+        //  address
+        Label deliveryAddrText = new Label("Address: ");
+        Label deliveryAddr = new Label("2347 Harper St., Seattle, WA 12345"); // target location if pick-up, customer addr if delivery
+        HBox deliveryAddrContainer = new HBox(deliveryAddrText, deliveryAddr);
+        //      CSS
+        deliveryAddrText.getStyleClass().add("boldedText");
+        deliveryAddr.getStyleClass().add("unboldedText");
+
+        //  status
+        Label statusText = new Label("Status: ");
+        Label status = new Label("Ready"); // status of the package
+        HBox statusContainer = new HBox(statusText, status);
+        //      CSS
+        statusText.getStyleClass().add("boldedText");
+        status.getStyleClass().add("unboldedText");
+
+        VBox order1 = new VBox(orderNumber1, deliveryTypeContainer, deliveryAddrContainer, statusContainer);
+
+        //      CSS
+        order1.getStyleClass().add("pendingOrder");
+
+        VBox listOfOrders = new VBox(order1);
+
+        HBox topBarPO = new HBox(20, targetLogoButtonPO, searchBarPO, cartPO);
+
+        pendingOrders.setTop(topBarPO);
+        pendingOrders.setCenter(listOfOrders);
+        //      CSS
+        pendingOrders.setPadding(new Insets(30));
 
         ///////////////////
 
