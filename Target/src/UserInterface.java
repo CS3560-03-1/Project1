@@ -1136,32 +1136,6 @@ public class UserInterface extends Application {
             fCartProducts.getChildren().add(cartItem);
         }
 
-//        Image placeholderFCart1 = new Image("/images/placeholder.png");
-//        ImageView fCartImage1 = new ImageView(placeholderFCart1);
-//        fCartImage1.setFitWidth(200); fCartImage1.setFitHeight(200);
-//        Label fCartText1 = new Label("Sports Shoe");
-//        Label fCartPrice1 = new Label("$24.00");
-//        Label fCartQuantity1 = new Label("Quantity" + "1");
-//        VBox fCartItemInfo = new VBox(fCartText1, fCartPrice1, fCartQuantity1);
-//        HBox fCartItem1 = new HBox(20, fCartImage1, fCartItemInfo);
-//
-//        Image placeholderFCart2 = new Image("/images/placeholder.png");
-//        ImageView fCartImage2 = new ImageView(placeholderFCart2);
-//        fCartImage2.setFitWidth(200); fCartImage2.setFitHeight(200);
-//        Label fCartText2 = new Label("Towels");
-//        Label fCartPrice2 = new Label("$15.00");
-//        Label fCartQuantity2 = new Label("Quantity" + "1");
-//        VBox fCartItemInfo2 = new VBox(fCartText2, fCartPrice2, fCartQuantity2);
-//        HBox fCartItem2 = new HBox(20, fCartImage2, fCartItemInfo2);
-//
-//        //      CSS
-//        fCartText1.getStyleClass().add("cartProductName");
-//        fCartPrice1.getStyleClass().add("cartProductInfo");
-//        fCartQuantity1.getStyleClass().add("cartProductInfo");
-//        fCartText2.getStyleClass().add("cartProductName");
-//        fCartPrice2.getStyleClass().add("cartProductInfo");
-//        fCartQuantity2.getStyleClass().add("cartProductInfo");
-
         //  edit button
         Button editCart = new Button("Edit");
         editCart.setOnAction(e -> primaryStage.setScene(cartScene));
