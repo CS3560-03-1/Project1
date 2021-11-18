@@ -3,8 +3,11 @@ public class ShoppingCart {
     private int prodQuantity;
     private float totalCost;
 
-    public ShoppingCart() {
-        //ShoppingCart Constructor
+    public ShoppingCart()
+    {
+        cartID = 0;
+        prodQuantity = 0;
+        totalCost = 0.0F;
     }
 
     public boolean addProduct(Product product) {

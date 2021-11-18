@@ -2,8 +2,10 @@ public class PackageInformation {
     private int packageID;
     private float weight;
 
-    public PackageInformation() {
-        //packageInformation object
+    public PackageInformation()
+    {
+        packageID = 0;
+        weight = 0.0F;
     }
 
     public int getPackageID() {
@@ -21,5 +23,9 @@ public class PackageInformation {
 
     public void setWeight(int ...amt) { //have an unlimited amount of argument
         //take in the weight of each package and total them up here
+        float packageWeight = 0;
+        for (int i : amt)
+            packageWeight += amt[i];
+        this.weight = packageWeight;
     }
 }
