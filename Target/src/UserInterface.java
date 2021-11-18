@@ -19,8 +19,8 @@ public class UserInterface extends Application {
     // values
     double subTotal = 0;
     int totalQuan = 0;
+    double shipping = 4;
     double estTax = 0;
-    double priceTotal = subTotal + estTax;
 
     @Override
     public void start(Stage primaryStage) throws Exception
@@ -547,6 +547,8 @@ public class UserInterface extends Application {
         HBox.setHgrow(region3, Priority.ALWAYS);
         Region region4 = new Region();
         HBox.setHgrow(region4, Priority.ALWAYS);
+        Region region13 = new Region();
+        HBox.setHgrow(region13, Priority.ALWAYS);
 
         //  total items
         Label quanText = new Label("Total Items");
@@ -558,6 +560,11 @@ public class UserInterface extends Application {
         Label subValue = new Label("$" + String.format("%.2f", subTotal));
         HBox subtotal = new HBox(subText, region2, subValue);
 
+        //  shipping
+        Label shippingText = new Label("Est. Shipping");
+        Label shippingValue = new Label("$" + String.format("%.2f", shipping));
+        HBox estShipping = new HBox(shippingText, region13, shippingValue);
+
         //  est. tax
         estTax = subTotal * 0.6;
         Label taxText = new Label("Est. Tax");
@@ -566,7 +573,7 @@ public class UserInterface extends Application {
 
         // total
         Label totalText = new Label("Total");
-        Label totalValue = new Label("$" + String.format("%.2f", priceTotal));
+        Label totalValue = new Label("$" + String.format("%.2f", (subTotal + estTax + shipping)));
         HBox totals = new HBox(totalText, region4, totalValue);
 
         //      CSS
@@ -574,6 +581,8 @@ public class UserInterface extends Application {
         quanTotalValue.getStyleClass().add("unboldedText");
         subText.getStyleClass().add("boldedText");
         subValue.getStyleClass().add("unboldedText");
+        shippingText.getStyleClass().add("boldedText");
+        shippingValue.getStyleClass().add("unboldedText");
         taxText.getStyleClass().add("boldedText");
         taxValue.getStyleClass().add("unboldedText");
         totalText.getStyleClass().add("boldedText");
@@ -589,7 +598,7 @@ public class UserInterface extends Application {
         divider1.getStyleClass().add("divider");
 
         //      grouping containers
-        VBox indivValues = new VBox(totalItems, subtotal, estimatedTax);
+        VBox indivValues = new VBox(totalItems, subtotal, estimatedTax, estShipping);
 
         VBox cartTotals = new VBox(15, indivValues, divider1, totals, proceedCheckout);
         //      CSS
@@ -1234,7 +1243,6 @@ public class UserInterface extends Application {
         VBox pickUpLocContainer = new VBox(pickUpHeader, locationConf);
         pickUpLocContainer.getStyleClass().add("checkoutModule");
 
-
         VBox review = new VBox(30, fCartItems, creditCardContainer, pickUpLocContainer);
         ScrollPane reviewWrapper = new ScrollPane(review);
 
@@ -1258,6 +1266,8 @@ public class UserInterface extends Application {
         HBox.setHgrow(region7, Priority.ALWAYS);
         Region region8 = new Region();
         HBox.setHgrow(region8, Priority.ALWAYS);
+        Region region12 = new Region();
+        HBox.setHgrow(region12, Priority.ALWAYS);
 
         //  total items
         Label fQuanText = new Label("Total Items");
@@ -1269,15 +1279,20 @@ public class UserInterface extends Application {
         Label fSubValue = new Label("$" + String.format("%.2f", subTotal));
         HBox fSubtotal = new HBox(fSubText, region6, fSubValue);
 
+        //  shipping
+        Label fShippingText = new Label("Shipping");
+        Label fShippingValue = new Label("$" + String.format("%.2f", shipping));
+        HBox fShipping = new HBox(fShippingText, region12, fShippingValue);
+
         //  tax
         estTax = subTotal * 0.6;
         Label fTaxText = new Label("Est. Tax");
         Label fTaxValue = new Label("$" + String.format("%.2f", estTax));
         HBox fTax = new HBox(fTaxText, region7, fTaxValue);
 
-        // total
+        //  total
         Label fTotalText = new Label("Total");
-        Label fTotalValue = new Label("$" + String.format("%.2f", priceTotal));
+        Label fTotalValue = new Label("$" + String.format("%.2f", (subTotal + estTax + shipping)));
         HBox fTotals = new HBox(fTotalText, region8, fTotalValue);
 
         //  checkout button
@@ -1291,6 +1306,8 @@ public class UserInterface extends Application {
         fQuanTotalValue.getStyleClass().add("unboldedText");
         fSubText.getStyleClass().add("boldedText");
         fSubValue.getStyleClass().add("unboldedText");
+        fShippingText.getStyleClass().add("boldedText");
+        fShippingValue.getStyleClass().add("unboldedText");
         fTaxText.getStyleClass().add("boldedText");
         fTaxValue.getStyleClass().add("unboldedText");
         fTotalText.getStyleClass().add("boldedText");
@@ -1301,7 +1318,7 @@ public class UserInterface extends Application {
         divider2.getStyleClass().add("divider");
 
         //      grouping containers
-        VBox fIndivValues = new VBox(fTotalItems, fSubtotal, fTax);
+        VBox fIndivValues = new VBox(fTotalItems, fSubtotal, fTax, fShipping);
 
         VBox fCartTotals = new VBox(15, fIndivValues, divider2, fTotals, confirmPurchase);
         //      CSS
