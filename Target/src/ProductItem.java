@@ -17,6 +17,15 @@ public class ProductItem {
         prodPhoto = "";
     }
 
+    public ProductItem(int prodID, boolean prodPerishable, String prodDescription, String prodName, String prodPhoto) {
+        this.prodID = prodID;
+        this.prodPerishable = prodPerishable;
+        this.prodDescription = prodDescription;
+        this.prodName = prodName;
+        this.prodPhoto = prodPhoto;
+    }
+
+
     public int getProdID(){
         return prodID;
     }
@@ -70,6 +79,63 @@ public class ProductItem {
             resultSet.next();
 
             result = resultSet.getString("name");
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public String dbGetProdDescription(int ID){
+        String result = " ";
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "jpacio123");
+
+            Statement statement = connection.createStatement();
+
+            ResultSet resultSet = statement.executeQuery("SELECT description FROM mydb.productitem WHERE productID = '" + ID + "'");
+
+            resultSet.next();
+
+            result = resultSet.getString("description");
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public String dbGetProdPhoto(int ID){
+        String result = " ";
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "jpacio123");
+
+            Statement statement = connection.createStatement();
+
+            ResultSet resultSet = statement.executeQuery("SELECT photo FROM mydb.productitem WHERE productID = '" + ID + "'");
+
+            resultSet.next();
+
+            result = resultSet.getString("photo");
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public boolean dbGetProdPerishable(int ID){
+        boolean result = true;
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "jpacio123");
+
+            Statement statement = connection.createStatement();
+
+            ResultSet resultSet = statement.executeQuery("SELECT perishable FROM mydb.productitem WHERE productID = '" + ID + "'");
+
+            resultSet.next();
+
+            result = resultSet.getBoolean("perishable");
         }
         catch(Exception e){
             e.printStackTrace();

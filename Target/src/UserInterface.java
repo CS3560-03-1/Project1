@@ -99,6 +99,8 @@ public class UserInterface extends Application {
         Scene pendingOrdersScene = new Scene(pendingOrders, 1280, 720);
         pendingOrdersScene.getStylesheets().add("css/main.css");
 
+        ShoppingCart shoppingCart = new ShoppingCart();
+
         /*** PRODUCT PAGE */
         /* top bar */
         TextField searchBarPP = new TextField("Search");
@@ -193,12 +195,16 @@ public class UserInterface extends Application {
 
         Button addToCart = new Button("Add to Cart");
         //      controls
+        Label temp1 = new Label();
         addToCart.setOnAction(e -> {
             if (productSizeCombo.getValue() != null
                     && quantityCombo.getValue() != null
                     && colorCombo.getValue() != null) {
                 System.out.println("added to cart");
-                ; // send all information to database to add to cart
+                int temp2 = Integer.parseInt(temp1.getText());
+                ProductItem temp3 = new ProductItem();
+                ProductItem item = new ProductItem(temp2, temp3.dbGetProdPerishable(temp2), temp3.dbGetProdDescription(temp2), temp3.dbGetProdName(temp2), temp3.dbGetProdPhoto(temp2));
+                shoppingCart.addProduct(item); // send all information to database to add to cart
             }
         });
         //      CSS
@@ -313,6 +319,7 @@ public class UserInterface extends Application {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 //  fetch data from database
+                temp1.setText(itemNum + "");
                 InventoryItem inventoryItem = new InventoryItem(itemNum + "");
                 ProductItem p = new ProductItem();
                 String prodName = p.dbGetProdName(1000 + itemNum);
