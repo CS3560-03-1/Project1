@@ -20,7 +20,7 @@ public class UserInterface extends Application {
     double subTotal = 0;
     int totalQuan = 0;
     double estTax = 0;
-    double priceTotal = 0;
+    double priceTotal = subTotal + estTax;
 
     @Override
     public void start(Stage primaryStage) throws Exception
@@ -151,10 +151,10 @@ public class UserInterface extends Application {
         mainImage.setImage(productImg);
         HBox productImages = new HBox(20, additionalImages, mainImage); //container
 
-        //  product information
-        Label productName = new Label("Sports Shoe");
-        Label productPrice = new Label("$24.00");
-        Label rating = new Label("★★★★☆");
+        //  product information, rendered on search page
+        Label productName = new Label(""); //Product Name
+        Label productPrice = new Label(""); //Product Price
+        Label rating = new Label(""); //★★★★☆
 
         VBox namePriceRate = new VBox(productName, productPrice, rating);
 
@@ -167,13 +167,6 @@ public class UserInterface extends Application {
         Label productSizeText = new Label("Size");
         ComboBox productSizeCombo = new ComboBox();
         productSizeCombo.setPromptText("Select a size");
-        productSizeCombo.getItems().addAll(
-                "6",
-                "6.5",
-                "7",
-                "7.5",
-                "8"
-        );
         HBox productSize = new HBox(15, productSizeText, productSizeCombo);
 
         //      Quantity
@@ -189,11 +182,6 @@ public class UserInterface extends Application {
         Label colorText = new Label("Color");
         ComboBox colorCombo = new ComboBox();
         colorCombo.setPromptText("Select color");
-        colorCombo.getItems().addAll(
-                "white",
-                "red",
-                "blue"
-        );
         HBox color = new HBox(15, colorText, colorCombo);
 
         VBox sizeQuantColor = new VBox(15, productSize, quantity, color);
@@ -207,12 +195,14 @@ public class UserInterface extends Application {
         colorCombo.getStyleClass().add("comboBox");
 
         Button addToCart = new Button("Add to Cart");
+        //      controls
+        addToCart.setOnAction(e -> {
+            ; // send all information to database to add to cart
+        });
         //      CSS
         addToCart.getStyleClass().add("addToCart");
 
-        Label description = new Label(
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam at iaculis sem. Nulla facilisi. Sed rutrum interdum velit, pharetra elementum neque malesuada at. Donec non arcu eleifend, rhoncus nibh sed, hendrerit nibh. Vivamus dapibus semper odio. Nullam eleifend ante vitae ligula vestibulum interdum."
-        );
+        Label description = new Label();
         //      CSS
         description.prefWidth(400);
         description.setWrapText(true);
@@ -317,7 +307,7 @@ public class UserInterface extends Application {
         /* items */
         GridPane items = new GridPane();
 
-        int itemNum = 1;
+        int itemNum = 1; //the index of the product on the page, 1-9
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 ImageView productImage = new ImageView();
@@ -328,7 +318,30 @@ public class UserInterface extends Application {
                 Label productPriceSearch = new Label("$00.00"); //getProdPrice()
                 VBox product = new VBox(productImage, productNameSearch, productPriceSearch);
                 //      controls
-                productNameSearch.setOnAction(e -> primaryStage.setScene(productPageScene)); //switches to product page
+                productNameSearch.setOnAction(e -> {
+                    // render the product page
+                    productName.setText("Product Name"); //get product name
+                    productPrice.setText("$" + 00.00); //get product price
+                    rating.setText("★★★★☆"); //get product rating
+                    // render number of sizes a product comes in
+                    int numOfSizes = 5;
+                    for (int invItem = 0; invItem < numOfSizes; invItem++) { //iterate through all InventoryItems
+                        productSizeCombo.getItems().add(invItem + ""); //get sizes
+                    }
+                    //render number of colors a product comes in
+                    int numOfColors = 5;
+                    for (int invItem = 0; invItem < numOfColors; invItem++) { //iterate through all InventoryItems
+                        colorCombo.getItems().add(invItem + ""); //get color
+                    }
+                    //render product description
+                    description.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam at iaculis sem." +
+                            "Nulla facilisi. Sed rutrum interdum velit, pharetra elementum neque malesuada at. Donec non" +
+                            "arcu eleifend, rhoncus nibh sed, hendrerit nibh. Vivamus dapibus semper odio. Nullam eleifend" +
+                            "ante vitae ligula vestibulum interdum."
+                    );
+                    // switch to product page scene
+                    primaryStage.setScene(productPageScene);
+                }); //switches to product page
                 //      CSS
                 productNameSearch.getStyleClass().add("spProductName");
                 productPriceSearch.getStyleClass().add("spProductPrice");
