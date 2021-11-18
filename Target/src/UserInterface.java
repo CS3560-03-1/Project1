@@ -521,23 +521,53 @@ public class UserInterface extends Application {
         VBox cartItems = new VBox(15);
 
         int cartTotal = 5; //getProdQuantity in shopping cart
-        for (int i = 0; i < cartTotal; i++) {
-            ImageView cartItemImage = new ImageView(new Image("/images/placeholder.png"));
-            //ImageView cartItemImage = new ImageView(new Image("/images/cartImage" + i + ".png"));
-            cartItemImage.setFitWidth(200); cartItemImage.setFitHeight(200);
-            Label itemName = new Label("Product Name"); //get product name
-            Label itemPrice = new Label("$" + 00.00); //get product price
-            Label itemQuantity = new Label("Quantity: " + 0); //get product quantity
-            VBox cartItemInfo = new VBox(itemName, itemPrice, itemQuantity);
-            HBox cartItem = new HBox(20, cartItemImage, cartItemInfo);
-            //      CSS
-            cartItemInfo.setAlignment(Pos.CENTER_LEFT);
-            itemName.getStyleClass().add("cartProductName");
-            itemPrice.getStyleClass().add("cartProductInfo");
-            itemQuantity.getStyleClass().add("cartProductInfo");
+//        for (int i = 0; i < cartTotal; i++) {
+//            ImageView cartItemImage = new ImageView(new Image("/images/placeholder.png"));
+//            //ImageView cartItemImage = new ImageView(new Image("/images/cartImage" + i + ".png"));
+//            cartItemImage.setFitWidth(200); cartItemImage.setFitHeight(200);
+//            Label itemName = new Label("Product Name"); //get product name
+//            Label itemPrice = new Label("$" + 00.00); //get product price
+//            Label itemQuantity = new Label("Quantity: " + 0); //get product quantity
+//            VBox cartItemInfo = new VBox(itemName, itemPrice, itemQuantity);
+//            HBox cartItem = new HBox(20, cartItemImage, cartItemInfo);
+//            //      CSS
+//            cartItemInfo.setAlignment(Pos.CENTER_LEFT);
+//            itemName.getStyleClass().add("cartProductName");
+//            itemPrice.getStyleClass().add("cartProductInfo");
+//            itemQuantity.getStyleClass().add("cartProductInfo");
+//
+//            cartItems.getChildren().add(cartItem);
+//        }
 
-            cartItems.getChildren().add(cartItem);
-        }
+            ImageView cartItemImage1 = new ImageView(new Image("/images/product2.png"));
+            //ImageView cartItemImage = new ImageView(new Image("/images/cartImage" + i + ".png"));
+            cartItemImage1.setFitWidth(200); cartItemImage1.setFitHeight(200);
+            Label itemName1 = new Label("Tennis Shoe"); //get product name
+            Label itemPrice1 = new Label("$59.99"); //get product price
+            Label itemQuantity1 = new Label("Quantity: " + 1); //get product quantity
+            VBox cartItemInfo1 = new VBox(itemName1, itemPrice1, itemQuantity1);
+            HBox cartItem1 = new HBox(20, cartItemImage1, cartItemInfo1);
+
+            ImageView cartItemImage2 = new ImageView(new Image("/images/product5.png"));
+            //ImageView cartItemImage = new ImageView(new Image("/images/cartImage" + i + ".png"));
+            cartItemImage2.setFitWidth(200); cartItemImage2.setFitHeight(200);
+            Label itemName2 = new Label("Hat"); //get product name
+            Label itemPrice2 = new Label("$8.99"); //get product price
+            Label itemQuantity2 = new Label("Quantity: " + 1); //get product quantity
+            VBox cartItemInfo2 = new VBox(itemName2, itemPrice2, itemQuantity2);
+            HBox cartItem2 = new HBox(20, cartItemImage2, cartItemInfo2);
+            //      CSS
+            cartItemInfo1.setAlignment(Pos.CENTER_LEFT);
+            itemName1.getStyleClass().add("cartProductName");
+            itemPrice1.getStyleClass().add("cartProductInfo");
+            itemQuantity1.getStyleClass().add("cartProductInfo");
+            cartItemInfo2.setAlignment(Pos.CENTER_LEFT);
+            itemName2.getStyleClass().add("cartProductName");
+            itemPrice2.getStyleClass().add("cartProductInfo");
+            itemQuantity2.getStyleClass().add("cartProductInfo");
+
+            cartItems.getChildren().add(cartItem1);
+            cartItems.getChildren().add(cartItem2);
 
         ScrollPane cartContainer = new ScrollPane(cartItems);
 
@@ -562,21 +592,24 @@ public class UserInterface extends Application {
 
         //  total items
         Label quanText = new Label("Total Items");
+        totalQuan = 2;
         Label quanTotalValue = new Label(totalQuan + ""); //CALCULATE VALUE HERE
         HBox totalItems = new HBox(quanText, region1, quanTotalValue);
 
         //  subtotal
         Label subText = new Label("Subtotal");
+        subTotal = 8.99 + 59.99;
         Label subValue = new Label("$" + String.format("%.2f", subTotal));
         HBox subtotal = new HBox(subText, region2, subValue);
 
         //  shipping
         Label shippingText = new Label("Est. Shipping");
+        shipping = 4;
         Label shippingValue = new Label("$" + String.format("%.2f", shipping));
         HBox estShipping = new HBox(shippingText, region13, shippingValue);
 
         //  est. tax
-        estTax = subTotal * 0.6;
+        estTax = subTotal * 0.06;
         Label taxText = new Label("Est. Tax");
         Label taxValue = new Label("$" + String.format("%.2f", estTax));
         HBox estimatedTax = new HBox(taxText, region3, taxValue);
@@ -1158,23 +1191,51 @@ public class UserInterface extends Application {
         VBox fCartProducts = new VBox(15);
 
         //cartTotal = getProdQuantity in shopping cart
-        for (int i = 0; i < cartTotal; i++) {
-            ImageView cartItemImage = new ImageView(new Image("/images/placeholder.png"));
-            //ImageView cartItemImage = new ImageView(new Image("/images/cartImage" + i + ".png"));
-            cartItemImage.setFitWidth(200); cartItemImage.setFitHeight(200);
-            Label itemName = new Label("Product Name"); //get product name
-            Label itemPrice = new Label("$" + 00.00); //get product price
-            Label itemQuantity = new Label("Quantity: " + 0); //get product quantity
-            VBox cartItemInfo = new VBox(itemName, itemPrice, itemQuantity);
-            HBox cartItem = new HBox(20, cartItemImage, cartItemInfo);
-            //      CSS
-            cartItemInfo.setAlignment(Pos.CENTER_LEFT);
-            itemName.getStyleClass().add("cartProductName");
-            itemPrice.getStyleClass().add("cartProductInfo");
-            itemQuantity.getStyleClass().add("cartProductInfo");
+//        for (int i = 0; i < cartTotal; i++) {
+//            ImageView cartItemImage = new ImageView(new Image("/images/placeholder.png"));
+//            //ImageView cartItemImage = new ImageView(new Image("/images/cartImage" + i + ".png"));
+//            cartItemImage.setFitWidth(200); cartItemImage.setFitHeight(200);
+//            Label itemName = new Label("Product Name"); //get product name
+//            Label itemPrice = new Label("$" + 00.00); //get product price
+//            Label itemQuantity = new Label("Quantity: " + 0); //get product quantity
+//            VBox cartItemInfo = new VBox(itemName, itemPrice, itemQuantity);
+//            HBox cartItem = new HBox(20, cartItemImage, cartItemInfo);
+//            //      CSS
+//            cartItemInfo.setAlignment(Pos.CENTER_LEFT);
+//            itemName.getStyleClass().add("cartProductName");
+//            itemPrice.getStyleClass().add("cartProductInfo");
+//            itemQuantity.getStyleClass().add("cartProductInfo");
+//
+//            fCartProducts.getChildren().add(cartItem);
+//        }
 
-            fCartProducts.getChildren().add(cartItem);
-        }
+            ImageView fcartItemImage1 = new ImageView(new Image("/images/product2.png"));
+            fcartItemImage1.setFitWidth(200); fcartItemImage1.setFitHeight(200);
+            Label cartItemName1 = new Label("Tennis Shoe"); //get product name
+            Label cartItemPrice1 = new Label("$59.99"); //get product price
+            Label cartItemQuantity1 = new Label("Quantity: " + 1); //get product quantity
+            VBox fcartItemInfo1 = new VBox(cartItemName1, cartItemPrice1, cartItemQuantity1);
+            HBox fcartItem1 = new HBox(20, fcartItemImage1, fcartItemInfo1);
+
+            ImageView fcartItemImage2 = new ImageView(new Image("/images/product5.png"));
+            fcartItemImage2.setFitWidth(200); fcartItemImage2.setFitHeight(200);
+            Label cartItemName2 = new Label("Hat"); //get product name
+            Label cartItemPrice2 = new Label("$8.99"); //get product price
+            Label cartItemQuantity2 = new Label("Quantity: " + 1); //get product quantity
+            VBox fcartItemInfo2 = new VBox(cartItemName2, cartItemPrice2, cartItemQuantity2);
+            HBox fcartItem2 = new HBox(20, fcartItemImage2, fcartItemInfo2);
+            //      CSS
+            fcartItemInfo1.setAlignment(Pos.CENTER_LEFT);
+            cartItemName1.getStyleClass().add("cartProductName");
+            cartItemPrice1.getStyleClass().add("cartProductInfo");
+            cartItemQuantity1.getStyleClass().add("cartProductInfo");
+            fcartItemInfo2.setAlignment(Pos.CENTER_LEFT);
+            cartItemName2.getStyleClass().add("cartProductName");
+            cartItemPrice2.getStyleClass().add("cartProductInfo");
+            cartItemQuantity2.getStyleClass().add("cartProductInfo");
+
+            fCartProducts.getChildren().add(fcartItem1);
+            fCartProducts.getChildren().add(fcartItem2);
 
         //  edit button
         Button editCart = new Button("Edit");
@@ -1228,7 +1289,7 @@ public class UserInterface extends Application {
 
         /* pick-up location */
         //  location text
-        Label pickUpLocationText = new Label("Pick-Up Location");
+        Label pickUpLocationText = new Label("Delivery Location");
         Label locationConf = new Label("2347 Harper St., Seattle, WA 12345");
 
         //      CSS
@@ -1295,7 +1356,7 @@ public class UserInterface extends Application {
         HBox fShipping = new HBox(fShippingText, region12, fShippingValue);
 
         //  tax
-        estTax = subTotal * 0.6;
+        estTax = subTotal * 0.06;
         Label fTaxText = new Label("Est. Tax");
         Label fTaxValue = new Label("$" + String.format("%.2f", estTax));
         HBox fTax = new HBox(fTaxText, region7, fTaxValue);
@@ -1361,7 +1422,7 @@ public class UserInterface extends Application {
                 "Thank you for your purchase. \n" +
                         "Your payment has been approved, and your order is being prepared. A confirmation email has been sent to you."
         );
-        Label orderNumber = new Label("Your order number is: #" + 123456789); // display the packageID
+        Label orderNumber = new Label("Your order number is: #" + 000000001); // display the packageID
         thankYouText.setPrefWidth(800);
         //      CSS
         thankYouText.getStyleClass().add("thankYou");
@@ -1425,7 +1486,7 @@ public class UserInterface extends Application {
         // first order
         //  order number
         Label orderNumberLabel1 = new Label("Order Number: ");
-        Label orderNumberValue1 = new Label("#" + 123456789); // corresponding order number
+        Label orderNumberValue1 = new Label("#" + 000000001); // corresponding order number
         HBox orderNumber1 = new HBox(orderNumberLabel1, orderNumberValue1);
         //      CSS
         orderNumberLabel1.getStyleClass().add("boldedText");
@@ -1435,7 +1496,7 @@ public class UserInterface extends Application {
 
         //  delivery type
         Label deliveryTypeText = new Label("Method: ");
-        Label deliveryType = new Label("Pick-Up"); // pick-up or delivery, getDelMethod()
+        Label deliveryType = new Label("Delivery"); // pick-up or delivery, getDelMethod()
         HBox deliveryTypeContainer = new HBox(deliveryTypeText, deliveryType);
         //      CSS
         deliveryTypeText.getStyleClass().add("boldedText");
