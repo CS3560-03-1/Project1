@@ -5,8 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5e0b49ea-6ac6-4241-857e-140a6aa36c6f" name="Changes" comment="implement InventoryItem.java and added method to Product">
+      <change afterPath="$PROJECT_DIR$/demo/target/classes/com/example/demo/hello-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Target/Project1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Target/Project1.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Target/database/database.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Target/database/database.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Target/src/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/Target/src/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project1/InventoryItem.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project1/InventoryItem.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project1/Order.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project1/Order.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +58,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="16" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -60,6 +66,20 @@
   </component>
   <component name="ReaderModeSettings">
     <option name="showWarnings" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Order" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Order" />
+      <module name="Project1" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Order" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
