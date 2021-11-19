@@ -10,10 +10,10 @@ public class ShoppingCart {
         totalCost = 0.0F;
     }
 
-    public boolean addProduct(ProductItem product) {
-        //method to add products to maybe linked list?
-        //make sure to take into account inventory
-        return false; //return if adding product to cart is successful or not
+    public void addProductItem(InventoryItem item) //helper method
+    {
+        prodQuantity++;
+        totalCost += item.getCost();
     }
 
     public int getCartID() {
@@ -26,5 +26,17 @@ public class ShoppingCart {
 
     public float getTotalCost() {
         return totalCost;
+    }
+
+    public void setCartID(int cartID) {
+        this.cartID = cartID;
+    }
+
+    public void setProdQuantity(int prodQuantity) {
+        this.prodQuantity = prodQuantity;
+    }
+
+    public void setTotalCost(float totalCost) {
+        this.totalCost = totalCost;
     }
 }

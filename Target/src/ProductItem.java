@@ -2,7 +2,6 @@ import java.sql.*;
 
 public class ProductItem {
     private int prodID;
-    //private float prodPrice, prodWeight;
     private boolean prodPerishable;
     private String prodDescription;
     private String prodName;
@@ -58,18 +57,17 @@ public class ProductItem {
         this.prodPhoto = prodPhoto;
     }
 
+    /*
     public static void main(String[] args)
     {
         ProductDAO product = new ProductDAO();
         ProductItem prod = new ProductItem();
-        /*
         prod.setProdID(1018);
         prod.setProdPerishable(true);
         prod.setProdName("apples");
         prod.setProdPhoto("apples");
         prod.setProdDescription("apples");
         product.add(prod);
-         */
         ProductItem newProd = new ProductItem();
         newProd.setProdID(1016);
         newProd.setProdPerishable(false);
@@ -78,4 +76,5 @@ public class ProductItem {
         newProd.setProdDescription("phone");
         product.update(newProd);
     }
+     */
 }

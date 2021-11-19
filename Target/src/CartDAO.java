@@ -3,13 +3,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class ProductDAO
+public class CartDAO
 {
     Connection connection = null;
     PreparedStatement ptmt = null;
     ResultSet resultSet = null;
 
-    public ProductDAO(){
+    public CartDAO(){
 
     }
 
@@ -19,21 +19,15 @@ public class ProductDAO
         return conn;
     }
 
-    public void add(InventoryItem item) //still needs to be changed
+    public void add(ShoppingCart cart)
     {
         try {
-            String queryString = "INSERT INTO inventoryitem(inventoryitemID, productID, item name, quantity, cost, color, weight, size, description) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String queryString = "INSERT INTO shoppingcart(cartID, productQuantity, totalCost) VALUES(?, ?, ?)";
             connection = getConnection();
             ptmt = connection.prepareStatement(queryString);
-            ptmt.setInt(1, item.getInventoryID());
-            ptmt.setInt(2, item.getProductID());
-            ptmt.setString(3, item.getItemName());
-            ptmt.setInt(4, item.getQuantity());
-            ptmt.setFloat(5, item.getCost());
-            ptmt.setString(6, item.getColor());
-            ptmt.setFloat(7, item.getWeight());
-            ptmt.setString(8, item.getSize());
-            ptmt.setString(9, item.getDescription());
+            ptmt.setInt(1, cart.getCartID());
+            ptmt.setInt(2, cart.getProdQuantity());
+            ptmt.setFloat(3, cart.getTotalCost());
             ptmt.executeUpdate();
             System.out.println("Data Added Successfully");
         } catch (SQLException e) {
@@ -52,17 +46,15 @@ public class ProductDAO
         }
     }
 
-    public void update(ProductItem product)
+    public void update(ShoppingCart cart)
     {
         try {
-            String queryString = "UPDATE productitem SET perishable=?, photo=?, description=?, name=? WHERE productID=?";
+            String queryString = "UPDATE shoppingcart SET productQuantity=?, totalCost=? WHERE cartID=?";
             connection = getConnection();
             ptmt = connection.prepareStatement(queryString);
-            ptmt.setBoolean(1, product.isProdPerishable());
-            ptmt.setString(2, product.getProdPhoto());
-            ptmt.setString(3, product.displayProdDescript());
-            ptmt.setString(4, product.displayProdName());
-            ptmt.setInt(5, product.getProdID());
+            ptmt.setInt(1, cart.getProdQuantity());
+            ptmt.setFloat(2, cart.getTotalCost());
+            ptmt.setInt(3, cart.getCartID());
             ptmt.executeUpdate();
             System.out.println("Table Updated Successfully");
         } catch (SQLException e) {
@@ -76,6 +68,32 @@ public class ProductDAO
             }
 
             catch (SQLException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void delete(int cartID)
+    {
+        try
+        {
+            String queryString = "DELETE FROM shoppingcart WHERE cartID=?";
+            connection = getConnection();
+            ptmt = connection.prepareStatement(queryString);
+            ptmt.setInt(1, cartID);
+            ptmt.executeUpdate();
+            System.out.println("Data Deleted Successfully");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (ptmt != null)
+                    ptmt.close();
+                if (connection != null)
+                    connection.close();
+            } catch (SQLException e) {
                 e.printStackTrace();
             } catch (Exception e) {
                 e.printStackTrace();

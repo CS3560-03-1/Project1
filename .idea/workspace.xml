@@ -5,14 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5e0b49ea-6ac6-4241-857e-140a6aa36c6f" name="Changes" comment="implement InventoryItem.java and added method to Product">
-      <change afterPath="$PROJECT_DIR$/demo/target/classes/com/example/demo/hello-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Target/src/CartDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Target/Project1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Target/Project1.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Target/database/database.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Target/database/database.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Target/src/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/Target/src/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Target/src/InventoryItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/Target/src/InventoryItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Target/src/ProductDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Target/src/ProductDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Target/src/ProductItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/Target/src/ProductItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Target/src/ShoppingCart.java" beforeDir="false" afterPath="$PROJECT_DIR$/Target/src/ShoppingCart.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Project1/InventoryItem.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project1/InventoryItem.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project1/JavaConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project1/JavaConnection.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Project1/Order.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project1/Order.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project1/ShoppingCart.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project1/ShoppingCart.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project1/Transaction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project1/Transaction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project1/UserInterface$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project1/UserInterface$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project1/UserInterface$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project1/UserInterface$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project1/UserInterface$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project1/UserInterface$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project1/UserInterface$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project1/UserInterface$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project1/UserInterface$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project1/UserInterface$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project1/UserInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project1/UserInterface.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +42,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="gui" />
+        <entry key="$PROJECT_DIR$" value="database" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -41,7 +51,6 @@
     <setting file="file://$PROJECT_DIR$/Target/src/Transaction.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Target/src/Customer.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Target/src/ShoppingCart.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Target/src/Product.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Target/src/PackageInformation.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Target/src/Order.java" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -58,7 +67,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="16" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />

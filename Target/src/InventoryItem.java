@@ -3,6 +3,7 @@ import java.sql.*;
 public class InventoryItem
 {
     private int inventoryID;
+    private int productID;
     private String itemName;
     private int quantity;
     private float cost;
@@ -15,6 +16,7 @@ public class InventoryItem
     {
         this.itemName = itemName;
         inventoryID = 0;
+        productID = 0;
         quantity = 0;
         cost = 0.0F;
         color = "";
@@ -25,6 +27,10 @@ public class InventoryItem
 
     public int getInventoryID() {
         return inventoryID;
+    }
+
+    public int getProductID() {
+        return productID;
     }
 
     public int getQuantity(){
@@ -58,6 +64,10 @@ public class InventoryItem
 
     public void setInventoryID(int inventoryID) {
         this.inventoryID = inventoryID;
+    }
+
+    public void setProductID(int productID) {
+        this.productID = productID;
     }
 
     public void setQuantity(int quantity) {
