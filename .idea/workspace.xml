@@ -4,25 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5e0b49ea-6ac6-4241-857e-140a6aa36c6f" name="Changes" comment="implement InventoryItem.java and added method to Product">
-      <change afterPath="$PROJECT_DIR$/Target/src/CartDAO.java" afterDir="false" />
+    <list default="true" id="5e0b49ea-6ac6-4241-857e-140a6aa36c6f" name="Changes" comment="added helper method to shopping cart (plus some other unimportant changes)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Target/Project1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Target/Project1.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Target/src/InventoryItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/Target/src/InventoryItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Target/src/ProductDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Target/src/ProductDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Target/src/ProductItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/Target/src/ProductItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Target/src/ShoppingCart.java" beforeDir="false" afterPath="$PROJECT_DIR$/Target/src/ShoppingCart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project1/InventoryItem.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project1/InventoryItem.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project1/JavaConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project1/JavaConnection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project1/Order.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project1/Order.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project1/ShoppingCart.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project1/ShoppingCart.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project1/Transaction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project1/Transaction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project1/UserInterface$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project1/UserInterface$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project1/UserInterface$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project1/UserInterface$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project1/UserInterface$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project1/UserInterface$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project1/UserInterface$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project1/UserInterface$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project1/UserInterface$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project1/UserInterface$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project1/UserInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project1/UserInterface.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,7 +117,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637128693873</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="added helper method to shopping cart (plus some other unimportant changes)">
+      <created>1637299833114</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1637299833114</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -155,7 +145,8 @@
     <MESSAGE value="javafx error fix" />
     <MESSAGE value="module fix" />
     <MESSAGE value="new module fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="new module fix" />
+    <MESSAGE value="added helper method to shopping cart (plus some other unimportant changes)" />
+    <option name="LAST_COMMIT_MESSAGE" value="added helper method to shopping cart (plus some other unimportant changes)" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

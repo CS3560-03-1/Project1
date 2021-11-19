@@ -84,6 +84,7 @@ DROP TABLE IF EXISTS `inventoryitem`;
 CREATE TABLE `inventoryitem` (
   `inventoryItemID` int NOT NULL,
   `productID` int NOT NULL,
+  `item name` varchar(45) DEFAULT NULL,
   `quantity` int DEFAULT NULL,
   `cost` double(10,2) DEFAULT NULL,
   `color` varchar(45) DEFAULT NULL,
@@ -102,7 +103,7 @@ CREATE TABLE `inventoryitem` (
 
 LOCK TABLES `inventoryitem` WRITE;
 /*!40000 ALTER TABLE `inventoryitem` DISABLE KEYS */;
-INSERT INTO `inventoryitem` VALUES (1,1001,21,69.99,'red',1.75,'12 in','Shoe used for sports and running'),(2,1002,29,59.99,'red',2.00,'11 in','Casual shoes for walking'),(3,1003,50,30.00,'red',2.00,'30 x 30','Regular slacks'),(4,1004,51,15.00,'red',2.00,'Medium','Normal baic t shirt'),(5,1005,169,8.99,'red',2.00,'Medium','Casual fitting hat'),(6,1006,98,12.00,'red',2.00,'N/A','Delicious cake with frosting'),(7,1007,324,3.50,'red',2.00,'N/A','Pack of twinkies'),(8,1008,132,4.99,'red',2.00,'N/A','Hot dog sausages for cooking'),(9,1009,68,2.50,'red',2.00,'N/A','Fast and easy noodles'),(10,1010,19,3.00,'red',2.00,'N/A','Delicious healthy grapes'),(11,1011,90,10.00,'red',2.00,'5 in','Fragrant and nice candle'),(12,1012,85,35.00,'red',2.00,'3.5 ft','Comfortable wooden chair'),(13,1013,15,5.00,'red',2.00,'8 in','Pack of sharpened pencils'),(14,1014,321,3.00,'red',2.00,'4 in','Pack of colorful crayons'),(15,1015,56,200.00,'gold',2.00,'2 in','Basic gold ring'),(16,1016,98,150.00,'silver',2.00,'N/A','Blingy silver necklace');
+INSERT INTO `inventoryitem` VALUES (1,1001,'Sports Shoe',21,69.99,'red',1.75,'12 in','Shoe used for sports and running'),(2,1002,'Tennis Shoes',29,59.99,'red',2.00,'11 in','Casual shoes for walking'),(3,1003,'Slacks',50,30.00,'red',2.00,'30 x 30','Regular slacks'),(4,1004,'T Shirt',51,15.00,'red',2.00,'Medium','Normal baic t shirt'),(5,1005,'Hat',169,8.99,'red',2.00,'Medium','Casual fitting hat'),(6,1006,'Cake',98,12.00,'red',2.00,'N/A','Delicious cake with frosting'),(7,1007,'Twinkies',324,3.50,'red',2.00,'N/A','Pack of twinkies'),(8,1008,'Hot dogs',132,4.99,'red',2.00,'N/A','Hot dog sausages for cooking'),(9,1009,'Instant ramen',68,2.50,'red',2.00,'N/A','Fast and easy noodles'),(10,1010,'Grapes',19,3.00,'red',2.00,'N/A','Delicious healthy grapes'),(11,1011,'Candle',90,10.00,'red',2.00,'5 in','Fragrant and nice candle'),(12,1012,'Chair',85,35.00,'red',2.00,'3.5 ft','Comfortable wooden chair'),(13,1013,'Pencils',15,5.00,'red',2.00,'8 in','Pack of sharpened pencils'),(14,1014,'Crayons',321,3.00,'red',2.00,'4 in','Pack of colorful crayons'),(15,1015,'Ring',56,200.00,'gold',2.00,'2 in','Basic gold ring'),(16,1016,'Necklace',98,150.00,'silver',2.00,'N/A','Blingy silver necklace');
 /*!40000 ALTER TABLE `inventoryitem` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -129,6 +130,7 @@ CREATE TABLE `order` (
 
 LOCK TABLES `order` WRITE;
 /*!40000 ALTER TABLE `order` DISABLE KEYS */;
+INSERT INTO `order` VALUES (1,0,'Pick-up',NULL,NULL),(2,0,'Pick-up',NULL,NULL),(3,0,'Pick-up',NULL,NULL),(4,0,'Pick-up',NULL,NULL);
 /*!40000 ALTER TABLE `order` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -144,7 +146,6 @@ CREATE TABLE `productitem` (
   `perishable` tinyint DEFAULT NULL,
   `photo` varchar(45) DEFAULT NULL,
   `description` varchar(45) DEFAULT NULL,
-  `name` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`productID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -155,7 +156,7 @@ CREATE TABLE `productitem` (
 
 LOCK TABLES `productitem` WRITE;
 /*!40000 ALTER TABLE `productitem` DISABLE KEYS */;
-INSERT INTO `productitem` VALUES (1001,0,'shoes1','Sports Shoe',NULL),(1002,0,'shoes2','Tennis Shoe',NULL),(1003,0,'slacks','Slacks',NULL),(1004,0,'tshirt','T Shirt',NULL),(1005,0,'hat','Hat',NULL),(1006,1,'cake','Cake',NULL),(1007,1,'twinkies','Twinkies',NULL),(1008,1,'hotdogs','Hot Dogs',NULL),(1009,1,'ramen','Instant Ramen',NULL),(1010,1,'grape','Grapes',NULL),(1011,0,'candle','Candle',NULL),(1012,0,'chair','Chair',NULL),(1013,0,'pencil','Pencils',NULL),(1014,0,'crayons','Crayons',NULL),(1015,0,'ring','Ring',NULL),(1016,0,'phone','phone','phone'),(1017,1,'banana','banana','bananas'),(1018,1,'apples','apples','apples');
+INSERT INTO `productitem` VALUES (1001,0,'shoes1','Sports Shoe'),(1002,0,'shoes2','Tennis Shoe'),(1003,0,'slacks','Slacks'),(1004,0,'tshirt','T Shirt'),(1005,0,'hat','Hat'),(1006,1,'cake','Cake'),(1007,1,'twinkies','Twinkies'),(1008,1,'hotdogs','Hot Dogs'),(1009,1,'ramen','Instant Ramen'),(1010,1,'grape','Grapes'),(1011,0,'candle','Candle'),(1012,0,'chair','Chair'),(1013,0,'pencil','Pencils'),(1014,0,'crayons','Crayons'),(1015,0,'ring','Ring'),(1016,0,'necklace','Necklace');
 /*!40000 ALTER TABLE `productitem` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -168,12 +169,9 @@ DROP TABLE IF EXISTS `shoppingcart`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `shoppingcart` (
   `cartID` int NOT NULL,
-  `custName` varchar(45) NOT NULL,
   `productQuantity` int DEFAULT NULL,
   `totalCost` double DEFAULT NULL,
-  PRIMARY KEY (`cartID`,`custName`),
-  KEY `custName` (`custName`),
-  CONSTRAINT `custName` FOREIGN KEY (`custName`) REFERENCES `customer` (`custName`)
+  PRIMARY KEY (`cartID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -199,6 +197,7 @@ CREATE TABLE `transaction` (
   `orderID` int NOT NULL,
   `date` int DEFAULT NULL,
   `transType` varchar(45) DEFAULT NULL,
+  `transAmount` double DEFAULT NULL,
   PRIMARY KEY (`transactionID`,`custName`,`orderID`),
   KEY `t.custName` (`custName`),
   KEY `orderID` (`orderID`),
@@ -225,4 +224,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-18 11:15:06
+-- Dump completed on 2021-11-18 21:46:00
